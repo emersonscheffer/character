@@ -1,4 +1,5 @@
-import "./App.css";
+// import "./App.css";
+import "./reset.css";
 
 import ActivityBar from "./components/ActivityBar";
 
