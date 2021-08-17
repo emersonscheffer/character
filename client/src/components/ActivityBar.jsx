@@ -7,13 +7,13 @@ const ActivityBar = () => {
     <div
       style={{
         //backgroundColor: "lightGray",
-        height: "60px",
+        height: "auto",
         display: "grid",
-        gridTemplateRows: "repeat(2, 1fr)",
+        gridAutoRows: "minmax(30px, 30px)",
         gridTemplateColumns: "repeat(8, 1fr)",
       }}
     >
-        <ABBar />
+      <ABBar />
       <ABTab />
     </div>
   );

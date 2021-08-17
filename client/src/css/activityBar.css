@@ -1,0 +1,16 @@
+.bar-style {
+    background-color: rgb(149, 150, 149);
+    grid-row: 1/2;
+    transition: ease-in-out 0.3s;
+}
+
+.bar-style-hover {
+    background-color: rgb(167, 156, 156);
+    /* //grid-row: 1/4; */
+    transition: ease-in-out 0.3s;
+    transform: scale(3);
+}
+
+/* .bar-style:hover {
+    
+} */
