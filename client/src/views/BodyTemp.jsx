@@ -16,7 +16,7 @@ const BodyTemp = () => {
             to do list => 
             weekly house improvements list -> 10 items per week 
 
-          monday = grill cheese, 2 bread slices with cream cheese , beef and carrots, chocolate, juice glass 
+          monday = grill cheese, 2 bread slices with cream cheese , beef and carrots, chocolate, juice glass HHH
       </h3>
     </div>
   );
