@@ -2,7 +2,7 @@ import React from "react";
 
 const BodyTemp = () => {
   return (
-    <div>
+    <div style={{backgroundColor: "gray"}}>
       <h3>Water , bike riding, push ups
           algorithms and Data Structure,
           Piano

@@ -6,6 +6,7 @@ import "./css/activityBar.css"
 import ActivityBar from "./components/ActivityBar";
 import PlayerName from "./components/PlayerName";
 import BodyTemp from "./views/BodyTemp";
+import LeitnerBox from "./views/LeitnerBox";
 
 function App() {
   return (
@@ -16,6 +17,8 @@ function App() {
 
       <PlayerName />
       <BodyTemp />
+
+      <LeitnerBox />
     </div>
   );
 }
