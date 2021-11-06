@@ -1,3 +1,9 @@
 
 
 Create a way to back up database - write/append to txt document
+
+- leitner time line transform them in perfect squares
+
+if day 1 -> get Date()
+else add 1 to day
+

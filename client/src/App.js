@@ -3,20 +3,20 @@ import "./reset.css";
 import "./css/activityBar.css"
 
 
-import ActivityBar from "./components/ActivityBar";
-import PlayerName from "./components/PlayerName";
-import BodyTemp from "./views/BodyTemp";
+// import ActivityBar from "./components/ActivityBar";
+// import PlayerName from "./components/PlayerName";
+// import BodyTemp from "./views/BodyTemp";
 import LeitnerBox from "./views/LeitnerBox";
 
 function App() {
   return (
     <div className="App">
-      <div>
+      {/* <div>
         <ActivityBar />
       </div>
 
       <PlayerName />
-      <BodyTemp />
+      <BodyTemp /> */}
 
       <LeitnerBox />
     </div>
