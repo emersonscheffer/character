@@ -1,16 +1,15 @@
 import React from "react";
 
-const LeitnerTimeLineButton = () => {
+const LeitnerTimeLineButton = ({ pressedMe }) => {
   return (
     <div
-
-        onClick={() => console.log("hello m y friend?")}
+      onClick={pressedMe}
       style={{
         width: "120px",
         height: "50px",
         backgroundColor: "beige",
         display: "grid",
-        margin: "20px"
+        margin: "20px",
       }}
     >
       <h1 style={{ alignSelf: "center", justifySelf: "center" }}>Next</h1>

@@ -1,14 +1,13 @@
 import React from "react";
 import LeitnerTimeLineDayIndicatorSq from "./LeitnerTimeLineDayIndicatorSq";
 
-const LeitnerTimeLineDayIndicator = () => {
-  let selectedDay = 25;
-
+const LeitnerTimeLineDayIndicator = ({ selectedDay }) => {
   const indicator = () => {
     let indicatorLine = [];
     for (let i = 0; i < 64; i++) {
       indicatorLine.push(
         <LeitnerTimeLineDayIndicatorSq
+          key={i}
           selected={selectedDay === i + 1 ? true : false}
         />
       );

@@ -3,15 +3,14 @@ import React from "react";
 import LeitnerTimeLineNumber from "./LeitnerTimeLineNumber";
 import LeitnerTimeLineBullets from "./LeitnerTimeLineBullets";
 
-const LeitnerTimeLine = () => {
-  let selectedDay = 25;
-
+const LeitnerTimeLine = ({ selectedDay }) => {
   const timeLineNumbers = () => {
     let arr = [];
 
     for (let index = 0; index < 64; index++) {
       arr.push(
         <LeitnerTimeLineNumber
+          key={index}
           tlNumber={index + 1}
           selectedDay={selectedDay === index + 1 ? true : false}
         />
@@ -49,6 +48,7 @@ const LeitnerTimeLine = () => {
       for (let index = 1; index < 65; index++) {
         bulletsArr.push(
           <LeitnerTimeLineBullets
+            key={index}
             bulletColor={bulletCollors[i - 1]}
             interval={index % intervals[i] === 0 ? true : false}
           />
