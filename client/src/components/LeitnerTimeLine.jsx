@@ -3,7 +3,7 @@ import React from "react";
 import LeitnerTimeLineNumber from "./LeitnerTimeLineNumber";
 import LeitnerTimeLineBullets from "./LeitnerTimeLineBullets";
 
-const LeitnerTimeLine = ({ selectedDay }) => {
+const LeitnerTimeLine = ({ leitnerDay }) => {
   const timeLineNumbers = () => {
     let arr = [];
 
@@ -12,7 +12,7 @@ const LeitnerTimeLine = ({ selectedDay }) => {
         <LeitnerTimeLineNumber
           key={index}
           tlNumber={index + 1}
-          selectedDay={selectedDay === index + 1 ? true : false}
+          leitnerDay={leitnerDay === index + 1 ? true : false}
         />
       );
     }
@@ -21,7 +21,7 @@ const LeitnerTimeLine = ({ selectedDay }) => {
   };
 
   const bulletCollors = [
-    "red",
+    "pink",
     "blue",
     "green",
     "black",

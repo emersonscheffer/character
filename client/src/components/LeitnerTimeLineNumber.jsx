@@ -1,15 +1,15 @@
 import React from "react";
 
-const LeitnerTimeLineNumber = ({ tlNumber, selectedDay }) => {
+const LeitnerTimeLineNumber = ({ tlNumber, leitnerDay }) => {
   return (
     <div
       style={{
-        backgroundColor: selectedDay ? "white" : null,
+        backgroundColor: leitnerDay ? "white" : null,
         width: "96%",
         height: "96%",
         alignSelf: "center",
         display: "grid",
-        border: selectedDay ? "solid black 1px" : null,
+        border: leitnerDay ? "solid black 1px" : null,
         borderRadius: "40%",
         boxSizing: "border-box"
       }}

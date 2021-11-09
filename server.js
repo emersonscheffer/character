@@ -6,4 +6,4 @@ const da = new Date
 
 da.getDate()
 
-console.log(da.getMonth(), da.getDate())
+console.log(da.getMonth() + 1, da.getDate())
