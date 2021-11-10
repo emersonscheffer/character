@@ -29,10 +29,11 @@ const LeitnerCardInList = () => {
       </div>
       <div
         style={{
-          gridRow: "2/5",
+          gridRow: "2/4",
           gridColumn: "1/5",
           alignSelf: "center",
           justifySelf: "center",
+          fontFamily: "helvetica",
         }}
       >
         <h1>Demure</h1>
