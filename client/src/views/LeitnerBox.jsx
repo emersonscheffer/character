@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import LeitnerTimeLine from "../components/LeitnerTimeLine";
 import LeitnerTimeLineDayIndicator from "../components/LeitnerTimeLineDayIndicator";
 import LeitnerTimeLineButton from "../components/LeitnerTimeLineButton";
+import LeitnerCardList from "../components/LeitnerCardsList";
 
 const LeitnerBox = () => {
   const currentTodayDate = new Date();
@@ -98,7 +99,8 @@ const LeitnerBox = () => {
     <div style={{ marginTop: "40px" }}>
       <LeitnerTimeLine leitnerDay={leitnerDay} />
       <LeitnerTimeLineDayIndicator leitnerDay={leitnerDay} />
-      <LeitnerTimeLineButton pressedMe={pressedMe} isDisabled={false} buttonTxt={"StudyNow"}/>
+      <LeitnerTimeLineButton pressedMe={pressedMe} isDisabled={false} buttonTxt={"Study"}/>
+      <LeitnerCardList />
     </div>
   );
 };

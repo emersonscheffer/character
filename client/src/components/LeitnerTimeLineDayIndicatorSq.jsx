@@ -20,7 +20,7 @@ const LeitnerTimeLineDayIndicatorSq = ({ selected }) => {
             height: "0",
             borderLeft: "8px solid transparent",
             borderRight: "8px solid transparent",
-            borderBottom:"16px solid red",
+            borderBottom: "16px solid red",
             alignSelf: "center",
             justifySelf: "center",
           }}
