@@ -98,7 +98,7 @@ const LeitnerBox = () => {
     <div style={{ marginTop: "40px" }}>
       <LeitnerTimeLine leitnerDay={leitnerDay} />
       <LeitnerTimeLineDayIndicator leitnerDay={leitnerDay} />
-      <LeitnerTimeLineButton pressedMe={pressedMe} isDisabled={false} buttonTxt={"Study"}/>
+      <LeitnerTimeLineButton pressedMe={pressedMe} isDisabled={false} buttonTxt={"StudyNow"}/>
     </div>
   );
 };
