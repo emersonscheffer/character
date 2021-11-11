@@ -1,7 +1,9 @@
+import { Provider } from "react-redux";
+import store from "./store";
+
 // import "./App.css";
 import "./reset.css";
-import "./css/activityBar.css"
-
+import "./css/activityBar.css";
 
 // import ActivityBar from "./components/ActivityBar";
 // import PlayerName from "./components/PlayerName";
@@ -10,16 +12,18 @@ import LeitnerBox from "./views/LeitnerBox";
 
 function App() {
   return (
-    <div className="App">
-      {/* <div>
+    <Provider store={store}>
+      <div className="App">
+        {/* <div>
         <ActivityBar />
       </div>
 
       <PlayerName />
       <BodyTemp /> */}
 
-      <LeitnerBox />
-    </div>
+        <LeitnerBox />
+      </div>
+    </Provider>
   );
 }
 

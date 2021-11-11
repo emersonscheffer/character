@@ -2,8 +2,19 @@
 
 Create a way to back up database - write/append to txt document
 
-- leitner time line - transform them in perfect squares
+- leitner time line - transform them into perfect squares
 
 - compare if date has changed, if yes - button enabled else - next 'study' button disabled
 
 - add Redux to the project
+
+- when pressed study button , 
+    - new cards from deck are added to level 1 bucket
+    - the timeline cursor moves one to the right
+    - populate a list with cards of buckets to study for the day
+
+
+MVP
+
+- make it available to add cards in the deck
+- create cards template with two buttons -> again / good

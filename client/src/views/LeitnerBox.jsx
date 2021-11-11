@@ -22,35 +22,32 @@ const LeitnerBox = () => {
   //     studyStarted: false
   //   })
   // );
+  //const [buttonStatus, setButtonStatus] = useState(false);
 
   const mDat = JSON.parse(localStorage.getItem("mdat"));
 
   if (mDat) {
     if (todayMonth === mDat["currentMonth"]) {
-      if(todayDay === mDat["currentDay"]){
-        //console.log("got here")
+      if (todayDay === mDat["currentDay"]) {
+        console.log("got here");
         //disable button here
 
-
-
-
+        // run buttonDisable function
+        //setButtonStatus(true);
       } else {
         // button status : Able -  button pressed moves leitnerDay to next day and save in localStorage
-
-
-
+        console.log("got here 2 - different day");
+        // run buttonAble function
+        //setButtonStatus(false);
       }
     } else {
-
       // if studyStarted === false
       // start study
-      // else 
+      // else
       // move to next day and save new leitnerDay
 
-
-
       // save new date in local storage
-      
+
       localStorage.setItem(
         "mdat",
         JSON.stringify({
@@ -58,10 +55,9 @@ const LeitnerBox = () => {
           leitnerDay: 1,
           currentDay: todayDay,
           currentMonth: todayMonth,
-          studyStarted: false
+          studyStarted: false,
         })
       );
-  
     }
   } else {
     localStorage.setItem(
@@ -71,12 +67,10 @@ const LeitnerBox = () => {
         leitnerDay: 1,
         currentDay: todayDay,
         currentMonth: todayMonth,
-        studyStarted: false
+        studyStarted: false,
       })
     );
   }
-  
-
 
   const [leitnerDay, setLeitnerDay] = useState(mDat["leitnerDay"]);
 
@@ -90,7 +84,7 @@ const LeitnerBox = () => {
         leitnerDay: leitnerDay + 1,
         currentDay: todayDay,
         currentMonth: todayMonth,
-        studyStarted: false
+        studyStarted: false,
       })
     );
   };
@@ -99,8 +93,12 @@ const LeitnerBox = () => {
     <div style={{ marginTop: "40px" }}>
       <LeitnerTimeLine leitnerDay={leitnerDay} />
       <LeitnerTimeLineDayIndicator leitnerDay={leitnerDay} />
-      <LeitnerTimeLineButton pressedMe={pressedMe} isDisabled={false} buttonTxt={"Study"}/>
-      <LeitnerCardList />
+      <LeitnerTimeLineButton
+        pressedMe={pressedMe}
+        isDisabled={false}
+        buttonTxt={"Study"}
+      />
+      {/* <LeitnerCardList /> */}
     </div>
   );
 };
