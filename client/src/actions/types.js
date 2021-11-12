@@ -1,1 +1,1 @@
-export const ACTION1 = "ACTION1"
+export const ADD_CARD = "ADD_CARD";

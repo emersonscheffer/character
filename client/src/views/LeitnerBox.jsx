@@ -1,15 +1,34 @@
-import React, { useState, useEffect, useDispatch, useSelector } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import LeitnerTimeLine from "../components/LeitnerTimeLine";
 import LeitnerTimeLineDayIndicator from "../components/LeitnerTimeLineDayIndicator";
 import LeitnerTimeLineButton from "../components/LeitnerTimeLineButton";
 import LeitnerCardList from "../components/LeitnerCardsList";
 import LeitnerAddCardModal from "../components/LeitnerAddCardModal";
+import LeitnerAddCardButton from "../components/LeitnerAddCardButton";
+
+import { addCardToDeckAction } from "../actions/leitnerBoxActions";
 
 const LeitnerBox = () => {
+  const dispatch = useDispatch();
+
   const currentTodayDate = new Date();
   const todayDay = currentTodayDate.getDate();
   const todayMonth = currentTodayDate.getMonth();
+
+  // MODAL
+  // open close modal
+  const [displayModal, setDisplayModal] = useState(false); // set its value to false
+  const openCloseModal = () => {
+    setDisplayModal(!displayModal);
+  };
+
+  const addCardToDeck = (card) => {
+    dispatch(addCardToDeckAction(card));
+  };
+
+  // MODAL
 
   // compare date with the saved one,
 
@@ -92,13 +111,21 @@ const LeitnerBox = () => {
 
   return (
     <div style={{ marginTop: "40px" }}>
-      <LeitnerAddCardModal />
+      <LeitnerAddCardModal
+        displayModal={displayModal}
+        openCloseModal={() => openCloseModal()}
+        addCardToDeck={addCardToDeck}
+      />
       <LeitnerTimeLine leitnerDay={leitnerDay} />
       <LeitnerTimeLineDayIndicator leitnerDay={leitnerDay} />
       <LeitnerTimeLineButton
         pressedMe={pressedMe}
         isDisabled={false}
         buttonTxt={"Study"}
+      />
+      <LeitnerAddCardButton
+        openCloseModal={openCloseModal}
+        displayBtn={displayModal}
       />
       {/* <LeitnerCardList /> */}
     </div>

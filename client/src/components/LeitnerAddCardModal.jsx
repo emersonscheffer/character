@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 
-const LeitnerAddCardModal = () => {
+const LeitnerAddCardModal = ({
+  openCloseModal,
+  displayModal,
+  addCardToDeck,
+}) => {
+  const [cardTitle, setCardTitle] = useState("");
+  const [cardFront, setCardFront] = useState("");
+  const [cardBack, setCardBack] = useState("");
+
   return (
     <div
       style={{
-        display: "block",
+        display: displayModal ? "block" : "none",
         position: "fixed",
         zIndex: "1",
         paddingTop: "100px",
@@ -17,18 +25,49 @@ const LeitnerAddCardModal = () => {
         backgroundColor: "rgb(0,0,0,0.4)",
       }}
     >
-      <div style={{
+      <div
+        style={{
           backgroundColor: "#fefefe",
           margin: "auto",
-          padding:"20px",
+          padding: "20px",
           border: "1px solid #888",
-          width: "80%"
-      }}>
-          <form action="">
-              <input type="text" />
-                
-          </form>
-          <textarea name="" id="" cols="30" rows="10"></textarea>
+          width: "80%",
+        }}
+      >
+        <input
+          id="title"
+          type="text"
+          placeholder="Title"
+          name="title"
+          value={cardTitle}
+          onChange={(e) => setCardTitle(e.target.value)}
+        />
+
+        <input
+          type="text"
+          placeholder="Front"
+          name="front"
+          value={cardFront}
+          onChange={(e) => setCardFront(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Back"
+          name="back"
+          value={cardBack}
+          onChange={(e) => setCardBack(e.target.value)}
+        />
+
+        <button
+          onClick={addCardToDeck.bind(this, { cardTitle, cardFront, cardBack })}
+        >
+          Add
+        </button>
+        <button onClick={openCloseModal} type="">
+          Close ×
+        </button>
+
+        {/* <textarea name="" id="" cols="30" rows="10"></textarea> */}
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
-import { ACTION1 } from "./types";
+import { ADD_CARD } from "./types";
 
-export const changeLeitnerDay = () => (dispatch) => {
-  dispatch({ type: ACTION1, payload: 5 });
+export const addCardToDeckAction = (card) => (dispatch) => {
+  dispatch({ type: ADD_CARD, payload: card });
 };
