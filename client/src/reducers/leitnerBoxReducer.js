@@ -26,12 +26,30 @@ let dataSet = [
   },
 ];
 
+class Card {
+  constructor(title, front, back) {
+    this.title = title;
+    this.front = front;
+    this.back = back;
+    this.level = 1
+    this.examples = []
+    this.formality = 5
+  }
+  
+}
+
 export default function (state = initialState, action) {
   switch (action.type) {
     case ADD_CARD:
+      const newCard = new Card(
+        action.payload.cardTitle,
+        action.payload.cardFront,
+        action.payload.cardBack
+      );
+
       return {
         ...state,
-        deck: [...state.deck, action.payload],
+        deck: [...state.deck, newCard],
       };
 
     default:

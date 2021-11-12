@@ -13,9 +13,14 @@ Create a way to back up database - write/append to txt document
     - the timeline cursor moves one to the right
     - populate a list with cards of buckets to study for the day
 
+- create animation to make card flip
+
 
 MVP
 
 - make it available to add cards in the deck
     - Modal ?
+    - Make a filter to add no-repetitive cards
 - create cards template with two buttons -> again / good
+- display cards in alphabetical order
+

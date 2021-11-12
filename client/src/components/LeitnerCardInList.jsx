@@ -1,6 +1,6 @@
 import React from "react";
 
-const LeitnerCardInList = () => {
+const LeitnerCardInList = ({ cardTitle, cardLevel }) => {
   return (
     <div
       style={{
@@ -25,7 +25,7 @@ const LeitnerCardInList = () => {
           display: "grid",
         }}
       >
-        <h1 style={{ alignSelf: "center", justifySelf: "center" }}>Level 1</h1>
+        <h1 style={{ alignSelf: "center", justifySelf: "center" }}>Level {cardLevel}</h1>
       </div>
       <div
         style={{
@@ -36,7 +36,7 @@ const LeitnerCardInList = () => {
           fontFamily: "helvetica",
         }}
       >
-        <h1>Demure</h1>
+        <h1>{cardTitle}</h1>
       </div>
     </div>
   );

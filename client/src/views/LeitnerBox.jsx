@@ -9,9 +9,11 @@ import LeitnerAddCardModal from "../components/LeitnerAddCardModal";
 import LeitnerAddCardButton from "../components/LeitnerAddCardButton";
 
 import { addCardToDeckAction } from "../actions/leitnerBoxActions";
+import LeitnerCard from "../components/LeitnerCard";
 
 const LeitnerBox = () => {
   const dispatch = useDispatch();
+  const { deck } = useSelector((state) => state.leitnerBox);
 
   const currentTodayDate = new Date();
   const todayDay = currentTodayDate.getDate();
@@ -28,7 +30,13 @@ const LeitnerBox = () => {
     dispatch(addCardToDeckAction(card));
   };
 
-  // MODAL
+  // MODAL END
+
+  // Flip Card
+  const [flipCard, setFlipCard] = useState(true);
+  const flipCardFn = () => {
+    setFlipCard(!flipCard);
+  };
 
   // compare date with the saved one,
 
@@ -123,11 +131,19 @@ const LeitnerBox = () => {
         isDisabled={false}
         buttonTxt={"Study"}
       />
+
+      <LeitnerCard
+        fn={() => flipCardFn()}
+        frontSize={flipCard}
+        cardTitle="Pick Any Up"
+        cardFormality={5}
+      />
+
       <LeitnerAddCardButton
         openCloseModal={openCloseModal}
         displayBtn={displayModal}
       />
-      {/* <LeitnerCardList /> */}
+      <LeitnerCardList cardList={deck} />
     </div>
   );
 };
