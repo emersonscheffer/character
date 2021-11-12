@@ -17,4 +17,5 @@ Create a way to back up database - write/append to txt document
 MVP
 
 - make it available to add cards in the deck
+    - Modal ?
 - create cards template with two buttons -> again / good

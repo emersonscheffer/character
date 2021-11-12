@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useDispatch, useSelector } from "react";
 
 import LeitnerTimeLine from "../components/LeitnerTimeLine";
 import LeitnerTimeLineDayIndicator from "../components/LeitnerTimeLineDayIndicator";
 import LeitnerTimeLineButton from "../components/LeitnerTimeLineButton";
 import LeitnerCardList from "../components/LeitnerCardsList";
+import LeitnerAddCardModal from "../components/LeitnerAddCardModal";
 
 const LeitnerBox = () => {
   const currentTodayDate = new Date();
@@ -91,6 +92,7 @@ const LeitnerBox = () => {
 
   return (
     <div style={{ marginTop: "40px" }}>
+      <LeitnerAddCardModal />
       <LeitnerTimeLine leitnerDay={leitnerDay} />
       <LeitnerTimeLineDayIndicator leitnerDay={leitnerDay} />
       <LeitnerTimeLineButton

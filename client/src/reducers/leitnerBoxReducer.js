@@ -5,9 +5,18 @@ const initialState = {
   currentDay: -1,
   currentMonth: -1,
   leitnerDay: 1,
-  studyStarted: false
+  studyStarted: false,
 };
 
 export default function (state = initialState, action) {
-  return state;
+  switch (action.type) {
+    case ACTION1:
+      return {
+        ...state,
+        leitnerDay: action.payload,
+      };
+
+    default:
+      return state;
+  }
 }
