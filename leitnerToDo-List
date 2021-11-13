@@ -20,7 +20,10 @@ MVP
 
 - make it available to add cards in the deck
     - Modal ?
-    - Make a filter to add no-repetitive cards
+    - Make a filter to add just non-repetitive cards
 - create cards template with two buttons -> again / good
 - display cards in alphabetical order
+
+- to flip card the button doesn't need to be the whole card
+    - create a side button on the right side
 

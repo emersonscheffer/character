@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import LeitnerTimeLine from "../components/LeitnerTimeLine";
-import LeitnerTimeLineDayIndicator from "../components/LeitnerTimeLineDayIndicator";
-import LeitnerTimeLineButton from "../components/LeitnerTimeLineButton";
-import LeitnerCardList from "../components/LeitnerCardsList";
-import LeitnerAddCardModal from "../components/LeitnerAddCardModal";
-import LeitnerAddCardButton from "../components/LeitnerAddCardButton";
+import LeitnerTimeLine from "../components/leitnerComponents/LeitnerTimeLine";
+import LeitnerTimeLineDayIndicator from "../components/leitnerComponents/LeitnerTimeLineDayIndicator";
+import LeitnerTimeLineButton from "../components/leitnerComponents/LeitnerTimeLineButton";
+import LeitnerCardList from "../components/leitnerComponents/LeitnerCardsList";
+import LeitnerAddCardModal from "../components/leitnerComponents/LeitnerAddCardModal";
+import LeitnerAddCardButton from "../components/leitnerComponents/LeitnerAddCardButton";
+import LeitnerCard from "../components/leitnerComponents/LeitnerCard";
 
 import { addCardToDeckAction } from "../actions/leitnerBoxActions";
-import LeitnerCard from "../components/LeitnerCard";
 
 const LeitnerBox = () => {
   const dispatch = useDispatch();
@@ -133,7 +133,7 @@ const LeitnerBox = () => {
       />
 
       <LeitnerCard
-        fn={() => flipCardFn()}
+        flipFn={() => flipCardFn()}
         frontSize={flipCard}
         cardTitle="Pick Any Up"
         cardFormality={5}

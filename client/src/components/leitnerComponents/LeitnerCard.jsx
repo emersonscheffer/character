@@ -1,7 +1,8 @@
 import React from "react";
+import LeitnerCardFlipButton from "./LeitnerCardFlipButton";
 
 const LeitnerCard = ({
-  fn,
+  flipFn,
   btnFn1,
   btnFn2,
   frontSize,
@@ -10,12 +11,12 @@ const LeitnerCard = ({
 }) => {
   return (
     <div
-      onClick={fn}
+      
       style={{
         backgroundColor: "grey",
         width: "450px",
         height: "350px",
-        border: "5px solid rgb(255,255,255,0.5)",
+        border: "5px solid rgb(225,225,225)",
         borderRadius: "5px",
         display: "grid",
         gridTemplateColumns: "repeat(6, 1fr)",
@@ -176,6 +177,8 @@ const LeitnerCard = ({
       >
         Next
       </div>
+
+      <LeitnerCardFlipButton flipFn={flipFn}/>
     </div>
   );
 };
