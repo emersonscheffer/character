@@ -1,17 +1,17 @@
 import React from "react";
+import LeitnerCardButton from "./LeitnerCardButton";
 import LeitnerCardFlipButton from "./LeitnerCardFlipButton";
 
 const LeitnerCard = ({
   flipFn,
   btnFn1,
   btnFn2,
-  frontSize,
+  frontSide,
   cardTitle,
   cardFormality,
 }) => {
   return (
     <div
-      
       style={{
         backgroundColor: "grey",
         width: "450px",
@@ -54,14 +54,14 @@ const LeitnerCard = ({
           fontSize: "35px",
           gridColumn: "1/7",
           gridRow: "5/7",
-          display: frontSize ? "block" : "none",
+          display: frontSide ? "block" : "none",
         }}
       >
         {cardTitle}
       </h1>
       <h2
         style={{
-          display: frontSize ? "block" : "none",
+          display: frontSide ? "block" : "none",
           alignSelf: "center",
           justifySelf: "center",
           fontFamily: "helvetica",
@@ -78,7 +78,7 @@ const LeitnerCard = ({
 
       <h1
         style={{
-          display: !frontSize ? "block" : "none",
+          display: !frontSide ? "block" : "none",
           alignSelf: "center",
           justifySelf: "center",
           fontFamily: "helvetica",
@@ -92,7 +92,7 @@ const LeitnerCard = ({
       </h1>
       <h1
         style={{
-          display: !frontSize ? "block" : "none",
+          display: !frontSide ? "block" : "none",
           alignSelf: "center",
           justifySelf: "center",
           fontFamily: "helvetica",
@@ -106,7 +106,7 @@ const LeitnerCard = ({
       </h1>
       <h2
         style={{
-          display: !frontSize ? "block" : "none",
+          display: !frontSide ? "block" : "none",
           alignSelf: "center",
           justifySelf: "center",
           fontFamily: "helvetica",
@@ -120,7 +120,7 @@ const LeitnerCard = ({
       </h2>
       <h2
         style={{
-          display: !frontSize ? "block" : "none",
+          display: !frontSide ? "block" : "none",
           alignSelf: "center",
           justifySelf: "center",
           fontFamily: "helvetica",
@@ -134,7 +134,7 @@ const LeitnerCard = ({
       </h2>
       <h2
         style={{
-          display: !frontSize ? "block" : "none",
+          display: !frontSide ? "block" : "none",
           alignSelf: "center",
           justifySelf: "center",
           fontFamily: "helvetica",
@@ -147,7 +147,7 @@ const LeitnerCard = ({
         Example 3
       </h2>
 
-      <div
+      {/* <div
         onClick={btnFn1}
         style={{
           display: !frontSize ? "block" : "none",
@@ -176,9 +176,24 @@ const LeitnerCard = ({
         }}
       >
         Next
-      </div>
+      </div> */}
 
-      <LeitnerCardFlipButton flipFn={flipFn}/>
+      <LeitnerCardButton
+        frontSide={frontSide}
+        row={"10/11"}
+        col={"2/4"}
+        btnTxt={"Again"}
+        btnFn={() => console.log("hiihihihih")}
+      />
+      <LeitnerCardButton
+        frontSide={frontSide}
+        row={"10/11"}
+        col={"4/6"}
+        btnTxt={"Good"}
+        btnFn={() => console.log("hiihihihih")}
+      />
+
+      <LeitnerCardFlipButton flipFn={flipFn} />
     </div>
   );
 };

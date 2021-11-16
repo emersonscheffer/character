@@ -6,8 +6,11 @@ const LeitnerAddCardModal = ({
   addCardToDeck,
 }) => {
   const [cardTitle, setCardTitle] = useState("");
-  const [cardFront, setCardFront] = useState("");
-  const [cardBack, setCardBack] = useState("");
+  const [cardFormality, setCardFormality] = useState("-");
+  const [cardMeaning, setCardMeaning] = useState("");
+  const [cardExample1, setCardExample1] = useState("");
+  const [cardExample2, setCardExample2] = useState("");
+  const [cardExample3, setCardExample3] = useState("");
 
   return (
     <div
@@ -43,23 +46,63 @@ const LeitnerAddCardModal = ({
           onChange={(e) => setCardTitle(e.target.value)}
         />
 
+        <label htmlFor="Formality">Formality</label>
+        <select
+          name="Formality"
+          id=""
+          onChange={(e) => setCardFormality(e.target.value)}
+        >
+          <option value="-">-</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="7">7</option>
+          <option value="8">8</option>
+          <option value="9">9</option>
+          <option value="10">10</option>
+        </select>
+
         <input
           type="text"
-          placeholder="Front"
-          name="front"
-          value={cardFront}
-          onChange={(e) => setCardFront(e.target.value)}
+          placeholder="Meaning"
+          name="meaning"
+          value={cardMeaning}
+          onChange={(e) => setCardMeaning(e.target.value)}
         />
         <input
           type="text"
-          placeholder="Back"
-          name="back"
-          value={cardBack}
-          onChange={(e) => setCardBack(e.target.value)}
+          placeholder="Example 1"
+          name="example1"
+          value={cardExample1}
+          onChange={(e) => setCardExample1(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Example 2"
+          name="example2"
+          value={cardExample2}
+          onChange={(e) => setCardExample2(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Example 3"
+          name="example3"
+          value={cardExample3}
+          onChange={(e) => setCardExample3(e.target.value)}
         />
 
         <button
-          onClick={addCardToDeck.bind(this, { cardTitle, cardFront, cardBack })}
+          onClick={addCardToDeck.bind(this, {
+            cardTitle,
+            cardFormality,
+            cardMeaning,
+            cardExample1,
+            cardExample2,
+            cardExample3,
+          })}
         >
           Add
         </button>

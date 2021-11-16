@@ -6,7 +6,6 @@ Create a way to back up database - write/append to txt document
 
 - compare if date has changed, if yes - button enabled else - next 'study' button disabled
 
-- add Redux to the project
 
 - when pressed study button , 
     - new cards from deck are added to level 1 bucket
@@ -19,11 +18,17 @@ Create a way to back up database - write/append to txt document
 MVP
 
 - make it available to add cards in the deck
-    - Modal ?
+    
+    - add card to database / localstorage
+
     - Make a filter to add just non-repetitive cards
+
+    - create a button to delete a card from database
+
+    - if card was added successfully into the deck, clear all fields in modal, show a visual cue of adding the card successfully 
+
 - create cards template with two buttons -> again / good
 - display cards in alphabetical order
 
-- to flip card the button doesn't need to be the whole card
-    - create a side button on the right side
+-
 

@@ -15,41 +15,39 @@ const initialState = {
   studyStarted: false,
 };
 
-let dataSet = [
-  {
-    level: 1,
-    title: "Demure",
-    front: "Demure",
-    back: "Shy, Reserved",
-    examples: "-",
-    formality: "-",
-  },
-];
+
 
 class Card {
-  constructor(title, front, back) {
+  constructor(title, formality, meaning, example1, example2, example3) {
     this.title = title;
-    this.front = front;
-    this.back = back;
-    this.level = 1
-    this.examples = []
-    this.formality = 5
+    this.formality = formality
+    this.meaning = meaning;
+    this.example1 = example1;
+    this.example2 = example2;
+    this.example3 = example3;
+    this.level = 1;
   }
-  
 }
 
 export default function (state = initialState, action) {
   switch (action.type) {
     case ADD_CARD:
-      const newCard = new Card(
-        action.payload.cardTitle,
-        action.payload.cardFront,
-        action.payload.cardBack
-      );
+      // const newCard = new Card(
+      //   action.payload.cardTitle,
+      //   action.payload.cardFormality,
+      //   action.payload.cardMeaning,
+      //   action.payload.cardExample1,
+      //   action.payload.cardExample2,
+      //   action.payload.cardExample3
+      // );
 
+      console.log(action.payload)
+        
+      // if card is already in deck, option 1 - try editing card, card is already in the deck, return previous state
+      // else
       return {
         ...state,
-        deck: [...state.deck, newCard],
+        deck: [...state.deck, action.payload],
       };
 
     default:

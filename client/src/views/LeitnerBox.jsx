@@ -10,6 +10,7 @@ import LeitnerAddCardButton from "../components/leitnerComponents/LeitnerAddCard
 import LeitnerCard from "../components/leitnerComponents/LeitnerCard";
 
 import { addCardToDeckAction } from "../actions/leitnerBoxActions";
+import { Card } from "../classes/cardClass";
 
 const LeitnerBox = () => {
   const dispatch = useDispatch();
@@ -27,7 +28,14 @@ const LeitnerBox = () => {
   };
 
   const addCardToDeck = (card) => {
-    dispatch(addCardToDeckAction(card));
+    let newCard = new Card();
+    newCard.title = card.cardTitle;
+    newCard.formality = card.cardFormality;
+    newCard.meaning = card.cardMeaning;
+    newCard.example1 = card.cardExample1;
+    newCard.example2 = card.cardExample2;
+    newCard.example3 = card.cardExample3;
+    dispatch(addCardToDeckAction(newCard));
   };
 
   // MODAL END
@@ -73,31 +81,29 @@ const LeitnerBox = () => {
       // start study
       // else
       // move to next day and save new leitnerDay
-
       // save new date in local storage
-
-      localStorage.setItem(
-        "mdat",
-        JSON.stringify({
-          name: "mig",
-          leitnerDay: 1,
-          currentDay: todayDay,
-          currentMonth: todayMonth,
-          studyStarted: false,
-        })
-      );
+      // localStorage.setItem(
+      //   "mdat",
+      //   JSON.stringify({
+      //     name: "mig",
+      //     leitnerDay: 1,
+      //     currentDay: todayDay,
+      //     currentMonth: todayMonth,
+      //     studyStarted: false,
+      //   })
+      // );
     }
   } else {
-    localStorage.setItem(
-      "mdat",
-      JSON.stringify({
-        name: "mig",
-        leitnerDay: 1,
-        currentDay: todayDay,
-        currentMonth: todayMonth,
-        studyStarted: false,
-      })
-    );
+    // localStorage.setItem(
+    //   "mdat",
+    //   JSON.stringify({
+    //     name: "mig",
+    //     leitnerDay: 1,
+    //     currentDay: todayDay,
+    //     currentMonth: todayMonth,
+    //     studyStarted: false,
+    //   })
+    // );
   }
 
   const [leitnerDay, setLeitnerDay] = useState(mDat["leitnerDay"]);
@@ -105,16 +111,16 @@ const LeitnerBox = () => {
   const pressedMe = () => {
     setLeitnerDay(leitnerDay > 63 ? 1 : leitnerDay + 1);
 
-    localStorage.setItem(
-      "mdat",
-      JSON.stringify({
-        name: "mig",
-        leitnerDay: leitnerDay + 1,
-        currentDay: todayDay,
-        currentMonth: todayMonth,
-        studyStarted: false,
-      })
-    );
+    // localStorage.setItem(
+    //   "mdat",
+    //   JSON.stringify({
+    //     name: "mig",
+    //     leitnerDay: leitnerDay + 1,
+    //     currentDay: todayDay,
+    //     currentMonth: todayMonth,
+    //     studyStarted: false,
+    //   })
+    // );
   };
 
   return (
@@ -134,7 +140,7 @@ const LeitnerBox = () => {
 
       <LeitnerCard
         flipFn={() => flipCardFn()}
-        frontSize={flipCard}
+        frontSide={flipCard}
         cardTitle="Pick Any Up"
         cardFormality={5}
       />
