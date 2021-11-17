@@ -9,7 +9,11 @@ import LeitnerAddCardModal from "../components/leitnerComponents/LeitnerAddCardM
 import LeitnerAddCardButton from "../components/leitnerComponents/LeitnerAddCardButton";
 import LeitnerCard from "../components/leitnerComponents/LeitnerCard";
 
-import { addCardToDeckAction } from "../actions/leitnerBoxActions";
+import {
+  loadSavedState,
+  addCardToDeckAction,
+} from "../actions/leitnerBoxActions";
+
 import { Card } from "../classes/cardClass";
 
 const LeitnerBox = () => {
@@ -122,6 +126,10 @@ const LeitnerBox = () => {
     //   })
     // );
   };
+
+  useEffect(() => {
+    dispatch(loadSavedState());
+  }, []);
 
   return (
     <div style={{ marginTop: "40px" }}>
