@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LeitnerTimeLine from "../components/leitnerComponents/LeitnerTimeLine";
 import LeitnerTimeLineDayIndicator from "../components/leitnerComponents/LeitnerTimeLineDayIndicator";
 import LeitnerTimeLineButton from "../components/leitnerComponents/LeitnerTimeLineButton";
-import LeitnerCardList from "../components/leitnerComponents/LeitnerCardsList";
+import LeitnerCardsList from "../components/leitnerComponents/LeitnerCardsList";
 import LeitnerAddCardModal from "../components/leitnerComponents/LeitnerAddCardModal";
 import LeitnerAddCardButton from "../components/leitnerComponents/LeitnerAddCardButton";
 import LeitnerCard from "../components/leitnerComponents/LeitnerCard";
@@ -19,6 +19,10 @@ import { Card } from "../classes/cardClass";
 const LeitnerBox = () => {
   const dispatch = useDispatch();
   const { deck } = useSelector((state) => state.leitnerBox);
+
+  useEffect(() => {
+    dispatch(loadSavedState());
+  }, [dispatch]);
 
   const currentTodayDate = new Date();
   const todayDay = currentTodayDate.getDate();
@@ -66,7 +70,12 @@ const LeitnerBox = () => {
 
   const mDat = JSON.parse(localStorage.getItem("mdat"));
 
+  const [leitnerDay, setLeitnerDay] = useState(0);
+  //const [leitnerDay, setLeitnerDay] = useState(mDat["leitnerDay"]);
   if (mDat) {
+    if (mDat["leitnerDay"]) {
+      //setLeitnerDay(mDat["leitnerDay"]);
+    }
     if (todayMonth === mDat["currentMonth"]) {
       if (todayDay === mDat["currentDay"]) {
         console.log("got here");
@@ -110,26 +119,22 @@ const LeitnerBox = () => {
     // );
   }
 
-  const [leitnerDay, setLeitnerDay] = useState(mDat["leitnerDay"]);
-
+  // press study button
   const pressedMe = () => {
     setLeitnerDay(leitnerDay > 63 ? 1 : leitnerDay + 1);
 
-    // localStorage.setItem(
-    //   "mdat",
-    //   JSON.stringify({
-    //     name: "mig",
-    //     leitnerDay: leitnerDay + 1,
-    //     currentDay: todayDay,
-    //     currentMonth: todayMonth,
-    //     studyStarted: false,
-    //   })
-    // );
+    localStorage.setItem(
+      "mdat",
+      JSON.stringify({
+        currentDay: todayDay,
+        currentMonth: todayMonth,
+        deck: deck,
+        leitnerDay: leitnerDay + 1,
+        studyStarted: false,
+        userName: "mig",
+      })
+    );
   };
-
-  useEffect(() => {
-    dispatch(loadSavedState());
-  }, []);
 
   return (
     <div style={{ marginTop: "40px" }}>
@@ -157,7 +162,7 @@ const LeitnerBox = () => {
         openCloseModal={openCloseModal}
         displayBtn={displayModal}
       />
-      <LeitnerCardList cardList={deck} />
+      <LeitnerCardsList cardList={deck} />
     </div>
   );
 };

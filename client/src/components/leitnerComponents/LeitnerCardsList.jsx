@@ -4,15 +4,16 @@ import LeitnerCardInList from "./LeitnerCardInList";
 const LeitnerCardList = ({ cardList }) => {
   const renderCards = () => {
     let cardsArr = [];
-
-    for (let i = 0; i < cardList.length; i++) {
-      cardsArr.push(
-        <LeitnerCardInList
-          key={cardList[i].title}
-          cardTitle={cardList[i].title}
-          cardLevel={cardList[i].level}
-        />
-      );
+    if (cardList) {
+      for (let i = 0; i < cardList.length; i++) {
+        cardsArr.push(
+          <LeitnerCardInList
+            key={cardList[i].title}
+            cardTitle={cardList[i].title}
+            cardLevel={cardList[i].level}
+          />
+        );
+      }
     }
 
     return cardsArr;
