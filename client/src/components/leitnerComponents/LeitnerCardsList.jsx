@@ -20,7 +20,14 @@ const LeitnerCardList = ({ cardList }) => {
   };
 
   return (
-    <div style={{ backgroundColor: "gray", width: "200px", height: "500px" }}>
+    <div
+      style={{
+        backgroundColor: "green",
+        width: "100%",
+        height: "500px",
+        gridColumn: "6/9",
+      }}
+    >
       {renderCards()}
     </div>
   );

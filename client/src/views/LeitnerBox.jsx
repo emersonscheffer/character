@@ -137,7 +137,16 @@ const LeitnerBox = () => {
   };
 
   return (
-    <div style={{ marginTop: "40px" }}>
+    <div style={{ 
+      
+      //marginTop: "40px"
+      display: "grid",
+      
+      gridTemplateColumns: "repeat(8, 1fr)",
+      width: "900px",
+      
+      backgroundColor: "teal"
+    }}>
       <LeitnerAddCardModal
         displayModal={displayModal}
         openCloseModal={() => openCloseModal()}

@@ -6,8 +6,8 @@ const LeitnerAddCardButton = ({ openCloseModal, displayBtn }) => {
       onClick={openCloseModal}
       style={{
         display: displayBtn ? "none" : "block",
-        width: "120px",
-        height: "65px",
+        width: "40px",
+        height: "25px",
         backgroundColor: "darkblue",
         color: "white",
       }}

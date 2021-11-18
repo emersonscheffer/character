@@ -17,6 +17,8 @@ Create a way to back up database - write/append to txt document
 
 MVP
 
+- create empty canvas in the middle to display card / message
+
 - make it available to add cards in the deck
     
     - add card to database / localstorage
