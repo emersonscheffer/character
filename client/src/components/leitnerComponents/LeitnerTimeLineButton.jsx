@@ -9,11 +9,13 @@ const LeitnerTimeLineButton = ({ pressedMe, buttonTxt, isDisabled }) => {
         height: "50px",
         backgroundColor: isDisabled ? "lightGrey" : "beige",
         display: "grid",
-        margin: "20px",
+        //margin: "20px",
         MozUserSelect: "none",
         WebkitUserSelect: "none",
         MsUserSelect: "none",
-        unselectable: "on"
+        unselectable: "on",
+        gridColumn: "1/6",
+        justifySelf: "center"
       }}
     >
       <h1 style={{ alignSelf: "center", justifySelf: "center" , color: isDisabled ? "grey" : "black", }}>

@@ -1,8 +1,17 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { changeUserName } from "../../actions/leitnerBoxActions";
 
 const LeitnerFirstStripe = () => {
+  const dispatch = useDispatch();
+
+  const changeUserNameInDataBase = (newName) => {
+    dispatch(changeUserName(newName))
+  }
+
   const color1 = "#232323";
-  const color2 = "#acacac"
+  const color2 = "#656565";
   const [fontColor, setFontColor] = useState(color1);
   const changeFontColorWhenMouseOverOrOut = () => {
     setFontColor(fontColor === color2 ? color1 : color2);
@@ -24,12 +33,12 @@ const LeitnerFirstStripe = () => {
           fontSize: "0.7rem",
           color: color1,
           fontFamily: "monospace",
-          fontWeight: "bold"
+          fontWeight: "bold",
         }}
       >
         Good Morning{" "}
         <span
-          onClick={() => console.log("Student")}
+          onClick={() => changeUserNameInDataBase()}
           onMouseOver={() => changeFontColorWhenMouseOverOrOut()}
           onMouseOut={() => changeFontColorWhenMouseOverOrOut()}
           style={{

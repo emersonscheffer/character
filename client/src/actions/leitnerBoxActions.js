@@ -1,7 +1,20 @@
 //
 
 import { UserClass } from "../classes/userClass";
-import { ADD_CARD, LOAD_STATE } from "./types";
+import { ADD_CARD, LOAD_STATE, CHANGE_NAME } from "./types";
+
+// ------ >  > > >    >  make it work later, as for right now nothing is happening
+export const changeUserName = (newName) => (dispatch) => {
+  // change name in database here
+  //const changing = localStorage.setItem("nameApp", "Emerson")
+  new Promise(function (res, dec) {
+    //localStorage.setItem("nameApp", "Emerson");
+  }).then(
+    //if name changed successfully
+    // after name changed in the database , send it to redux state
+    dispatch({ type: CHANGE_NAME, payload: newName })
+  );
+};
 
 export const addCardToDeckAction = (card) => (dispatch) => {
   // check if card is in the deck

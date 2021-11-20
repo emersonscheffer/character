@@ -16,6 +16,7 @@ import {
 
 import { Card } from "../classes/cardClass";
 import LeitnerFirstStripe from "../components/leitnerComponents/LeitnerFirstStripe";
+import LeitnerEmptySpace from "../components/leitnerComponents/LeitnerEmptySpace";
 
 const LeitnerBox = () => {
   const dispatch = useDispatch();
@@ -137,31 +138,54 @@ const LeitnerBox = () => {
     );
   };
 
+  const numberOfColumnsInLayout = 8;
+
   return (
-    <div style={{ 
-      
-      //marginTop: "40px"
-      display: "grid",
-      
-      gridTemplateColumns: "repeat(8, 1fr)",
-      width: "900px",
-      
-      backgroundColor: "teal"
-    }}>
+    <div
+      style={{
+        //marginTop: "40px"
+        display: "grid",
+
+        gridTemplateColumns: "repeat(" + numberOfColumnsInLayout + ", 1fr)",
+        width: "900px",
+
+        backgroundColor: "teal",
+      }}
+    >
       <LeitnerAddCardModal
         displayModal={displayModal}
         openCloseModal={() => openCloseModal()}
         addCardToDeck={addCardToDeck}
       />
       <LeitnerFirstStripe />
+
+      <LeitnerEmptySpace
+        gridCol="1/9" // change to use dynamic numbers here
+        height="15px"
+      />
       <LeitnerTimeLine leitnerDay={leitnerDay} />
       <LeitnerTimeLineDayIndicator leitnerDay={leitnerDay} />
+
+      <LeitnerEmptySpace
+        gridCol="1/9" // change to use dynamic numbers here
+        height="15px"
+      />
+
       <LeitnerTimeLineButton
         pressedMe={pressedMe}
         isDisabled={false}
         buttonTxt={"Study"}
       />
 
+
+<LeitnerAddCardButton
+        openCloseModal={openCloseModal}
+        displayBtn={displayModal}
+      />
+
+      <LeitnerEmptySpace gridCol="1/9" height="15px"/>
+
+      {/* to be  replaced by Canvas, then add component into it*/}
       <LeitnerCard
         flipFn={() => flipCardFn()}
         frontSide={flipCard}
@@ -169,10 +193,7 @@ const LeitnerBox = () => {
         cardFormality={5}
       />
 
-      <LeitnerAddCardButton
-        openCloseModal={openCloseModal}
-        displayBtn={displayModal}
-      />
+      
       <LeitnerCardsList cardList={deck} />
     </div>
   );

@@ -10,6 +10,7 @@ const LeitnerAddCardButton = ({ openCloseModal, displayBtn }) => {
         height: "25px",
         backgroundColor: "darkblue",
         color: "white",
+        gridColumn: "8/9"
       }}
     >
       +
