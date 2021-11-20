@@ -11,8 +11,13 @@
     transform: scale(3);
 
     color: #232323;
+
 }
 
 /* .bar-style:hover {
     
 } */
+
+.test {
+    color: #6c6262;
+}

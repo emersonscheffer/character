@@ -15,6 +15,7 @@ import {
 } from "../actions/leitnerBoxActions";
 
 import { Card } from "../classes/cardClass";
+import LeitnerFirstStripe from "../components/leitnerComponents/LeitnerFirstStripe";
 
 const LeitnerBox = () => {
   const dispatch = useDispatch();
@@ -152,6 +153,7 @@ const LeitnerBox = () => {
         openCloseModal={() => openCloseModal()}
         addCardToDeck={addCardToDeck}
       />
+      <LeitnerFirstStripe />
       <LeitnerTimeLine leitnerDay={leitnerDay} />
       <LeitnerTimeLineDayIndicator leitnerDay={leitnerDay} />
       <LeitnerTimeLineButton

@@ -35,3 +35,7 @@ MVP
 -
 
 -- when adding card, get the user information and send it over with
+
+- List Items 
+    - when hovering over items, display options, edit, delete
+    
