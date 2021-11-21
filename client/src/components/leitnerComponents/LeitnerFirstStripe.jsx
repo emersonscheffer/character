@@ -7,8 +7,8 @@ const LeitnerFirstStripe = () => {
   const dispatch = useDispatch();
 
   const changeUserNameInDataBase = (newName) => {
-    dispatch(changeUserName(newName))
-  }
+    dispatch(changeUserName(newName));
+  };
 
   const color1 = "#232323";
   const color2 = "#656565";
@@ -20,9 +20,10 @@ const LeitnerFirstStripe = () => {
     <div
       style={{
         backgroundColor: "rgb(255, 255, 255, 0.5)",
-        gridColumn: "1/9",
+        //gridColumn: "1/9",
         display: "grid",
-        height: "40px",
+        height: "100%",
+        width: "100%",
       }}
     >
       <h1

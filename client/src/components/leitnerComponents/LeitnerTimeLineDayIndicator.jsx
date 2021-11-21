@@ -19,11 +19,10 @@ const LeitnerTimeLineDayIndicator = ({ leitnerDay }) => {
     <div
       style={{
         backgroundColor: "lightGray",
-        width: "96%",
-        height: "40px",
+        width: "100%",
+        height: "100%",
+        gridArea: "indicator",
         display: "grid",
-        margin: "0 auto",
-        //borderRadius: "5px",
         gridTemplateColumns: "repeat(64, 1fr)",
         gridTemplateRows: "repeat(1, 1fr)",
       }}

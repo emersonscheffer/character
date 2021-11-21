@@ -1,8 +1,12 @@
 import React from "react";
 
+import LeitnerFirstStripe from "../components/leitnerComponents/LeitnerFirstStripe";
+import LeitnerTimeLine from "../components/leitnerComponents/LeitnerTimeLine";
+import LeitnerTimeLineDayIndicator from "../components/leitnerComponents/LeitnerTimeLineDayIndicator";
+
 const LeitnerBoxGrid = () => {
   //columns in layout
-  const cols = 8;
+  //const cols = 8;
   return (
     <div
       style={{
@@ -12,7 +16,7 @@ const LeitnerBoxGrid = () => {
         // gridTemplateAreas:"header header header header"
         gridTemplate: `
           "stripe stripe stripe" 25px
-          "timeline timeline timeline" 90px
+          "timeline timeline timeline" 110px
           "leftside control rightside" 50px
           "leftside canvas rightside" auto
           "footer footer footer" 25px
@@ -23,33 +27,31 @@ const LeitnerBoxGrid = () => {
       <div
         style={{
           backgroundColor: "gray",
-          //height: "25px",
-          //gridColumn: "1/" + (cols + 1),
-          //gridRow: "1/2",
           gridArea: "stripe",
         }}
       >
-        first stripe
+        <LeitnerFirstStripe />
       </div>
 
       <div
         style={{
           backgroundColor: "blue",
-          //height: "90px",
-          //gridColumn: "1/" + (cols + 1),
-          //gridRow: "2/3",
           gridArea: "timeline",
+          display: "grid",
+          gridTemplate: `
+            "left timeline" 80%
+            "left indicator" 20%
+            / 90px 1fr
+          `,
         }}
       >
-        timeline
+        <LeitnerTimeLine />
+        <LeitnerTimeLineDayIndicator />
       </div>
 
       <div
         style={{
           backgroundColor: "green",
-          //height: "250px",
-          //gridColumn: "1/" + 2,
-          //gridRow: "3/4",
           gridArea: "leftside",
         }}
       >

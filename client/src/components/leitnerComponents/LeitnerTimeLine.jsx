@@ -63,17 +63,16 @@ const LeitnerTimeLine = ({ leitnerDay }) => {
     <div
       style={{
         backgroundColor: "grey",
-        width: "96%",
-        height: "140px",
-        gridColumn: "1/9",
+        width: "100%",
+        height: "100%",
+        gridArea: "timeline",
+       // gridColumn: "1/9",
         display: "grid",
-        //marginLeft: "3%",
-        //margin: "0 auto",
         borderRadius: "5px",
         gridTemplateColumns: "repeat(64, 1fr)",
         gridTemplateRows: "repeat(8, 1fr)",
-        alignSelf:"center",
-        justifySelf: "center"
+        alignSelf: "center",
+        justifySelf: "center",
       }}
     >
       {timeLineNumbers()}
