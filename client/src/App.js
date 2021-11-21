@@ -9,6 +9,7 @@ import "./css/activityBar.css";
 // import PlayerName from "./components/PlayerName";
 // import BodyTemp from "./views/BodyTemp";
 import LeitnerBox from "./views/LeitnerBox";
+import LeitnerBoxGrid from "./views/LeitnerBoxGrid";
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
       <PlayerName />
       <BodyTemp /> */}
 
-        <LeitnerBox />
+        {/* <LeitnerBox /> */}
+        <LeitnerBoxGrid />
       </div>
     </Provider>
   );
