@@ -15,7 +15,7 @@ const LeitnerTimeLineNumber = ({ tlNumber, leitnerDay }) => {
       }}
     >
       <h1
-        style={{ fontSize: "11px", justifySelf: "center", alignSelf: "center" }}
+        style={{ fontSize: "8px", justifySelf: "center", alignSelf: "center" }}
       >
         {tlNumber}
       </h1>

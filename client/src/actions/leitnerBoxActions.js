@@ -68,3 +68,23 @@ export const loadSavedState = () => (dispatch) => {
     localStorage.setItem("mdat", JSON.stringify(newUser));
   }
 };
+
+export const studyButtonAction = () => (dispatch) => {
+  console.log("pressed study btn")
+}
+
+// const pressedMe = () => {
+//   setLeitnerDay(leitnerDay > 63 ? 1 : leitnerDay + 1);
+
+//   localStorage.setItem(
+//     "mdat",
+//     JSON.stringify({
+//       currentDay: todayDay,
+//       currentMonth: todayMonth,
+//       deck: deck,
+//       leitnerDay: leitnerDay + 1,
+//       studyStarted: false,
+//       userName: "mig",
+//     })
+//   );
+// };

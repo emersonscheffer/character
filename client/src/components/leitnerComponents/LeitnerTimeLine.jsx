@@ -68,7 +68,7 @@ const LeitnerTimeLine = ({ leitnerDay }) => {
         gridArea: "timeline",
        // gridColumn: "1/9",
         display: "grid",
-        borderRadius: "5px",
+        //borderRadius: "5px",
         gridTemplateColumns: "repeat(64, 1fr)",
         gridTemplateRows: "repeat(8, 1fr)",
         alignSelf: "center",

@@ -1,10 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
 import LeitnerFirstStripe from "../components/leitnerComponents/LeitnerFirstStripe";
 import LeitnerTimeLine from "../components/leitnerComponents/LeitnerTimeLine";
 import LeitnerTimeLineDayIndicator from "../components/leitnerComponents/LeitnerTimeLineDayIndicator";
+import LeitnerTimeLineSideMenu from "../components/leitnerComponents/LeitnerTimeLineSideMenu";
+import LeitnerTimeLineButton from "../components/leitnerComponents/LeitnerTimeLineButton";
+
+import { studyButtonAction } from "../actions/leitnerBoxActions";
+import LeitnerLevelBoxContainer from "../components/leitnerComponents/LeitnerLevelBoxContainer";
 
 const LeitnerBoxGrid = () => {
+  const dispatch = useDispatch();
   //columns in layout
   //const cols = 8;
   return (
@@ -39,35 +46,38 @@ const LeitnerBoxGrid = () => {
           gridArea: "timeline",
           display: "grid",
           gridTemplate: `
-            "left timeline" 80%
-            "left indicator" 20%
-            / 90px 1fr
+            "sideMenu timeline" 80%
+            "bottomSideMenu indicator" 20%
+            / 75px 1fr
           `,
         }}
       >
+        <LeitnerTimeLineSideMenu />
         <LeitnerTimeLine />
         <LeitnerTimeLineDayIndicator />
       </div>
 
       <div
         style={{
-          backgroundColor: "green",
+          //backgroundColor: "green",
           gridArea: "leftside",
         }}
       >
-        side left panel current deck name / SQ
+        <LeitnerLevelBoxContainer />
       </div>
 
       <div
         style={{
           backgroundColor: "pink",
-          //height: "90px",
-          //gridColumn: "2/8",
-          //gridRow: "3/4",
           gridArea: "control",
+          display: "grid",
         }}
       >
-        central controller / study button
+        <LeitnerTimeLineButton
+          pressedMe={dispatch(studyButtonAction)}
+          isDisabled={false}
+          buttonTxt={"Study"}
+        />
       </div>
 
       <div
