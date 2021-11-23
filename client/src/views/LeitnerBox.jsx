@@ -22,9 +22,7 @@ const LeitnerBox = () => {
   const dispatch = useDispatch();
   const { deck } = useSelector((state) => state.leitnerBox);
 
-  useEffect(() => {
-    dispatch(loadSavedState());
-  }, [dispatch]);
+  
 
   const currentTodayDate = new Date();
   const todayDay = currentTodayDate.getDate();

@@ -1,6 +1,10 @@
 
 // temp file, just to get the date()
 
+//import "./cards.json"
+
+const dataX = require("./cards.json")
+console.log(dataX.data)
 
 const da = new Date
 

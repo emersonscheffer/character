@@ -1,5 +1,5 @@
-import React from "react";
-import { useDispatch } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import LeitnerFirstStripe from "../components/leitnerComponents/LeitnerFirstStripe";
 import LeitnerTimeLine from "../components/leitnerComponents/LeitnerTimeLine";
@@ -7,13 +7,40 @@ import LeitnerTimeLineDayIndicator from "../components/leitnerComponents/Leitner
 import LeitnerTimeLineSideMenu from "../components/leitnerComponents/LeitnerTimeLineSideMenu";
 import LeitnerTimeLineButton from "../components/leitnerComponents/LeitnerTimeLineButton";
 
-import { studyButtonAction } from "../actions/leitnerBoxActions";
+import {
+  loadSavedStateOrStartNewUser,
+  studyButtonAction,
+} from "../actions/leitnerBoxActions";
 import LeitnerLevelBoxContainer from "../components/leitnerComponents/LeitnerLevelBoxContainer";
 
 const LeitnerBoxGrid = () => {
   const dispatch = useDispatch();
+  const {
+    deck,
+    boxLevel1,
+    boxLevel2,
+    boxLevel3,
+    boxLevel4,
+    boxLevel5,
+    boxLevel6,
+    boxLevel7,
+  } = useSelector((state) => state.leitnerBox);
+  const boxes = [
+    boxLevel1,
+    boxLevel2,
+    boxLevel3,
+    boxLevel4,
+    boxLevel5,
+    boxLevel6,
+    boxLevel7,
+  ];
   //columns in layout
   //const cols = 8;
+
+  useEffect(() => {
+    dispatch(loadSavedStateOrStartNewUser());
+  }, [dispatch]);
+
   return (
     <div
       style={{
@@ -63,7 +90,7 @@ const LeitnerBoxGrid = () => {
           gridArea: "leftside",
         }}
       >
-        <LeitnerLevelBoxContainer />
+        <LeitnerLevelBoxContainer deck={deck} boxes={boxes} />
       </div>
 
       <div
@@ -103,7 +130,20 @@ const LeitnerBoxGrid = () => {
       >
         right side / list
       </div>
-      <div style={{ backgroundColor: "grey", gridArea: "footer" }}>footer</div>
+      <div
+        style={{
+          gridArea: "footer",
+          fontSize: "9px",
+          fontWeight: "bold",
+          fontFamily: "monospace",
+          alignSelf: "center",
+          justifySelf: "end",
+          paddingRight: "40px",
+          color: "gray",
+        }}
+      >
+        CREATED BY EMERSON
+      </div>
     </div>
   );
 };

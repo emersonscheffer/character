@@ -1,7 +1,42 @@
 //
-
 import { UserClass } from "../classes/userClass";
-import { ADD_CARD, LOAD_STATE, CHANGE_NAME } from "./types";
+import { ADD_CARD, LOAD_STATE, CHANGE_NAME , INITIAL_CARD_LOAD} from "./types";
+
+// cards data from file
+const cardsData = require("../cardsData.json");
+
+// all user data from storage
+const mdat = JSON.parse(localStorage.getItem("mdat")) || null;
+
+const loadingNewCardsIntoTheDeck = () => {
+  if (mdat) {
+    // console.log(mdat["deck"]);
+    if (mdat["deck"].length === 0) {
+      // if deck is empty, copy cards from file
+      let user = new UserClass();
+      user.deck = cardsData;
+
+      localStorage.setItem("mdat", JSON.stringify(user));
+      
+    } else {
+      let tempList = []
+      for (let card of cardsData) {
+    
+        if(card.title === "Resume"){
+          console.log(card.title)
+        }
+        
+      }
+
+    }
+  }
+
+  
+
+  //console.log(mdat);
+};
+
+loadingNewCardsIntoTheDeck();
 
 // ------ >  > > >    >  make it work later, as for right now nothing is happening
 export const changeUserName = (newName) => (dispatch) => {
@@ -18,7 +53,7 @@ export const changeUserName = (newName) => (dispatch) => {
 
 export const addCardToDeckAction = (card) => (dispatch) => {
   // check if card is in the deck
-  const mdat = JSON.parse(localStorage.getItem("mdat")) || null;
+  //const mdat = JSON.parse(localStorage.getItem("mdat")) || null;
   let updatedUser = new UserClass();
   updatedUser.updateDay(mdat["currentDay"]);
   updatedUser.updateMonth(mdat["currentMonth"]);
@@ -55,23 +90,25 @@ export const addCardToDeckAction = (card) => (dispatch) => {
   }
 };
 
-export const loadSavedState = () => (dispatch) => {
-  const mdat = JSON.parse(localStorage.getItem("mdat")) || null;
+export const loadSavedStateOrStartNewUser = () => (dispatch) => {
   if (mdat) {
     console.log("load successful");
 
     //dispatch and change localstorage
     dispatch({ type: LOAD_STATE, payload: mdat });
   } else {
-    console.log("empty initial state or failed to retrieve");
+    
     const newUser = new UserClass();
+    newUser.deck = cardsData
     localStorage.setItem("mdat", JSON.stringify(newUser));
+    
+    dispatch({type: INITIAL_CARD_LOAD, payload: cardsData})
   }
 };
 
 export const studyButtonAction = () => (dispatch) => {
-  console.log("pressed study btn")
-}
+  console.log("pressed study btn");
+};
 
 // const pressedMe = () => {
 //   setLeitnerDay(leitnerDay > 63 ? 1 : leitnerDay + 1);

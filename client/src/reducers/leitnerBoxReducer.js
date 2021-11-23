@@ -1,4 +1,4 @@
-import { LOAD_STATE, ADD_CARD } from "../actions/types";
+import { LOAD_STATE, ADD_CARD, INITIAL_CARD_LOAD } from "../actions/types";
 
 const initialState = {
   userName: "",
@@ -18,6 +18,11 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case INITIAL_CARD_LOAD: 
+    return {
+      ... state, 
+      deck: action.payload
+    }
     case LOAD_STATE:
       // I just added the deck from storage for now, I'll add the rest later
 

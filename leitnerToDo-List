@@ -16,6 +16,16 @@ Create a way to back up database - write/append to txt document
 
 
 MVP
+ 
+ status : stopped at leitnerBoxActions, comparing cards algorthnm / line 25
+
+
+- >>>> load cards from cardsData
+    -> compare with the cards in the localstorage
+        -> update the fields if any changes are found, but LEVEL field
+    -> add non duplicate / new cards into the deck
+
+    
 
 - create empty canvas in the middle to display card / message
 

@@ -8,6 +8,6 @@ export class Card {
     this.example1 = example1;
     this.example2 = example2;
     this.example3 = example3;
-    this.level = 1;
+    this.level = 0;
   }
 }
