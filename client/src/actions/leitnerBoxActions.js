@@ -8,6 +8,13 @@ const cardsData = require("../cardsData.json");
 // all user data from storage
 const mdat = JSON.parse(localStorage.getItem("mdat")) || null;
 
+let updatedDeck = mdat["deck"]
+
+
+//const addNewCardsFromDataBase = (list) => {
+  //console.log(list)
+//}
+
 const loadingNewCardsIntoTheDeck = () => {
   if (mdat) {
     // console.log(mdat["deck"]);
@@ -20,21 +27,42 @@ const loadingNewCardsIntoTheDeck = () => {
       
     } else {
       let tempList = []
-      for (let card of cardsData) {
-    
-        if(card.title === "Resume"){
-          console.log(card.title)
-        }
+      for (let card of mdat["deck"]) {
         
+        //console.log(card, " -<")
+        tempList.push(card.title)
+        
+      }
+      //addNewCardsFromDataBase(tempList)
+      //console.log(tempList)
+      for(let card of cardsData) {
+        //console.log(card.title)
+        if(!tempList.includes(card.title)){
+          updatedDeck = [...updatedDeck, card]
+        }
       }
 
     }
   }
 
-  
+  console.log(updatedDeck)
 
-  //console.log(mdat);
-};
+  const newUser = new UserClass();
+  newUser.deck = updatedDeck
+
+  localStorage.setItem("mdat", JSON.stringify(newUser));
+
+
+  /* 
+  
+    
+    dispatch({type: INITIAL_CARD_LOAD, payload: cardsData})
+  
+  
+  */
+
+  
+}; // end of loadingNewCardsIntoTheDeck
 
 loadingNewCardsIntoTheDeck();
 

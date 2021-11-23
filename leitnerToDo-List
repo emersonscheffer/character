@@ -17,7 +17,8 @@ Create a way to back up database - write/append to txt document
 
 MVP
  
- status : stopped at leitnerBoxActions, comparing cards algorthnm / line 25
+ status : next steps , show card's details into canvas
+            make card buttons work and move cards from box 0 to others
 
 
 - >>>> load cards from cardsData

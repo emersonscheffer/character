@@ -8,7 +8,7 @@ import "./css/activityBar.css";
 // import ActivityBar from "./components/ActivityBar";
 // import PlayerName from "./components/PlayerName";
 // import BodyTemp from "./views/BodyTemp";
-import LeitnerBox from "./views/LeitnerBox";
+//import LeitnerBox from "./views/LeitnerBox";
 import LeitnerBoxGrid from "./views/LeitnerBoxGrid";
 
 function App() {
