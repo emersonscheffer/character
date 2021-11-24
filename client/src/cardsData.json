@@ -3,7 +3,9 @@
     "title": "get a move on",
     "formality": 5,
     "meaning": "Start Doing",
-    "examples": ["We better get a move on if we wanna find a good deal this Black Friday"],
+    "examples": [
+      "We better get a move on if we wanna find a good deal this Black Friday"
+    ],
     "level": 0,
     "updated": false
   },
@@ -78,8 +80,21 @@
     ],
     "level": 0,
     "updated": false
-  },{
+  },
+  {
     "title": "shoes",
+    "formality": 5,
+    "meaning": "Line of soldiers or police blocking people from entering or exiting an area / separate off",
+    "examples": [
+      "There was a police cordon around the site of the incident",
+      "There was a cordon of police on either side of the road as the prince drove down the road",
+      "the area was cordoned off because they didn't want the criminals to escape"
+    ],
+    "level": 0,
+    "updated": false
+  },
+  {
+    "title": "pick up",
     "formality": 5,
     "meaning": "Line of soldiers or police blocking people from entering or exiting an area / separate off",
     "examples": [

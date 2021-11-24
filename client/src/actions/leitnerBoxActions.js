@@ -8,7 +8,7 @@ const cardsData = require("../cardsData.json");
 // all user data from storage
 const mdat = JSON.parse(localStorage.getItem("mdat")) || null;
 
-let updatedDeck = mdat["deck"]
+let updatedDeck = mdat ? mdat["deck"] : []
 
 
 //const addNewCardsFromDataBase = (list) => {
