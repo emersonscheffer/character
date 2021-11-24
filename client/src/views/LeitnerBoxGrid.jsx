@@ -6,6 +6,7 @@ import LeitnerTimeLine from "../components/leitnerComponents/LeitnerTimeLine";
 import LeitnerTimeLineDayIndicator from "../components/leitnerComponents/LeitnerTimeLineDayIndicator";
 import LeitnerTimeLineSideMenu from "../components/leitnerComponents/LeitnerTimeLineSideMenu";
 import LeitnerTimeLineButton from "../components/leitnerComponents/LeitnerTimeLineButton";
+import LeitnerCard from "../components/leitnerComponents/LeitnerCard"
 
 import {
   loadSavedStateOrStartNewUser,
@@ -116,7 +117,7 @@ const LeitnerBoxGrid = () => {
           gridArea: "canvas",
         }}
       >
-        canvas
+       <LeitnerCard />
       </div>
 
       <div

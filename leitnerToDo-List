@@ -21,8 +21,7 @@ MVP
             make card buttons work and move cards from box 0 to others
 
 
-- >>>> load cards from cardsData
-    -> compare with the cards in the localstorage
+- >>>> 
         -> update the fields if any changes are found, but LEVEL field
     -> add non duplicate / new cards into the deck
 
@@ -50,3 +49,5 @@ MVP
 - List Items 
     - when hovering over items, display options, edit, delete
     
+
+    Create a " Memory Castle " in the main page
