@@ -25,6 +25,7 @@ const LeitnerBoxGrid = () => {
     boxLevel5,
     boxLevel6,
     boxLevel7,
+    cardDisplay
   } = useSelector((state) => state.leitnerBox);
   const boxes = [
     boxLevel1,
@@ -110,19 +111,20 @@ const LeitnerBoxGrid = () => {
 
       <div
         style={{
-          backgroundColor: "red",
+          backgroundColor: "white",
           height: "400px",
           //gridColumn: "2/8",
           //gridRow: "4",
           gridArea: "canvas",
+          display: "grid"
         }}
       >
-       <LeitnerCard />
+       <LeitnerCard cardDisplay={cardDisplay}/>
       </div>
 
       <div
         style={{
-          backgroundColor: "white",
+          backgroundColor: "black",
           //height: "auto",
           //gridColumn: "8/9",
           //gridRow: "3/4",

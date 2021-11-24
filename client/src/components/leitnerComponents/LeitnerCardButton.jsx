@@ -1,14 +1,13 @@
 import React from "react";
 
-const LeitnerCardButton = ({ frontSide, btnTxt, row, col, btnFn }) => {
+const LeitnerCardButton = ({ frontSide, btnTxt, row, col, btnFn, gridArea }) => {
   return (
     <div
       style={{
         display: !frontSide ? "block" : "none",
         width: "90%",
         height: "85%",
-        gridRow: row,
-        gridColumn: col,
+        gridArea: gridArea,
         alignSelf: "center",
         justifySelf: "center",
       }}

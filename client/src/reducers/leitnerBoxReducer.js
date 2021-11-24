@@ -14,15 +14,22 @@ const initialState = {
   currentMonth: -1,
   leitnerDay: 1,
   studyStarted: false,
+  cardDisplay: {
+    title: "Pick and Roll",
+    level: 10,
+    examples: ["Go walk run and score", "win the game"],
+    meaning: "Get the ball and run",
+    formality: 5,
+  },
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case INITIAL_CARD_LOAD: 
-    return {
-      ... state, 
-      deck: action.payload
-    }
+    case INITIAL_CARD_LOAD:
+      return {
+        ...state,
+        deck: action.payload,
+      };
     case LOAD_STATE:
       // I just added the deck from storage for now, I'll add the rest later
 

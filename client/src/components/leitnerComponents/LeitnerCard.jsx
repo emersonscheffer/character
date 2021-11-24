@@ -9,28 +9,53 @@ const LeitnerCard = ({
   frontSide,
   cardTitle,
   cardFormality,
+  cardDisplay,
 }) => {
+  const renderExamples = (examples) => {
+    let examplesArr = [];
+
+    for (let example of examples) {
+      examplesArr.push(<h2>- {example}</h2>);
+    }
+
+    return examplesArr;
+  };
+
   return (
     <div
       style={{
-        backgroundColor: "grey",
-        width: "450px",
+        backgroundColor: "#e3e3e3",
+        width: "90%",
         height: "350px",
-        border: "5px solid rgb(225,225,225)",
+        //border: "5px solid rgb(225,225,225)",
         borderRadius: "5px",
         display: "grid",
-        gridTemplateColumns: "repeat(6, 1fr)",
-        gridTemplateRows: "repeat(10, 1fr)",
+        gridTemplate: ` 
+          " . . . . . ." 10px
+          ". . . . level ." 30px
+          ". line line line line ." 15px
+          ". title title title title ." auto
+          ". meaning meaning meaning meaning ." auto
+          ". example example example example ." auto
+          ". . btn1 btn2 . ." 40px
+          " . . . . . ." 10px
+          / 10px 1fr 1fr 1fr 1fr 10px
+           `,
+        boxShadow: "2px 2px 5px",
+        justifySelf: "center",
+        marginTop: "20px",
       }}
     >
       <div
         style={{
           backgroundColor: "red",
           display: "grid",
-          gridRow: "1/2",
-          gridColumn: "5/7",
-          width: "100%",
-          height: "100%",
+          gridArea: "level",
+          width: "90%",
+          height: "90%",
+          alignSelf: "center",
+          justifySelf: "center",
+          borderRadius: "7px",
         }}
       >
         <h1
@@ -42,9 +67,20 @@ const LeitnerCard = ({
             fontWeight: "bolder",
           }}
         >
-          Level 1
+          Level {cardDisplay.level}
         </h1>
       </div>
+
+      <div
+        style={{
+          gridArea: "line",
+          backgroundColor: "red",
+          borderRadius: "10px",
+          height: "30%",
+          alignSelf: "center",
+        }}
+      ></div>
+
       <h1
         style={{
           alignSelf: "center",
@@ -52,12 +88,12 @@ const LeitnerCard = ({
           fontFamily: "helvetica",
           fontWeight: "bolder",
           fontSize: "35px",
-          gridColumn: "1/7",
-          gridRow: "5/7",
+          //gridColumn: "1/7",
+          //gridRow: "5/7",
           display: frontSide ? "block" : "none",
         }}
       >
-        {cardTitle}
+        {cardDisplay.title}
       </h1>
       <h2
         style={{
@@ -67,11 +103,11 @@ const LeitnerCard = ({
           fontFamily: "helvetica",
           fontWeight: "bolder",
           fontSize: "15px",
-          gridColumn: "1/7",
-          gridRow: "7/8",
+          //gridColumn: "1/7",
+          //gridRow: "7/8",
         }}
       >
-        Formality: {cardFormality}
+        Formality: {cardDisplay.formality}
       </h2>
 
       {/* // back */}
@@ -84,11 +120,10 @@ const LeitnerCard = ({
           fontFamily: "helvetica",
           fontWeight: "bolder",
           fontSize: "15px",
-          gridColumn: "1/7",
-          gridRow: "3/4",
+          gridArea: "title",
         }}
       >
-        {cardTitle}
+        {cardDisplay.title}
       </h1>
       <h1
         style={{
@@ -98,13 +133,15 @@ const LeitnerCard = ({
           fontFamily: "helvetica",
           fontWeight: "bolder",
           fontSize: "15px",
-          gridColumn: "1/7",
-          gridRow: "4/5",
+          //gridColumn: "1/7",
+          //gridRow: "4/5",
+          gridArea: "meaning",
         }}
       >
-        Meaning of word or expression
+        {/* Meaning of word or expression */}
+        {cardDisplay.meaning}
       </h1>
-      <h2
+      {/* <h2
         style={{
           display: !frontSide ? "block" : "none",
           alignSelf: "center",
@@ -117,8 +154,8 @@ const LeitnerCard = ({
         }}
       >
         Example 1
-      </h2>
-      <h2
+      </h2> */}
+      {/* <h2
         style={{
           display: !frontSide ? "block" : "none",
           alignSelf: "center",
@@ -131,8 +168,8 @@ const LeitnerCard = ({
         }}
       >
         Example 2
-      </h2>
-      <h2
+      </h2> */}
+      {/* <h2
         style={{
           display: !frontSide ? "block" : "none",
           alignSelf: "center",
@@ -145,7 +182,10 @@ const LeitnerCard = ({
         }}
       >
         Example 3
-      </h2>
+      </h2> */}
+      <div style={{ gridArea: "example" }}>
+        {renderExamples(cardDisplay.examples)}
+      </div>
 
       {/* <div
         onClick={btnFn1}
@@ -180,15 +220,13 @@ const LeitnerCard = ({
 
       <LeitnerCardButton
         frontSide={frontSide}
-        row={"10/11"}
-        col={"2/4"}
+        gridArea="btn1"
         btnTxt={"Again"}
         btnFn={() => console.log("hiihihihih")}
       />
       <LeitnerCardButton
         frontSide={frontSide}
-        row={"10/11"}
-        col={"4/6"}
+        gridArea="btn2"
         btnTxt={"Good"}
         btnFn={() => console.log("hiihihihih")}
       />
