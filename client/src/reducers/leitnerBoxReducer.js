@@ -18,7 +18,7 @@ const initialState = {
     title: "Pick and Roll",
     level: 10,
     examples: ["Go walk run and score", "win the game"],
-    meaning: "Get the ball and run",
+    meaning: "a basketball play in which a player sets a screen and then cuts toward the basket for a pass",
     formality: 5,
   },
 };

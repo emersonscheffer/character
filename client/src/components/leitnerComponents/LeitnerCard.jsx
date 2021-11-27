@@ -26,17 +26,17 @@ const LeitnerCard = ({
       style={{
         backgroundColor: "#e3e3e3",
         width: "90%",
-        height: "350px",
+        height: "auto",
         //border: "5px solid rgb(225,225,225)",
         borderRadius: "5px",
         display: "grid",
         gridTemplate: ` 
           " . . . . . ." 10px
-          ". . . . level ." 30px
-          ". line line line line ." 15px
+          ". . . . level ." 20px
+          ". line line line line ." 7px
           ". title title title title ." auto
-          ". meaning meaning meaning meaning ." auto
-          ". example example example example ." auto
+          ". meaning meaning meaning meaning ." 40px
+          ". example example example example ." 40px
           ". . btn1 btn2 . ." 40px
           " . . . . . ." 10px
           / 10px 1fr 1fr 1fr 1fr 10px
@@ -46,16 +46,17 @@ const LeitnerCard = ({
         marginTop: "20px",
       }}
     >
+      {/* Level  Level Level */}
       <div
         style={{
           backgroundColor: "red",
           display: "grid",
           gridArea: "level",
-          width: "90%",
+          width: "40%",
           height: "90%",
           alignSelf: "center",
-          justifySelf: "center",
-          borderRadius: "7px",
+          justifySelf: "end",
+          borderRadius: "3px",
         }}
       >
         <h1
@@ -65,12 +66,14 @@ const LeitnerCard = ({
             color: "white",
             fontFamily: "helvetica",
             fontWeight: "bolder",
+            fontSize: "10px",
           }}
         >
           Level {cardDisplay.level}
         </h1>
       </div>
 
+      {/* Line  Line Line */}
       <div
         style={{
           gridArea: "line",
@@ -81,7 +84,7 @@ const LeitnerCard = ({
         }}
       ></div>
 
-      <h1
+      {/* <h1
         style={{
           alignSelf: "center",
           justifySelf: "center",
@@ -108,18 +111,18 @@ const LeitnerCard = ({
         }}
       >
         Formality: {cardDisplay.formality}
-      </h2>
+      </h2> */}
 
       {/* // back */}
 
       <h1
         style={{
           display: !frontSide ? "block" : "none",
-          alignSelf: "center",
-          justifySelf: "center",
+          //alignSelf: "center",
+          //justifySelf: "center",
           fontFamily: "helvetica",
           fontWeight: "bolder",
-          fontSize: "15px",
+          fontSize: "35px",
           gridArea: "title",
         }}
       >
@@ -136,6 +139,7 @@ const LeitnerCard = ({
           //gridColumn: "1/7",
           //gridRow: "4/5",
           gridArea: "meaning",
+          color: "#595959"
         }}
       >
         {/* Meaning of word or expression */}
@@ -231,7 +235,7 @@ const LeitnerCard = ({
         btnFn={() => console.log("hiihihihih")}
       />
 
-      <LeitnerCardFlipButton flipFn={flipFn} />
+      {/* <LeitnerCardFlipButton flipFn={flipFn} /> */}
     </div>
   );
 };
