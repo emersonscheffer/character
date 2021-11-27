@@ -17,7 +17,10 @@ Create a way to back up database - write/append to txt document
 
 MVP
  
- status : next steps , 
+ status : next steps, 
+            > study buttons status everytime btns in card are pressed
+            > study button Actions
+            > drop down menu - number of cards to study daily
             make card buttons work and move cards from box 0 to others
             align text in card to the left
             make title of card stand out
@@ -54,3 +57,5 @@ MVP
     
 
     Create a " Memory Castle " in the main page
+
+    Create a tracking system to track a progress over the year or 6 months or weekly basis - retired cards 

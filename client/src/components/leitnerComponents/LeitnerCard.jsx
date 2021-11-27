@@ -1,6 +1,6 @@
 import React from "react";
 import LeitnerCardButton from "./LeitnerCardButton";
-import LeitnerCardFlipButton from "./LeitnerCardFlipButton";
+//import LeitnerCardFlipButton from "./LeitnerCardFlipButton";
 
 const LeitnerCard = ({
   flipFn,
@@ -15,7 +15,7 @@ const LeitnerCard = ({
     let examplesArr = [];
 
     for (let example of examples) {
-      examplesArr.push(<h2>- {example}</h2>);
+      examplesArr.push(<h2 key={example}>- {example}</h2>);
     }
 
     return examplesArr;

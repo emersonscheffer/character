@@ -1,6 +1,6 @@
 //
 import { UserClass } from "../classes/userClass";
-import { ADD_CARD, LOAD_STATE, CHANGE_NAME , INITIAL_CARD_LOAD} from "./types";
+import { ADD_CARD, LOAD_STATE, CHANGE_NAME, INITIAL_CARD_LOAD, IS_LIST_EMPTY } from "./types";
 
 // cards data from file
 const cardsData = require("../cardsData.json");
@@ -8,11 +8,10 @@ const cardsData = require("../cardsData.json");
 // all user data from storage
 const mdat = JSON.parse(localStorage.getItem("mdat")) || null;
 
-let updatedDeck = mdat ? mdat["deck"] : []
-
+let updatedDeck = mdat ? mdat["deck"] : [];
 
 //const addNewCardsFromDataBase = (list) => {
-  //console.log(list)
+//console.log(list)
 //}
 
 const loadingNewCardsIntoTheDeck = () => {
@@ -24,34 +23,29 @@ const loadingNewCardsIntoTheDeck = () => {
       user.deck = cardsData;
 
       localStorage.setItem("mdat", JSON.stringify(user));
-      
     } else {
-      let tempList = []
+      let tempList = [];
       for (let card of mdat["deck"]) {
-        
         //console.log(card, " -<")
-        tempList.push(card.title)
-        
+        tempList.push(card.title);
       }
       //addNewCardsFromDataBase(tempList)
       //console.log(tempList)
-      for(let card of cardsData) {
+      for (let card of cardsData) {
         //console.log(card.title)
-        if(!tempList.includes(card.title)){
-          updatedDeck = [...updatedDeck, card]
+        if (!tempList.includes(card.title)) {
+          updatedDeck = [...updatedDeck, card];
         }
       }
-
     }
   }
 
-  console.log(updatedDeck)
+  console.log(updatedDeck);
 
   const newUser = new UserClass();
-  newUser.deck = updatedDeck
+  newUser.deck = updatedDeck;
 
   localStorage.setItem("mdat", JSON.stringify(newUser));
-
 
   /* 
   
@@ -60,8 +54,6 @@ const loadingNewCardsIntoTheDeck = () => {
   
   
   */
-
-  
 }; // end of loadingNewCardsIntoTheDeck
 
 loadingNewCardsIntoTheDeck();
@@ -125,17 +117,40 @@ export const loadSavedStateOrStartNewUser = () => (dispatch) => {
     //dispatch and change localstorage
     dispatch({ type: LOAD_STATE, payload: mdat });
   } else {
-    
     const newUser = new UserClass();
-    newUser.deck = cardsData
+    newUser.deck = cardsData;
     localStorage.setItem("mdat", JSON.stringify(newUser));
-    
-    dispatch({type: INITIAL_CARD_LOAD, payload: cardsData})
+
+    dispatch({ type: INITIAL_CARD_LOAD, payload: cardsData });
   }
 };
 
-export const studyButtonAction = () => (dispatch) => {
+let fruits = ["Apple", "Mango", "Orange", "Pear"];
+let currentStudying = [];
+
+export const studyButtonAction = (quantity) => (dispatch) => {
+  console.log(quantity);
+  // get quantity of cards from "deck array" , and add to "current stydying array"
+  for (let i = 0; i < quantity; i++) {
+    currentStudying.push(fruits.shift());
+  }
+
+  console.log(currentStudying, " = current Studying");
+
+  // if current studying array is NOT empty
+  // button is disabled
+
+  // get number of cards from deck and load cards in the current Array to display cards in order
   console.log("pressed study btn");
+};
+
+// this function is to watch current number of cards in current studying
+export const isCurrentStudyingEmpty = () => (dispatch) => {
+  //send info to reducer
+  // if current studying array is empty
+  if(currentStudying.length === 0) {
+    dispatch({ type: IS_LIST_EMPTY , payload: "list is empty" })
+  }
 };
 
 // const pressedMe = () => {

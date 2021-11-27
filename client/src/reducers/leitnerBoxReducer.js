@@ -3,6 +3,7 @@ import { LOAD_STATE, ADD_CARD, INITIAL_CARD_LOAD } from "../actions/types";
 const initialState = {
   userName: "",
   deck: [],
+
   boxLevel1: [],
   boxLevel2: [],
   boxLevel3: [],
@@ -10,6 +11,7 @@ const initialState = {
   boxLevel5: [],
   boxLevel6: [],
   boxLevel7: [],
+
   currentDay: -1,
   currentMonth: -1,
   leitnerDay: 1,
@@ -18,12 +20,15 @@ const initialState = {
     title: "Pick and Roll",
     level: 10,
     examples: ["Go walk run and score", "win the game"],
-    meaning: "a basketball play in which a player sets a screen and then cuts toward the basket for a pass",
+    meaning:
+      "a basketball play in which a player sets a screen and then cuts toward the basket for a pass",
     formality: 5,
   },
+  cardsToAddQuantity: 2,
+  studyButtonDisabledStatus: true
 };
 
-export default function (state = initialState, action) {
+export default function myState(state = initialState, action) {
   switch (action.type) {
     case INITIAL_CARD_LOAD:
       return {

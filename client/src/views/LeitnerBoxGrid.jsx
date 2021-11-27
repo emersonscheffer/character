@@ -5,8 +5,8 @@ import LeitnerFirstStripe from "../components/leitnerComponents/LeitnerFirstStri
 import LeitnerTimeLine from "../components/leitnerComponents/LeitnerTimeLine";
 import LeitnerTimeLineDayIndicator from "../components/leitnerComponents/LeitnerTimeLineDayIndicator";
 import LeitnerTimeLineSideMenu from "../components/leitnerComponents/LeitnerTimeLineSideMenu";
-import LeitnerTimeLineButton from "../components/leitnerComponents/LeitnerTimeLineButton";
-import LeitnerCard from "../components/leitnerComponents/LeitnerCard"
+import LeitnerTimeLineStudyButton from "../components/leitnerComponents/LeitnerTimeLineStudyButton";
+import LeitnerCard from "../components/leitnerComponents/LeitnerCard";
 
 import {
   loadSavedStateOrStartNewUser,
@@ -25,8 +25,12 @@ const LeitnerBoxGrid = () => {
     boxLevel5,
     boxLevel6,
     boxLevel7,
-    cardDisplay
+    cardDisplay,
+    cardsToAddQuantity,
+    studyButtonDisabledStatus
   } = useSelector((state) => state.leitnerBox);
+
+  // boxes array
   const boxes = [
     boxLevel1,
     boxLevel2,
@@ -36,8 +40,6 @@ const LeitnerBoxGrid = () => {
     boxLevel6,
     boxLevel7,
   ];
-  //columns in layout
-  //const cols = 8;
 
   useEffect(() => {
     dispatch(loadSavedStateOrStartNewUser());
@@ -102,9 +104,9 @@ const LeitnerBoxGrid = () => {
           display: "grid",
         }}
       >
-        <LeitnerTimeLineButton
-          pressedMe={dispatch(studyButtonAction)}
-          isDisabled={false}
+        <LeitnerTimeLineStudyButton
+          pressedMe={dispatch(studyButtonAction.bind(this, cardsToAddQuantity))}
+          isDisabled={studyButtonDisabledStatus}
           buttonTxt={"Study"}
         />
       </div>
@@ -116,10 +118,10 @@ const LeitnerBoxGrid = () => {
           //gridColumn: "2/8",
           //gridRow: "4",
           gridArea: "canvas",
-          display: "grid"
+          display: "grid",
         }}
       >
-       <LeitnerCard cardDisplay={cardDisplay}/>
+        <LeitnerCard cardDisplay={cardDisplay} />
       </div>
 
       <div
