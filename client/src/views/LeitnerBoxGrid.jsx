@@ -10,7 +10,7 @@ import LeitnerCard from "../components/leitnerComponents/LeitnerCard";
 
 import {
   loadSavedStateOrStartNewUser,
-  studyButtonAction,
+  studyButtonAction, cardButtonsActions, isCurrentStudyingEmpty
 } from "../actions/leitnerBoxActions";
 import LeitnerLevelBoxContainer from "../components/leitnerComponents/LeitnerLevelBoxContainer";
 
@@ -27,7 +27,7 @@ const LeitnerBoxGrid = () => {
     boxLevel7,
     cardDisplay,
     cardsToAddQuantity,
-    studyButtonDisabledStatus
+    studyButtonDisabledStatus,
   } = useSelector((state) => state.leitnerBox);
 
   // boxes array
@@ -40,6 +40,10 @@ const LeitnerBoxGrid = () => {
     boxLevel6,
     boxLevel7,
   ];
+
+  const buttonsInCardPressed = (btnPressed) => {
+    dispatch(cardButtonsActions(btnPressed))
+  };
 
   useEffect(() => {
     dispatch(loadSavedStateOrStartNewUser());
@@ -105,7 +109,9 @@ const LeitnerBoxGrid = () => {
         }}
       >
         <LeitnerTimeLineStudyButton
-          pressedMe={dispatch(studyButtonAction.bind(this, cardsToAddQuantity))}
+          pressedMe={() => {
+            dispatch(isCurrentStudyingEmpty())
+            dispatch(studyButtonAction.bind(this, cardsToAddQuantity))}}
           isDisabled={studyButtonDisabledStatus}
           buttonTxt={"Study"}
         />
@@ -121,7 +127,11 @@ const LeitnerBoxGrid = () => {
           display: "grid",
         }}
       >
-        <LeitnerCard cardDisplay={cardDisplay} />
+        <LeitnerCard
+          cardDisplay={cardDisplay}
+          btnFn={buttonsInCardPressed}
+          
+        />
       </div>
 
       <div

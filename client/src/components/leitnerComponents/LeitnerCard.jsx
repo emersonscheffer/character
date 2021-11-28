@@ -1,4 +1,5 @@
 import React from "react";
+
 import LeitnerCardButton from "./LeitnerCardButton";
 //import LeitnerCardFlipButton from "./LeitnerCardFlipButton";
 
@@ -10,6 +11,8 @@ const LeitnerCard = ({
   cardTitle,
   cardFormality,
   cardDisplay,
+  cardBtn,
+  btnFn
 }) => {
   const renderExamples = (examples) => {
     let examplesArr = [];
@@ -139,7 +142,7 @@ const LeitnerCard = ({
           //gridColumn: "1/7",
           //gridRow: "4/5",
           gridArea: "meaning",
-          color: "#595959"
+          color: "#595959",
         }}
       >
         {/* Meaning of word or expression */}
@@ -226,13 +229,13 @@ const LeitnerCard = ({
         frontSide={frontSide}
         gridArea="btn1"
         btnTxt={"Again"}
-        btnFn={() => console.log("hiihihihih")}
+        btnFn={btnFn.bind(this, "again")}
       />
       <LeitnerCardButton
         frontSide={frontSide}
         gridArea="btn2"
         btnTxt={"Good"}
-        btnFn={() => console.log("hiihihihih")}
+        btnFn={btnFn.bind(this, "good")}
       />
 
       {/* <LeitnerCardFlipButton flipFn={flipFn} /> */}

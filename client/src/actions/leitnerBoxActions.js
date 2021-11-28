@@ -129,13 +129,16 @@ let fruits = ["Apple", "Mango", "Orange", "Pear"];
 let currentStudying = [];
 
 export const studyButtonAction = (quantity) => (dispatch) => {
-  console.log(quantity);
+  
   // get quantity of cards from "deck array" , and add to "current stydying array"
   for (let i = 0; i < quantity; i++) {
     currentStudying.push(fruits.shift());
   }
 
   console.log(currentStudying, " = current Studying");
+
+  //isCurrentStudyingEmpty()
+  // dispatch({ type: IS_LIST_EMPTY, payload: false})
 
   // if current studying array is NOT empty
   // button is disabled
@@ -144,12 +147,22 @@ export const studyButtonAction = (quantity) => (dispatch) => {
   console.log("pressed study btn");
 };
 
+export const cardButtonsActions = (btnPressed) => (dispatch) => {
+  //console.log(btnPressed)
+  dispatch(isCurrentStudyingEmpty())
+}
+
 // this function is to watch current number of cards in current studying
 export const isCurrentStudyingEmpty = () => (dispatch) => {
+
+console.log("got here is current")
+
   //send info to reducer
   // if current studying array is empty
   if(currentStudying.length === 0) {
-    dispatch({ type: IS_LIST_EMPTY , payload: "list is empty" })
+    dispatch({ type: IS_LIST_EMPTY , payload: true })
+  } else {
+    dispatch({ type: IS_LIST_EMPTY, payload: false })
   }
 };
 

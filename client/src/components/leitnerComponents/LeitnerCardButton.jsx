@@ -1,8 +1,9 @@
 import React from "react";
 
-const LeitnerCardButton = ({ frontSide, btnTxt, row, col, btnFn, gridArea }) => {
+const LeitnerCardButton = ({ frontSide, btnTxt, btnFn, gridArea }) => {
   return (
     <div
+    onClick={btnFn}
       style={{
         display: !frontSide ? "block" : "none",
         width: "90%",
@@ -13,7 +14,7 @@ const LeitnerCardButton = ({ frontSide, btnTxt, row, col, btnFn, gridArea }) => 
       }}
     >
       <div
-        onClick={btnFn}
+        
         style={{
           width: "100%",
           height: "100%",

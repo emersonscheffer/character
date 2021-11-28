@@ -1,4 +1,9 @@
-import { LOAD_STATE, ADD_CARD, INITIAL_CARD_LOAD } from "../actions/types";
+import {
+  LOAD_STATE,
+  ADD_CARD,
+  INITIAL_CARD_LOAD,
+  IS_LIST_EMPTY,
+} from "../actions/types";
 
 const initialState = {
   userName: "",
@@ -25,7 +30,7 @@ const initialState = {
     formality: 5,
   },
   cardsToAddQuantity: 2,
-  studyButtonDisabledStatus: true
+  studyButtonDisabledStatus: true,
 };
 
 export default function myState(state = initialState, action) {
@@ -57,6 +62,8 @@ export default function myState(state = initialState, action) {
         ...state,
         deck: [...state.deck, action.payload],
       };
+    case IS_LIST_EMPTY:
+      return { ...state, studyButtonDisabledStatus : !action.payload };
 
     default:
       return state;
