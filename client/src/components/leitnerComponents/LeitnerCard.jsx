@@ -12,7 +12,7 @@ const LeitnerCard = ({
   cardFormality,
   cardDisplay,
   cardBtn,
-  btnFn
+  btnFn,
 }) => {
   const renderExamples = (examples) => {
     let examplesArr = [];

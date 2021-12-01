@@ -1,6 +1,14 @@
 //
 import { UserClass } from "../classes/userClass";
-import { ADD_CARD, LOAD_STATE, CHANGE_NAME, INITIAL_CARD_LOAD, IS_LIST_EMPTY } from "./types";
+import {
+  ADD_CARD,
+  LOAD_STATE,
+  CHANGE_NAME,
+  INITIAL_CARD_LOAD,
+  IS_LIST_EMPTY,
+  STUDY_BTN_PRESSED,
+  CARD_BTN_PRESSED,
+} from "./types";
 
 // cards data from file
 const cardsData = require("../cardsData.json");
@@ -128,14 +136,13 @@ export const loadSavedStateOrStartNewUser = () => (dispatch) => {
 let fruits = ["Apple", "Mango", "Orange", "Pear"];
 let currentStudying = [];
 
-export const studyButtonAction = (quantity) => (dispatch) => {
-  
+export const studyButtonAction = () => (dispatch) => {
   // get quantity of cards from "deck array" , and add to "current stydying array"
-  for (let i = 0; i < quantity; i++) {
-    currentStudying.push(fruits.shift());
-  }
+  // for (let i = 0; i < quantity; i++) {
+  //   currentStudying.push(fruits.shift());
+  // }
 
-  console.log(currentStudying, " = current Studying");
+  //console.log(currentStudying, " = current Studying");
 
   //isCurrentStudyingEmpty()
   // dispatch({ type: IS_LIST_EMPTY, payload: false})
@@ -144,25 +151,25 @@ export const studyButtonAction = (quantity) => (dispatch) => {
   // button is disabled
 
   // get number of cards from deck and load cards in the current Array to display cards in order
-  console.log("pressed study btn");
+  //console.log("pressed study btn");
+
+  dispatch({ type: STUDY_BTN_PRESSED });
 };
 
 export const cardButtonsActions = (btnPressed) => (dispatch) => {
-  //console.log(btnPressed)
-  dispatch(isCurrentStudyingEmpty())
-}
+  dispatch({ type: CARD_BTN_PRESSED, payload: btnPressed });
+};
 
 // this function is to watch current number of cards in current studying
 export const isCurrentStudyingEmpty = () => (dispatch) => {
-
-console.log("got here is current")
+  console.log("got here is current");
 
   //send info to reducer
   // if current studying array is empty
-  if(currentStudying.length === 0) {
-    dispatch({ type: IS_LIST_EMPTY , payload: true })
+  if (currentStudying.length === 0) {
+    dispatch({ type: IS_LIST_EMPTY, payload: true });
   } else {
-    dispatch({ type: IS_LIST_EMPTY, payload: false })
+    dispatch({ type: IS_LIST_EMPTY, payload: false });
   }
 };
 

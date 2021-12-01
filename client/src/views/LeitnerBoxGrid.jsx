@@ -10,7 +10,9 @@ import LeitnerCard from "../components/leitnerComponents/LeitnerCard";
 
 import {
   loadSavedStateOrStartNewUser,
-  studyButtonAction, cardButtonsActions, isCurrentStudyingEmpty
+  studyButtonAction,
+  cardButtonsActions,
+  isCurrentStudyingEmpty,
 } from "../actions/leitnerBoxActions";
 import LeitnerLevelBoxContainer from "../components/leitnerComponents/LeitnerLevelBoxContainer";
 
@@ -28,6 +30,8 @@ const LeitnerBoxGrid = () => {
     cardDisplay,
     cardsToAddQuantity,
     studyButtonDisabledStatus,
+    currentStudying,
+    leitnerDay
   } = useSelector((state) => state.leitnerBox);
 
   // boxes array
@@ -41,8 +45,12 @@ const LeitnerBoxGrid = () => {
     boxLevel7,
   ];
 
+  const studyBtnPressed = () => {
+    dispatch(studyButtonAction());
+  };
+
   const buttonsInCardPressed = (btnPressed) => {
-    dispatch(cardButtonsActions(btnPressed))
+    dispatch(cardButtonsActions(btnPressed));
   };
 
   useEffect(() => {
@@ -88,8 +96,8 @@ const LeitnerBoxGrid = () => {
         }}
       >
         <LeitnerTimeLineSideMenu />
-        <LeitnerTimeLine />
-        <LeitnerTimeLineDayIndicator />
+        <LeitnerTimeLine leitnerDay={leitnerDay}/>
+        <LeitnerTimeLineDayIndicator leitnerDay={leitnerDay}/>
       </div>
 
       <div
@@ -109,9 +117,7 @@ const LeitnerBoxGrid = () => {
         }}
       >
         <LeitnerTimeLineStudyButton
-          pressedMe={() => {
-            dispatch(isCurrentStudyingEmpty())
-            dispatch(studyButtonAction.bind(this, cardsToAddQuantity))}}
+          pressedMe={studyBtnPressed}
           isDisabled={studyButtonDisabledStatus}
           buttonTxt={"Study"}
         />
@@ -127,11 +133,11 @@ const LeitnerBoxGrid = () => {
           display: "grid",
         }}
       >
+        {currentStudying.length === 0 ? null : 
         <LeitnerCard
-          cardDisplay={cardDisplay}
+          cardDisplay={currentStudying[0]}
           btnFn={buttonsInCardPressed}
-          
-        />
+        /> }
       </div>
 
       <div

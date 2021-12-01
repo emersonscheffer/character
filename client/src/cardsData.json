@@ -104,5 +104,17 @@
     ],
     "level": 0,
     "updated": false
+  },
+  {
+    "title": "sufice",
+    "formality": 5,
+    "meaning": "Line of soldiers or police blocking people from entering or exiting an area / separate off",
+    "examples": [
+      "There was a police cordon around the site of the incident",
+      "There was a cordon of police on either side of the road as the prince drove down the road",
+      "the area was cordoned off because they didn't want the criminals to escape"
+    ],
+    "level": 0,
+    "updated": false
   }
 ]

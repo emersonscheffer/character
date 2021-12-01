@@ -16,6 +16,8 @@ Create a way to back up database - write/append to txt document
 
 
 MVP
+
+if the leitner day is not updated in DB, it will overwrite redux 
  
  status : next steps, 
             > study buttons status everytime btns in card are pressed
