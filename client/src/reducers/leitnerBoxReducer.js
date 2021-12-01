@@ -19,6 +19,8 @@ const initialState = {
   boxLevel6: [],
   boxLevel7: [],
 
+  boxRetired: [],
+
   currentDay: -1,
   currentMonth: -1,
   leitnerDay: 1, // timeline cursor
@@ -37,6 +39,10 @@ const initialState = {
   currentStudying: [],
   quantityOfCardsToAdd: 2,
 };
+
+const addCardsIntoCurrentStudyingArray = () => {
+  initialState.currentStudying = [...initialState.boxLevel1]
+}
 
 export default function myState(state = initialState, action) {
   switch (action.type) {
@@ -80,8 +86,11 @@ export default function myState(state = initialState, action) {
       for (let i = 0; i < state.quantityOfCardsToAdd; i++) {
         let card = state.deck.shift();
         card.level = 1;
-        state.currentStudying.push(card);
+        state.boxLevel1.push(card);
       }
+
+      //addCardsIntoCurrentStudyingArray()
+      state.currentStudying = state.boxLevel1
 
       // button status
       // -> disable button until all cards are studied
@@ -93,16 +102,58 @@ export default function myState(state = initialState, action) {
         studyStarted: true,
       };
 
-      case CARD_BTN_PRESSED: 
+    case CARD_BTN_PRESSED:
+
+      let card = state.currentStudying.shift();
       // if good btn is pressed
-        // -> change level of card to +1
-        // -> delete card from 'queue'
-      // if again btn is pressed
-        // -> change level of card to 1
-        // -> send card to end of queue in current studying
-      return {
-        ...state
+      // -> change level of card to +1
+      // -> save card in DB
+      // -> delete card from 'queue'
+      if (action.payload === "good") {
+        
+        card.level = card.level + 1;
+
+        switch (card.level) {
+          case 2:
+            state.boxLevel2.push(card);
+            break;
+          case 3:
+            state.boxLevel3.push(card);
+            break;
+          case 4:
+            state.boxLevel4.push(card);
+            break;
+          case 5:
+            state.boxLevel5.push(card);
+            break;
+          case 6:
+            state.boxLevel6.push(card);
+            break;
+          case 7:
+            state.boxLevel7.push(card);
+            break;
+          case 8:
+            state.boxRetired.push(card);
+            break;
+
+          default:
+            state.boxLevel1.push(card);
+            break;
+        }
+      } else {
+        // if again btn is pressed
+          // -> change level of card to 1
+          // -> send card to end of queue in current studying
+        card.level = 1
+        state.boxLevel1.push(card)
       }
+
+      console.log("is current empty?")
+
+      return {
+        ...state,
+        //studyButtonDisabledStatus: state.currentStudying.length === 0 ? true : false
+      };
 
     case IS_LIST_EMPTY:
       return { ...state, studyButtonDisabledStatus: !action.payload };
