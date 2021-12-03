@@ -7,6 +7,8 @@ import {
   CARD_BTN_PRESSED,
 } from "../actions/types";
 
+import { CurrentQueue } from "../classes/CurrentQueue";
+
 const initialState = {
   userName: "",
   deck: [],
@@ -36,9 +38,10 @@ const initialState = {
   //cardDisplay: this.currentStudying[0],
   cardsToAddQuantity: 2,
   studyButtonDisabledStatus: false,
-  currentStudying: [],
+  currentStudying: new CurrentQueue(),
   quantityOfCardsToAdd: 2,
 };
+
 
 const addCardsIntoCurrentStudyingArray = () => {
   initialState.currentStudying = [...initialState.boxLevel1]
