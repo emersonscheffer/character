@@ -114,6 +114,7 @@ export default function myState(state = initialState, action) {
 
       let card = state.currentStudying.dequeue()
 
+      //get the cards out of box 1 
       let hhjhjh = card.level === 1 ? state.boxLevel1.shift() : null
 
       // if good btn is pressed
@@ -161,7 +162,7 @@ export default function myState(state = initialState, action) {
         state.currentStudying.add(card)
       }
 
-      console.log("is current empty?")
+      //console.log("is current empty?")
 
       return {
         ...state,

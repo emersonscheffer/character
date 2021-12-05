@@ -17,9 +17,11 @@ Create a way to back up database - write/append to txt document
 
 MVP
 
+focus on reducer line 89 and 97
+
 create a function to add cards from the boxes according to what leitner Day it is , ex: day 2 add cards into boxLevel 1 , then , get cards from boxLevel 2 , add them into current studying array, then, get cards from boxLevel 1 "fresh new cards", add them into current studying array 
 
-if the leitner day is not updated in DB, it will overwrite redux 
+ - >> if the leitner day is not updated in DB, it will overwrite redux 
  
  status : next steps, 
             > study buttons status everytime btns in card are pressed
