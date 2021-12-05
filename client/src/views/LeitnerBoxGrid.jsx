@@ -12,9 +12,12 @@ import {
   loadSavedStateOrStartNewUser,
   studyButtonAction,
   cardButtonsActions,
-  isCurrentStudyingEmpty,
+  //isCurrentStudyingEmpty,
 } from "../actions/leitnerBoxActions";
 import LeitnerLevelBoxContainer from "../components/leitnerComponents/LeitnerLevelBoxContainer";
+
+//import { CurrentQueue } from "../classes/CurrentQueue";
+ 
 
 const LeitnerBoxGrid = () => {
   const dispatch = useDispatch();
@@ -33,6 +36,12 @@ const LeitnerBoxGrid = () => {
     currentStudying,
     leitnerDay
   } = useSelector((state) => state.leitnerBox);
+
+  
+
+  console.log(currentStudying)
+  
+  
 
   // boxes array
   const boxes = [
@@ -133,9 +142,9 @@ const LeitnerBoxGrid = () => {
           display: "grid",
         }}
       >
-        {currentStudying.length === 0 ? null : 
+        {currentStudying.isEmpty() ? null : 
         <LeitnerCard
-          cardDisplay={currentStudying[0]}
+          cardDisplay={currentStudying.peek()}
           btnFn={buttonsInCardPressed}
         /> }
       </div>

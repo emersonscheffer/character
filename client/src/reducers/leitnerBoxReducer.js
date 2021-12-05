@@ -27,14 +27,14 @@ const initialState = {
   currentMonth: -1,
   leitnerDay: 1, // timeline cursor
   studyStarted: false,
-  // cardDisplay: {
-  //   title: "Pick and Roll",
-  //   level: 10,
-  //   examples: ["Go walk run and score", "win the game"],
-  //   meaning:
-  //     "a basketball play in which a player sets a screen and then cuts toward the basket for a pass",
-  //   formality: 5,
-  // },
+  cardDisplay: {
+    title: "Pick and Roll",
+    level: 10,
+    examples: ["Go walk run and score", "win the game"],
+    meaning:
+      "a basketball play in which a player sets a screen and then cuts toward the basket for a pass",
+    formality: 5,
+  },
   //cardDisplay: this.currentStudying[0],
   cardsToAddQuantity: 2,
   studyButtonDisabledStatus: false,
@@ -43,9 +43,9 @@ const initialState = {
 };
 
 
-const addCardsIntoCurrentStudyingArray = () => {
-  initialState.currentStudying = [...initialState.boxLevel1]
-}
+// const addCardsIntoCurrentStudyingArray = () => {
+//   initialState.currentStudying = [...initialState.boxLevel1]
+// }
 
 export default function myState(state = initialState, action) {
   switch (action.type) {
@@ -93,7 +93,12 @@ export default function myState(state = initialState, action) {
       }
 
       //addCardsIntoCurrentStudyingArray()
-      state.currentStudying = state.boxLevel1
+      //state.currentStudying = state.boxLevel1
+      for (let j = 0; j < state.boxLevel1.length; j++) {
+        
+        state.currentStudying.add(state.boxLevel1[j])
+        
+      }
 
       // button status
       // -> disable button until all cards are studied
@@ -107,7 +112,10 @@ export default function myState(state = initialState, action) {
 
     case CARD_BTN_PRESSED:
 
-      let card = state.currentStudying.shift();
+      let card = state.currentStudying.dequeue()
+
+      let hhjhjh = card.level === 1 ? state.boxLevel1.shift() : null
+
       // if good btn is pressed
       // -> change level of card to +1
       // -> save card in DB
@@ -140,6 +148,7 @@ export default function myState(state = initialState, action) {
             break;
 
           default:
+            console.log("called default state  - check whats wrong")
             state.boxLevel1.push(card);
             break;
         }
@@ -149,6 +158,7 @@ export default function myState(state = initialState, action) {
           // -> send card to end of queue in current studying
         card.level = 1
         state.boxLevel1.push(card)
+        state.currentStudying.add(card)
       }
 
       console.log("is current empty?")

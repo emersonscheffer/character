@@ -1,13 +1,70 @@
-
 // temp file, just to get the date()
 
 //import "./cards.json"
 
-const dataX = require("./cards.json")
-console.log(dataX.data)
+console.log(" - - - - - - ");
 
-const da = new Date
+const dataX = require("../character/client/src/cardsData.json");
+//console.log(dataX[0]);
 
-da.getDate()
+// const da = new Date
 
-console.log(da.getMonth() + 1, da.getDate())
+// da.getDate()
+
+// console.log(da.getMonth() + 1, da.getDate())
+
+console.log(" - - - - - - ");
+
+class MyQueue {
+  constructor() {
+    this.store = [];
+  }
+  add(card) {
+    this.store.push(card);
+  }
+  isEmpty() {
+    return this.store.length < 1 ? true : false;
+  }
+
+  peek() {
+    return !this.isEmpty() ? this.store[0] : null;
+  }
+
+  dequeue() {
+    return !this.isEmpty() ? this.store.shift() : "empty";
+  }
+}
+
+let current = new MyQueue();
+current.add(dataX[0]);
+current.add(dataX[1]);
+current.add(dataX[2]);
+
+const showCard = () => {
+  let card = current.peek();
+
+  console.log("== == = == === == Show Card == = === == == ");
+
+  console.log(card.title);
+
+  console.log("== == = == === == Show Card == = === == == ");
+};
+
+showCard();
+
+const pressBtn = (answer) => {
+  const card = current.dequeue();
+  if (answer === "good") {
+  } else {
+    current.add(card);
+  }
+};
+
+pressBtn("good");
+
+console.log(current);
+
+showCard();
+pressBtn("no");
+
+console.log(current);

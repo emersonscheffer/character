@@ -1,16 +1,19 @@
 export class CurrentQueue {
   constructor() {
-    this.data = [];
+    this.store = [];
   }
-  add() {
-    this.data.push();
+  add(card) {
+    this.store.push(card);
+  }
+  isEmpty() {
+    return this.store.length < 1 ? true : false;
   }
 
-  isEmpty() {
-    return this.data.length === 0 ? true : false;
+  peek() {
+    return !this.isEmpty() ? this.store[0] : null;
   }
 
   dequeue() {
-    return !this.isEmpty ? this.data.shift() : null;
+    return !this.isEmpty() ? this.store.shift() : "empty";
   }
 }
