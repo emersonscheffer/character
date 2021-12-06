@@ -7,13 +7,6 @@ Create a way to back up database - write/append to txt document
 - compare if date has changed, if yes - button enabled else - next 'study' button disabled
 
 
-- when pressed study button , 
-    - new cards from deck are added to level 1 bucket
-    - the timeline cursor moves one to the right
-    - populate a list with cards of buckets to study for the day
-
-- create animation to make card flip
-
 
 MVP
 
@@ -65,3 +58,11 @@ create a function to add cards from the boxes according to what leitner Day it i
     Create a " Memory Castle " in the main page
 
     Create a tracking system to track a progress over the year or 6 months or weekly basis - retired cards 
+
+
+- when pressed study button , 
+    - new cards from deck are added to level 1 bucket
+    - the timeline cursor moves one to the right
+    - populate a list with cards of buckets to study for the day
+
+- create animation to make card flip
