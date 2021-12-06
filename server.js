@@ -69,25 +69,48 @@
 
 // console.log(current);
 
-let current = []
+const days = {
+  1: 1,
+  2: 2,
+  3: 1,
+  4: 3,
+  5: 1,
+};
 
-const box1 = [1, 2, 3, 4]
-const box2 = [32, 34, 35]
+let current = [];
 
-const allBoxes = [box1, box2]
+const box1 = [1, 2, 3, 4];
+const box2 = [32, 34, 35];
+const box3 = [222, 333, 444];
+const box4 = [777, 888, 999];
 
-function checkBox(b){
-  if(b < 1) {
-    return
-  } 
-  current = [...current, ...allBoxes[b - 1]]
-  checkBox(b - 1)
+const allBoxes = [box1, box2, box3, box4];
+
+function checkBox(b) {
+  if (b < 1) {
+    return;
+  }
+  current = [...current, ...allBoxes[b - 1]];
+  checkBox(b - 1);
 }
 
-checkBox(allBoxes.length)
+// for (const day in days) {
+
+checkBox(days[3]);
+
+//   console.log(days[day])
+// }
 // let box = []
 // checkBox(box + 1)
 
+console.log(current);
 
+for (let i = 1; i < 65; i++) {
+  if (i % 64 === 0) {
+    // console.log(i, " {i}`:7");
+    console.log(String(i).concat(":7"))
+  } else {
+    console.log(i);
+  }
+}
 
-console.log(current)

@@ -25,7 +25,7 @@ const initialState = {
 
   currentDay: -1,
   currentMonth: -1,
-  leitnerDay: 1, // timeline cursor
+  leitnerDay: 3, // timeline cursor
   studyStarted: false,
   cardDisplay: {
     title: "Pick and Roll",

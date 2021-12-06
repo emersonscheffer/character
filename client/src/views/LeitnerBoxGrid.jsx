@@ -39,7 +39,7 @@ const LeitnerBoxGrid = () => {
 
   
 
-  console.log(currentStudying)
+  console.log(leitnerDay)
   
   
 
