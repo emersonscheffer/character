@@ -1,16 +1,19 @@
 
 
-Create a way to back up database - write/append to txt document
-
-- leitner time line - transform them into perfect squares
-
-- compare if date has changed, if yes - button enabled else - next 'study' button disabled
 
 
 
 MVP
 
 fix the fact that if there's none cards in the deck, the game still continues until all cards are moved to the 'retired' box
+
+if deck.length === 0 { check if there are cards in the boxes and add them into current }
+
+when I got to day 7 , there were not cards to be added for that day , since the only way for now to make the study btn active again is by pressing one of the card btns, the study btn is disabled 
+
+>> if 
+
+
 
 focus on reducer line 89 
 
@@ -68,9 +71,11 @@ create a function to add cards from the boxes according to what leitner Day it i
     Create a tracking system to track a progress over the year or 6 months or weekly basis - retired cards 
 
 
-- when pressed study button , 
-    - new cards from deck are added to level 1 bucket
-    - the timeline cursor moves one to the right
-    - populate a list with cards of buckets to study for the day
-
 - create animation to make card flip
+
+
+Create a way to back up database - write/append to txt document
+
+- leitner time line - transform them into perfect squares
+
+- compare if date has changed, if yes - button enabled else - next 'study' button disabled

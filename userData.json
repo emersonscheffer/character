@@ -1,9 +1,19 @@
 [
   {
+    "dayOfMonth": "Dec 06 2021",
     "dayOfWeek": "Monday",
     "weight": 102.8,
     "unit": "kg",
-    "foodIntake": [{ "apple": 2 }],
-    "exercises" : [{"halfPushUps" : 30}]
+    "foodIntake": [{ "apple": 2 }, { "orangeJuice": 1 }],
+    "exercises": [{ "halfPushUps": 30 }]
+  },
+  {
+    "dayOfMonth": "Dec 07 2021",
+    "dayOfWeek": "Tuesday",
+    "weight1": 103.2,
+    "weight2": 0,
+    "unit": "kg",
+    "foodIntake": [{ "apple": 1 }, { "tea": "1 bottle" }],
+    "exercises": [{ "halfPushUps": 0 }]
   }
 ]
