@@ -1,0 +1,9 @@
+[
+  {
+    "dayOfWeek": "Monday",
+    "weight": 102.8,
+    "unit": "kg",
+    "foodIntake": [{ "apple": 2 }],
+    "exercises" : [{"halfPushUps" : 30}]
+  }
+]

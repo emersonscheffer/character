@@ -5,6 +5,11 @@ export class CurrentQueue {
   add(card) {
     this.store.push(card);
   }
+
+  addArr(arr) {
+    this.store = [...arr];
+  }
+
   isEmpty() {
     return this.store.length < 1 ? true : false;
   }
