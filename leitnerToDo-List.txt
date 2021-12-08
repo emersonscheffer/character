@@ -5,7 +5,9 @@
 
 MVP
 
+Add a retired cards box , fix colors, all around the app
 
+Create a btn to simulate the days changing, so you can test the Study Btn when in the same day , and becoming available the next day 
 
 
 focus on reducer line 89 

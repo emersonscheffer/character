@@ -145,7 +145,7 @@ const LeitnerBoxGrid = () => {
 
       <div
         style={{
-          backgroundColor: "black",
+          backgroundColor: "#f2f2f2",
           //height: "auto",
           //gridColumn: "8/9",
           //gridRow: "3/4",

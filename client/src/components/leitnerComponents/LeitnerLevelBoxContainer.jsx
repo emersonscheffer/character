@@ -19,8 +19,7 @@ const LeitnerLevelBoxContainer = ({ deck, boxes }) => {
   const box6 = boxes[5].length;
   const box7 = boxes[6].length;
 
-  const deckQuantity =
-    deck.length - box1 - box2 - box3 - box4 - box5 - box6 - box7;
+  const deckQuantity = deck.length
 
   const renderColorBoxes = () => {
     let boxes = [];
@@ -34,6 +33,8 @@ const LeitnerLevelBoxContainer = ({ deck, boxes }) => {
             width: "30%",
             height: "30%",
             gridArea: String("color").concat(i + 1),
+            alignSelf: "center",
+            justifySelf: "center"
           }}
         ></div>
       );
@@ -52,13 +53,15 @@ const LeitnerLevelBoxContainer = ({ deck, boxes }) => {
         gridTemplate: `
           ". . . . ." 10px
           ". deck1 . deck2 ." 60px
-          ". box1 . color1 ." 50px
-          ". box2 . color2 ." 50px
-          ". box3 . color3 ." 50px
-          ". box4 . color4 ." 50px
-          ". box5 . color5 ." 50px
-          ". box6 . color6 ." 50px
-          ". box7 . color7 ." 50px
+          ". box1 . color1 ." 40px
+          ". box2 . color2 ." 40px
+          ". box3 . color3 ." 40px
+          ". box4 . color4 ." 40px
+          ". box5 . color5 ." 40px
+          ". box6 . color6 ." 40px
+          ". box7 . color7 ." 40px
+          ". retired . . ." 40px
+          ". . . . ." 10px
            / 5px 2fr 5px 1fr 5px 
         `,
       }}
