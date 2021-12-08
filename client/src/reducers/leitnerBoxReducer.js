@@ -42,74 +42,100 @@ const initialState = {
   quantityOfCardsToAdd: 2,
 };
 
-function checkBoxesAndAddItemsIntoCurrent(leitnerDay) {
-  const days = {
-    1: 1,
-    2: 2,
-    3: 1,
-    4: 3,
-    5: 1,
-    6: 2,
-    7: 1,
-    8: 4,
-    9: 1,
-    10: 2,
-    11: 1,
-    12: 3,
-    13: 1,
-    14: 2,
-    15: 1,
-    16: 5,
-    17: 1,
-    18: 2,
-    19: 1,
-    20: 3,
-    21: 1,
-    22: 2,
-    23: 1,
-    24: 4,
-    25: 1,
-    26: 2,
-    27: 1,
-    28: 3,
-    29: 1,
-    30: 2,
-    31: 1,
-    32: 6,
-    33: 1,
-    34: 2,
-    35: 1,
-    36: 3,
-    37: 1,
-    38: 2,
-    39: 1,
-    40: 4,
-    41: 1,
-    42: 2,
-    43: 1,
-    44: 3,
-    45: 1,
-    46: 2,
-    47: 1,
-    48: 5,
-    49: 1,
-    50: 2,
-    51: 1,
-    52: 3,
-    53: 1,
-    54: 2,
-    55: 1,
-    56: 4,
-    57: 1,
-    58: 2,
-    59: 1,
-    60: 3,
-    61: 1,
-    62: 2,
-    63: 1,
-    64: 7,
-  };
+const daysMap = {
+  1: 1,
+  2: 2,
+  3: 1,
+  4: 3,
+  5: 1,
+  6: 2,
+  7: 1,
+  8: 4,
+  9: 1,
+  10: 2,
+  11: 1,
+  12: 3,
+  13: 1,
+  14: 2,
+  15: 1,
+  16: 5,
+  17: 1,
+  18: 2,
+  19: 1,
+  20: 3,
+  21: 1,
+  22: 2,
+  23: 1,
+  24: 4,
+  25: 1,
+  26: 2,
+  27: 1,
+  28: 3,
+  29: 1,
+  30: 2,
+  31: 1,
+  32: 6,
+  33: 1,
+  34: 2,
+  35: 1,
+  36: 3,
+  37: 1,
+  38: 2,
+  39: 1,
+  40: 4,
+  41: 1,
+  42: 2,
+  43: 1,
+  44: 3,
+  45: 1,
+  46: 2,
+  47: 1,
+  48: 5,
+  49: 1,
+  50: 2,
+  51: 1,
+  52: 3,
+  53: 1,
+  54: 2,
+  55: 1,
+  56: 4,
+  57: 1,
+  58: 2,
+  59: 1,
+  60: 3,
+  61: 1,
+  62: 2,
+  63: 1,
+  64: 7,
+};
 
+function areAllBoxesEmpty() {
+  const allBoxes = [
+    initialState.boxLevel1,
+    initialState.boxLevel2,
+    initialState.boxLevel3,
+    initialState.boxLevel4,
+    initialState.boxLevel5,
+    initialState.boxLevel6,
+    initialState.boxLevel7,
+  ];
+
+  function checkEmptyBoxes(a) {
+    if (a < 1) {
+      return true;
+    }
+
+    if (allBoxes[a - 1].length > 0){
+      return false
+    }
+
+    checkEmptyBoxes(a - 1);
+  }
+
+  checkEmptyBoxes(7)
+}
+
+function checkBoxesAndAddItemsIntoCurrent(leitnerDay) {
   let current = [];
 
   const allBoxes = [
@@ -132,9 +158,9 @@ function checkBoxesAndAddItemsIntoCurrent(leitnerDay) {
 
   // for (const day in days) {
 
-  checkBox(days[leitnerDay]);
+  checkBox(daysMap[leitnerDay]);
 
-  console.log("leitner day from inside function : ", leitnerDay);
+  //console.log("leitner day from inside function : ", leitnerDay);
 
   return current;
 }
@@ -178,10 +204,21 @@ export default function myState(state = initialState, action) {
       // -> if first time
       // -> start study
       // -> timeline cursor -> set as day 1 or next day
-      const day = state.studyStarted ? state.leitnerDay + 1 : state.leitnerDay;
+      let day = state.studyStarted ? state.leitnerDay + 1 : state.leitnerDay;
+      if(day === 65){
+        day = 1
+      }
       // cards from deck
       // -> get number of cards from current deck and add 'em to current studying array
       // -> change the level of the card from 0 to level 1 before inserting in current deck array
+      let studyButtonDisabledStatusVar = true;
+      if (state.deck.length === 0) {
+        //check if any cards left in all 7 boxes
+          if(!areAllBoxesEmpty()){
+            studyButtonDisabledStatusVar = false;
+          }
+        
+      }
       for (let i = 0; i < state.quantityOfCardsToAdd; i++) {
         let card = state.deck.shift();
         if (card) {
@@ -201,10 +238,10 @@ export default function myState(state = initialState, action) {
       // button status
       // -> disable button until all cards are studied
       // -> disable button until next day / different day than current
-      console.log(day, " === === === from redducer");
+      
       return {
         ...state,
-        studyButtonDisabledStatus: true,
+        studyButtonDisabledStatus: studyButtonDisabledStatusVar, //set default true
         leitnerDay: day,
         studyStarted: true,
       };
@@ -264,8 +301,6 @@ export default function myState(state = initialState, action) {
         state.boxLevel1.push(card);
         state.currentStudying.add(card);
       }
-
-      //console.log("is current empty?")
 
       return {
         ...state,

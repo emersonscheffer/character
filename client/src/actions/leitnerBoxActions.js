@@ -133,7 +133,7 @@ export const loadSavedStateOrStartNewUser = () => (dispatch) => {
   }
 };
 
-let fruits = ["Apple", "Mango", "Orange", "Pear"];
+//let fruits = ["Apple", "Mango", "Orange", "Pear"];
 let currentStudying = [];
 
 export const studyButtonAction = () => (dispatch) => {

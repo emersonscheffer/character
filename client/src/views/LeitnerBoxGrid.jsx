@@ -17,7 +17,6 @@ import {
 import LeitnerLevelBoxContainer from "../components/leitnerComponents/LeitnerLevelBoxContainer";
 
 //import { CurrentQueue } from "../classes/CurrentQueue";
- 
 
 const LeitnerBoxGrid = () => {
   const dispatch = useDispatch();
@@ -34,14 +33,8 @@ const LeitnerBoxGrid = () => {
     cardsToAddQuantity,
     studyButtonDisabledStatus,
     currentStudying,
-    leitnerDay
+    leitnerDay,
   } = useSelector((state) => state.leitnerBox);
-
-  
-
-  console.log(leitnerDay)
-  
-  
 
   // boxes array
   const boxes = [
@@ -105,8 +98,8 @@ const LeitnerBoxGrid = () => {
         }}
       >
         <LeitnerTimeLineSideMenu />
-        <LeitnerTimeLine leitnerDay={leitnerDay}/>
-        <LeitnerTimeLineDayIndicator leitnerDay={leitnerDay}/>
+        <LeitnerTimeLine leitnerDay={leitnerDay} />
+        <LeitnerTimeLineDayIndicator leitnerDay={leitnerDay} />
       </div>
 
       <div
@@ -142,11 +135,12 @@ const LeitnerBoxGrid = () => {
           display: "grid",
         }}
       >
-        {currentStudying.isEmpty() ? null : 
-        <LeitnerCard
-          cardDisplay={currentStudying.peek()}
-          btnFn={buttonsInCardPressed}
-        /> }
+        {currentStudying.isEmpty() ? null : (
+          <LeitnerCard
+            cardDisplay={currentStudying.peek()}
+            btnFn={buttonsInCardPressed}
+          />
+        )}
       </div>
 
       <div

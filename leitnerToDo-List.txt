@@ -5,13 +5,6 @@
 
 MVP
 
-fix the fact that if there's none cards in the deck, the game still continues until all cards are moved to the 'retired' box
-
-if deck.length === 0 { check if there are cards in the boxes and add them into current }
-
-when I got to day 7 , there were not cards to be added for that day , since the only way for now to make the study btn active again is by pressing one of the card btns, the study btn is disabled 
-
->> if 
 
 
 

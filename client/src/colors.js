@@ -1,0 +1,7 @@
+export const COLOR1 = "#7e5678"
+export const COLOR2 = "#9a6d12"
+export const COLOR3 = "#9a6d12"
+export const COLOR4 = "yellow"
+export const COLOR5 = "#9a6d12"
+export const COLOR6 = "red"
+export const COLOR7 = "#9a6d12"

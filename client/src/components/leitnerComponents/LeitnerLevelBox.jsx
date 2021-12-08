@@ -7,6 +7,7 @@ const LeitnerLevelBox = ({
   bgColor,
   deck,
   subject,
+  area
 }) => {
   const line2 = deck ? subject : "Box " + boxNumber;
 
@@ -18,6 +19,7 @@ const LeitnerLevelBox = ({
         border: "solid black 1px",
         backgroundColor: bgColor,
         borderRadius: "5px",
+        gridArea: area,
         display: "grid",
         gridTemplate: `
         "number" 80%
