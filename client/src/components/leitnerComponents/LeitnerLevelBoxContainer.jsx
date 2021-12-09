@@ -12,13 +12,17 @@ import {
 } from "../../colors";
 
 const LeitnerLevelBoxContainer = ({ deck, boxes }) => {
-  const box1 = boxes[0].length;
-  const box2 = boxes[1].length;
-  const box3 = boxes[2].length;
-  const box4 = boxes[3].length;
-  const box5 = boxes[4].length;
-  const box6 = boxes[5].length;
-  const box7 = boxes[6].length;
+  const boxQuantities = [
+    boxes[0].length,
+    boxes[1].length,
+    boxes[2].length,
+    boxes[3].length,
+    boxes[4].length,
+    boxes[5].length,
+    boxes[6].length,
+  ];
+
+  const colorsArr = [COLOR1, COLOR2, COLOR3, COLOR4, COLOR5, COLOR6, COLOR7];
 
   const deckQuantity = deck.length;
 
@@ -45,22 +49,22 @@ const LeitnerLevelBoxContainer = ({ deck, boxes }) => {
   };
 
   const renderLevelBoxes = () => {
-    let levelBoxes = []
+    let levelBoxes = [];
 
-    //for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 7; i++) {
       levelBoxes.push(
         <LeitnerLevelBox
-        style={{ gridArea: "box1" }}
-        quantity={box1}
-        boxNumber="1"
-        widthHeight="32px"
-        area="box1"
-      />
-      )
-    //}
+          quantity={boxQuantities[i]}
+          boxNumber={String(i + 1)}
+          widthHeight="32px"
+          area={String("box").concat(i + 1)}
+          colorD={colorsArr[i]}
+        />
+      );
+    }
 
-    return levelBoxes
-  }
+    return levelBoxes;
+  };
 
   return (
     <div
@@ -92,56 +96,12 @@ const LeitnerLevelBoxContainer = ({ deck, boxes }) => {
         deck={true}
         subject="English"
         area="deck1"
+        colorD={" black"}
       />
-
-      {/* <LeitnerLevelBox
-        style={{ gridArea: "box1" }}
-        quantity={box1}
-        boxNumber="1"
-        widthHeight="40px"
-        area="box1"
-      /> */}
 
       {renderLevelBoxes()}
 
       {renderColorBoxes()}
-
-      <LeitnerLevelBox
-        quantity={box2}
-        boxNumber="2"
-        widthHeight="40px"
-        area="box2"
-      />
-      <LeitnerLevelBox
-        quantity={box3}
-        boxNumber="3"
-        widthHeight="35px"
-        area="box3"
-      />
-      <LeitnerLevelBox
-        quantity={box4}
-        boxNumber="4"
-        widthHeight="40px"
-        area="box4"
-      />
-      <LeitnerLevelBox
-        quantity={box5}
-        boxNumber="5"
-        widthHeight="40px"
-        area="box5"
-      />
-      <LeitnerLevelBox
-        quantity={box6}
-        boxNumber="6"
-        widthHeight="40px"
-        area="box6"
-      />
-      <LeitnerLevelBox
-        quantity={box7}
-        boxNumber="7"
-        widthHeight="40px"
-        area="box7"
-      />
     </div>
   );
 };

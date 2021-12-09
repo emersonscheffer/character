@@ -157,13 +157,11 @@ const LeitnerBoxGrid = () => {
       <div
         style={{
           backgroundColor: "#f2f2f2",
-          //height: "auto",
-          //gridColumn: "8/9",
-          //gridRow: "3/4",
+          
           gridArea: "rightside",
         }}
       >
-        right side / list
+        {/* right side / list */}
       </div>
       <div
         style={{

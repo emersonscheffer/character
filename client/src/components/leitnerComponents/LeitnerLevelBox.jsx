@@ -1,4 +1,5 @@
 import React from "react";
+import { COLOR1 } from "../../colors";
 
 const LeitnerLevelBox = ({
   quantity,
@@ -7,7 +8,8 @@ const LeitnerLevelBox = ({
   bgColor,
   deck,
   subject,
-  area
+  area,
+  colorD
 }) => {
   const line2 = deck ? subject : "Box " + boxNumber;
 
@@ -18,7 +20,7 @@ const LeitnerLevelBox = ({
         height: widthHeight,
         justifySelf: "center",
           alignSelf: "center",
-        border: "solid black 1px",
+        border: "solid 2px" + colorD,
         backgroundColor: bgColor,
         borderRadius: "5px",
         gridArea: area,

@@ -24,5 +24,14 @@
     "unit": "kg",
     "foodIntake": [{ "banana and oatmeal with honey": 1 }, { "tea": "1 bottle" }, {"orange juice" : 1}],
     "exercises": [{ "halfPushUps": 0 }]
+  },
+  {
+    "dayOfMonth": "Dec 09 2021",
+    "dayOfWeek": "Thursday",
+    "weight1": 101.4,
+    "weight2": 0,
+    "unit": "kg",
+    "foodIntake": [{ "banana and oatmeal with honey": 1 }, { "tea": "1 bottle" }, {"egg" : 1}, {"trail mix": 1}],
+    "exercises": [{ "halfPushUps": 0 }]
   }
 ]
