@@ -1,6 +1,7 @@
 import React from "react";
 import LeitnerLevelBox from "./LeitnerLevelBox";
 import {
+  BACKGROUND,
   COLOR1,
   COLOR2,
   COLOR3,
@@ -19,7 +20,7 @@ const LeitnerLevelBoxContainer = ({ deck, boxes }) => {
   const box6 = boxes[5].length;
   const box7 = boxes[6].length;
 
-  const deckQuantity = deck.length
+  const deckQuantity = deck.length;
 
   const renderColorBoxes = () => {
     let boxes = [];
@@ -34,7 +35,7 @@ const LeitnerLevelBoxContainer = ({ deck, boxes }) => {
             height: "30%",
             gridArea: String("color").concat(i + 1),
             alignSelf: "center",
-            justifySelf: "center"
+            justifySelf: "center",
           }}
         ></div>
       );
@@ -43,10 +44,28 @@ const LeitnerLevelBoxContainer = ({ deck, boxes }) => {
     return boxes;
   };
 
+  const renderLevelBoxes = () => {
+    let levelBoxes = []
+
+    //for (let i = 0; i < 7; i++) {
+      levelBoxes.push(
+        <LeitnerLevelBox
+        style={{ gridArea: "box1" }}
+        quantity={box1}
+        boxNumber="1"
+        widthHeight="32px"
+        area="box1"
+      />
+      )
+    //}
+
+    return levelBoxes
+  }
+
   return (
     <div
       style={{
-        backgroundColor: "lightblue",
+        backgroundColor: BACKGROUND,
         width: "100%",
         height: "100%",
         display: "grid",
@@ -72,34 +91,19 @@ const LeitnerLevelBoxContainer = ({ deck, boxes }) => {
         widthHeight="50px"
         deck={true}
         subject="English"
-        //style={{ gridArea: "deck" }}
         area="deck1"
       />
 
-      <LeitnerLevelBox
+      {/* <LeitnerLevelBox
         style={{ gridArea: "box1" }}
         quantity={box1}
         boxNumber="1"
         widthHeight="40px"
         area="box1"
-      />
+      /> */}
 
-      {/* <div
-        style={{
-          backgroundColor: "red",
-          width: "30px",
-          height: "30px",
-          gridArea: "color1",
-        }}
-      ></div>
-      <div
-        style={{
-          backgroundColor: "yellow",
-          width: "30px",
-          height: "30px",
-          gridArea: "color2",
-        }}
-      ></div> */}
+      {renderLevelBoxes()}
+
       {renderColorBoxes()}
 
       <LeitnerLevelBox
@@ -111,7 +115,7 @@ const LeitnerLevelBoxContainer = ({ deck, boxes }) => {
       <LeitnerLevelBox
         quantity={box3}
         boxNumber="3"
-        widthHeight="40px"
+        widthHeight="35px"
         area="box3"
       />
       <LeitnerLevelBox

@@ -15,6 +15,16 @@ import {
   //isCurrentStudyingEmpty,
 } from "../actions/leitnerBoxActions";
 import LeitnerLevelBoxContainer from "../components/leitnerComponents/LeitnerLevelBoxContainer";
+import {
+  BACKGROUND,
+  COLOR1,
+  COLOR2,
+  COLOR3,
+  COLOR4,
+  COLOR5,
+  COLOR6,
+  COLOR7,
+} from "../colors";
 
 //import { CurrentQueue } from "../classes/CurrentQueue";
 
@@ -46,6 +56,8 @@ const LeitnerBoxGrid = () => {
     boxLevel6,
     boxLevel7,
   ];
+
+  const colorsArr = [COLOR1, COLOR2, COLOR3, COLOR4, COLOR5, COLOR6, COLOR7];
 
   const studyBtnPressed = () => {
     dispatch(studyButtonAction());
@@ -87,7 +99,7 @@ const LeitnerBoxGrid = () => {
 
       <div
         style={{
-          backgroundColor: "blue",
+          backgroundColor: BACKGROUND,
           gridArea: "timeline",
           display: "grid",
           gridTemplate: `
@@ -127,16 +139,15 @@ const LeitnerBoxGrid = () => {
 
       <div
         style={{
-          backgroundColor: "white",
+          backgroundColor: BACKGROUND,
           height: "400px",
-          //gridColumn: "2/8",
-          //gridRow: "4",
           gridArea: "canvas",
           display: "grid",
         }}
       >
         {currentStudying.isEmpty() ? null : (
           <LeitnerCard
+            colorsArr={colorsArr}
             cardDisplay={currentStudying.peek()}
             btnFn={buttonsInCardPressed}
           />

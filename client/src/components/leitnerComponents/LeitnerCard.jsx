@@ -4,15 +4,17 @@ import LeitnerCardButton from "./LeitnerCardButton";
 //import LeitnerCardFlipButton from "./LeitnerCardFlipButton";
 
 const LeitnerCard = ({
-  flipFn,
-  btnFn1,
-  btnFn2,
+  // flipFn,
+  // btnFn1,
+  // btnFn2,
   frontSide,
-  cardTitle,
+  // cardTitle,
   cardFormality,
   cardDisplay,
   cardBtn,
   btnFn,
+  // levelColor
+  colorsArr
 }) => {
   const renderExamples = (examples) => {
     let examplesArr = [];
@@ -30,7 +32,6 @@ const LeitnerCard = ({
         backgroundColor: "#e3e3e3",
         width: "90%",
         height: "auto",
-        //border: "5px solid rgb(225,225,225)",
         borderRadius: "5px",
         display: "grid",
         gridTemplate: ` 
@@ -44,7 +45,7 @@ const LeitnerCard = ({
           " . . . . . ." 10px
           / 10px 1fr 1fr 1fr 1fr 10px
            `,
-        boxShadow: "2px 2px 5px",
+        boxShadow: "0px 3px 7px 1px gray",
         justifySelf: "center",
         marginTop: "20px",
       }}
@@ -52,7 +53,7 @@ const LeitnerCard = ({
       {/* Level  Level Level */}
       <div
         style={{
-          backgroundColor: "red",
+          backgroundColor: colorsArr[cardDisplay.level - 1],
           display: "grid",
           gridArea: "level",
           width: "40%",
@@ -80,7 +81,7 @@ const LeitnerCard = ({
       <div
         style={{
           gridArea: "line",
-          backgroundColor: "red",
+          backgroundColor: colorsArr[cardDisplay.level - 1],
           borderRadius: "10px",
           height: "30%",
           alignSelf: "center",
@@ -244,10 +245,3 @@ const LeitnerCard = ({
 };
 
 export default LeitnerCard;
-
-//     this.title = title;
-//     this.front = front;
-//     this.back = back;
-//     this.level = 1
-//     this.examples = []
-//     this.formality = 5

@@ -1,4 +1,5 @@
 import React from "react";
+import { BACKGROUND } from "../../colors";
 import LeitnerTimeLineDayIndicatorSq from "./LeitnerTimeLineDayIndicatorSq";
 
 const LeitnerTimeLineDayIndicator = ({ leitnerDay }) => {
@@ -18,7 +19,7 @@ const LeitnerTimeLineDayIndicator = ({ leitnerDay }) => {
   return (
     <div
       style={{
-        backgroundColor: "lightGray",
+        backgroundColor: BACKGROUND,
         width: "100%",
         height: "100%",
         gridArea: "indicator",

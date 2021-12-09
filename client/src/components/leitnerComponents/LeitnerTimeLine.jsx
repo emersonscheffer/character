@@ -3,6 +3,17 @@ import React from "react";
 import LeitnerTimeLineNumber from "./LeitnerTimeLineNumber";
 import LeitnerTimeLineBullets from "./LeitnerTimeLineBullets";
 
+import {
+  BACKGROUND,
+  COLOR1,
+  COLOR2,
+  COLOR3,
+  COLOR4,
+  COLOR5,
+  COLOR6,
+  COLOR7,
+} from "../../colors";
+
 const LeitnerTimeLine = ({ leitnerDay }) => {
   const timeLineNumbers = () => {
     let arr = [];
@@ -21,13 +32,13 @@ const LeitnerTimeLine = ({ leitnerDay }) => {
   };
 
   const bulletCollors = [
-    "pink",
-    "blue",
-    "green",
-    "black",
-    "yellow",
-    "purple",
-    "orange",
+    COLOR1,
+    COLOR2,
+    COLOR3,
+    COLOR4,
+    COLOR5,
+    COLOR6,
+    COLOR7,
   ];
 
   const intervals = {
@@ -62,11 +73,11 @@ const LeitnerTimeLine = ({ leitnerDay }) => {
   return (
     <div
       style={{
-        backgroundColor: "grey",
+        backgroundColor: BACKGROUND,
         width: "100%",
         height: "100%",
         gridArea: "timeline",
-       // gridColumn: "1/9",
+        // gridColumn: "1/9",
         display: "grid",
         //borderRadius: "5px",
         gridTemplateColumns: "repeat(64, 1fr)",

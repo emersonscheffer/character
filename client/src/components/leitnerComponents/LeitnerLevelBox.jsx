@@ -16,6 +16,8 @@ const LeitnerLevelBox = ({
       style={{
         width: widthHeight,
         height: widthHeight,
+        justifySelf: "center",
+          alignSelf: "center",
         border: "solid black 1px",
         backgroundColor: bgColor,
         borderRadius: "5px",
@@ -32,8 +34,7 @@ const LeitnerLevelBox = ({
           gridArea: "number",
           justifySelf: "center",
           alignSelf: "center",
-          //backgroundColor: "red",
-          //width: "100%", height: "100%"
+          
         }}
       >
         {quantity}
