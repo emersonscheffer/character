@@ -2,21 +2,26 @@
 
 
 MVP
+    make data persitent
 
-> > > render level box in leitner Level Box Container function 
+    first function to load - loadSavedStateOrStartNewUser - called by useEffect in LeitnerBoxGrid 
 
-Add a retired cards box , fix colors, all around the app
+
+REVIEWING CODE / REFACTORING
+
 
 Create a btn to simulate the days changing, so you can test the Study Btn when in the same day , and becoming available the next day 
 
 
-focus on reducer line 89 
+
 
  
 
  button STUDY status checks: 
     box 1 empty ?? status active
 
+
+fix colors, all around the app
 
 create a function to add cards from the boxes according to what leitner Day it is , ex: day 2 add cards into boxLevel 1 , then , get cards from boxLevel 2 , add them into current studying array, then, get cards from boxLevel 1 "fresh new cards", add them into current studying array 
 

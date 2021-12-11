@@ -8,6 +8,8 @@ import {
   IS_LIST_EMPTY,
   STUDY_BTN_PRESSED,
   CARD_BTN_PRESSED,
+  CHANGE_DAY,
+  LOAD_APP
 } from "./types";
 
 // cards data from file
@@ -171,6 +173,14 @@ export const isCurrentStudyingEmpty = () => (dispatch) => {
   } else {
     dispatch({ type: IS_LIST_EMPTY, payload: false });
   }
+};
+
+export const changeDay = () => (dispatch) => {
+  dispatch({ type: CHANGE_DAY });
+};
+
+export const loadApp = () => (dispatch) => {
+  dispatch({ type: LOAD_APP });
 };
 
 // const pressedMe = () => {

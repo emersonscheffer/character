@@ -1,5 +1,4 @@
 import React from "react";
-import { COLOR1 } from "../../colors";
 
 const LeitnerLevelBox = ({
   quantity,

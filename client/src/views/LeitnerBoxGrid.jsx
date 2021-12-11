@@ -12,6 +12,8 @@ import {
   loadSavedStateOrStartNewUser,
   studyButtonAction,
   cardButtonsActions,
+  changeDay,
+  loadApp,
   //isCurrentStudyingEmpty,
 } from "../actions/leitnerBoxActions";
 import LeitnerLevelBoxContainer from "../components/leitnerComponents/LeitnerLevelBoxContainer";
@@ -39,11 +41,12 @@ const LeitnerBoxGrid = () => {
     boxLevel5,
     boxLevel6,
     boxLevel7,
-    cardDisplay,
-    cardsToAddQuantity,
-    studyButtonDisabledStatus,
+    //cardDisplay,
+    //cardsToAddQuantity,
+    studyButtonActive,
     currentStudying,
     leitnerDay,
+    boxRetired,
   } = useSelector((state) => state.leitnerBox);
 
   // boxes array
@@ -55,6 +58,7 @@ const LeitnerBoxGrid = () => {
     boxLevel5,
     boxLevel6,
     boxLevel7,
+    boxRetired,
   ];
 
   const colorsArr = [COLOR1, COLOR2, COLOR3, COLOR4, COLOR5, COLOR6, COLOR7];
@@ -125,14 +129,46 @@ const LeitnerBoxGrid = () => {
 
       <div
         style={{
-          backgroundColor: "pink",
+          backgroundColor: "lightGray",
           gridArea: "control",
           display: "grid",
+          gridTemplate: `
+            "load studyBtn settings" 100% 
+            / 1fr 1fr 1fr
+          `,
         }}
       >
+        {/* temp load app button */}
+
+        <div
+          onClick={() => dispatch(loadApp())}
+          style={{
+            gridArea: "load",
+            justifySelf: "center",
+            alignSelf: "center",
+            backgroundColor: "red",
+          }}
+        >
+          <h1 style={{ padding: 7 }}>Load App</h1>
+        </div>
+
+        {/* // temp change day button */}
+        <div
+          onClick={() => dispatch(changeDay())}
+          style={{
+            gridArea: "settings",
+            justifySelf: "center",
+            alignSelf: "center",
+            width: "50%",
+            height: "50%",
+            backgroundColor: "lightblue",
+          }}
+        >
+          day change
+        </div>
         <LeitnerTimeLineStudyButton
           pressedMe={studyBtnPressed}
-          isDisabled={studyButtonDisabledStatus}
+          activeButton={studyButtonActive}
           buttonTxt={"Study"}
         />
       </div>
@@ -157,7 +193,7 @@ const LeitnerBoxGrid = () => {
       <div
         style={{
           backgroundColor: "#f2f2f2",
-          
+
           gridArea: "rightside",
         }}
       >

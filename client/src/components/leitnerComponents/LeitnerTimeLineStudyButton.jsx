@@ -1,25 +1,26 @@
 import React from "react";
 
-const LeitnerTimeLineStudyButton = ({ pressedMe, buttonTxt, isDisabled }) => {
+const LeitnerTimeLineStudyButton = ({ pressedMe, buttonTxt, activeButton }) => {
   return (
     <div
-      onClick={isDisabled ? null : pressedMe}
+      onClick={activeButton ? pressedMe : null}
       style={{
         width: "120px",
         height: "80%",
-        backgroundColor: isDisabled ? "lightGrey" : "beige",
+        backgroundColor: activeButton ? "beige" : "lightGrey",
         display: "grid",
-        //margin: "20px",
+
         MozUserSelect: "none",
         WebkitUserSelect: "none",
         MsUserSelect: "none",
         unselectable: "on",
-        //gridColumn: "1/6",
+
         justifySelf: "center",
-        alignSelf: "center"
+        alignSelf: "center",
+        gridArea: "studyBtn"
       }}
     >
-      <h1 style={{ alignSelf: "center", justifySelf: "center" , color: isDisabled ? "grey" : "black", }}>
+      <h1 style={{ alignSelf: "center", justifySelf: "center" , color: activeButton ? "black" : "grey", }}>
         {buttonTxt}
       </h1>
     </div>
@@ -27,7 +28,6 @@ const LeitnerTimeLineStudyButton = ({ pressedMe, buttonTxt, isDisabled }) => {
 };
 
 export default LeitnerTimeLineStudyButton;
-
 
 
 // <div 
