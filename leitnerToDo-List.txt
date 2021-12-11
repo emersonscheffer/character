@@ -2,12 +2,24 @@
 
 
 MVP
+
+    make a modal so the user can change his/her name when pressing the "student" button 
+
     make data persitent
 
     first function to load - loadSavedStateOrStartNewUser - called by useEffect in LeitnerBoxGrid 
 
 
 REVIEWING CODE / REFACTORING
+
+
+
+/////////////////////////////////////
+
+
+
+
+
 
 
 Create a btn to simulate the days changing, so you can test the Study Btn when in the same day , and becoming available the next day 

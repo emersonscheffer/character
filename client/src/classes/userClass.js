@@ -15,6 +15,7 @@ export class UserClass {
     this.leitnerDay = leitnerDay;
     this.studyStarted = studyStarted;
     this.userName = userName;
+    
   }
 
   updateDay(day) {
@@ -41,3 +42,36 @@ export class UserClass {
     this.userName = userNickName;
   }
 }
+
+
+
+// userName: "",
+//   deck: [],
+
+//   boxLevel1: [],
+//   boxLevel2: [],
+//   boxLevel3: [],
+//   boxLevel4: [],
+//   boxLevel5: [],
+//   boxLevel6: [],
+//   boxLevel7: [],
+
+  // boxRetired: [],
+
+  // currentMonth: 0,
+  // currentDay: 0,
+
+  // savedMonth: 0,
+  // savedDay: 0,
+
+  // leitnerDay: 1, 
+  // studyStarted: false,
+
+  // cardsToAddQuantity: 2,
+
+  // studyButtonActive: true,
+
+  // currentStudying: new CurrentQueue(),
+  // quantityOfCardsToAdd: 2,
+
+  // canvasLoaded: false,

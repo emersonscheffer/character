@@ -120,6 +120,30 @@ export const addCardToDeckAction = (card) => (dispatch) => {
   }
 };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const loadSavedStateOrStartNewUser = () => (dispatch) => {
   if (mdat) {
     console.log("load successful");
@@ -127,13 +151,40 @@ export const loadSavedStateOrStartNewUser = () => (dispatch) => {
     //dispatch and change localstorage
     dispatch({ type: LOAD_STATE, payload: mdat });
   } else {
+
     const newUser = new UserClass();
     newUser.deck = cardsData;
     localStorage.setItem("mdat", JSON.stringify(newUser));
 
     dispatch({ type: INITIAL_CARD_LOAD, payload: cardsData });
+    
   }
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //let fruits = ["Apple", "Mango", "Orange", "Pear"];
 let currentStudying = [];

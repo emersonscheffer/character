@@ -31,16 +31,16 @@ const initialState = {
   savedMonth: 0,
   savedDay: 0,
 
-  leitnerDay: 3, // timeline cursor
+  leitnerDay: 1, // timeline cursor
   studyStarted: false,
-  cardDisplay: {
-    title: "Pick and Roll",
-    level: 10,
-    examples: ["Go walk run and score", "win the game"],
-    meaning:
-      "a basketball play in which a player sets a screen and then cuts toward the basket for a pass",
-    formality: 5,
-  },
+  // cardDisplay: {
+  //   title: "Pick and Roll",
+  //   level: 10,
+  //   examples: ["Go walk run and score", "win the game"],
+  //   meaning:
+  //     "a basketball play in which a player sets a screen and then cuts toward the basket for a pass",
+  //   formality: 5,
+  // },
 
   cardsToAddQuantity: 2,
 
