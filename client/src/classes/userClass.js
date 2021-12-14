@@ -9,12 +9,21 @@ export class UserClass {
     studyStarted = false,
     userName = ""
   ) {
+
+
     this.currentDay = currentDay;
     this.currentMonth = currentMonth;
     this.deck = deck;
     this.leitnerDay = leitnerDay;
     this.studyStarted = studyStarted;
     this.userName = userName;
+    this.currentStudying = []
+    this.studyButtonActive = false
+    this.savedMonth = 0
+    this.savedDay = 0
+    this.quantityOfCardsToAdd = 2
+    this.canvasLoaded = false
+
     
   }
 
@@ -45,9 +54,6 @@ export class UserClass {
 
 
 
-// userName: "",
-//   deck: [],
-
 //   boxLevel1: [],
 //   boxLevel2: [],
 //   boxLevel3: [],
@@ -58,20 +64,8 @@ export class UserClass {
 
   // boxRetired: [],
 
-  // currentMonth: 0,
-  // currentDay: 0,
 
-  // savedMonth: 0,
-  // savedDay: 0,
+  
 
-  // leitnerDay: 1, 
-  // studyStarted: false,
-
-  // cardsToAddQuantity: 2,
-
-  // studyButtonActive: true,
-
-  // currentStudying: new CurrentQueue(),
-  // quantityOfCardsToAdd: 2,
 
   // canvasLoaded: false,

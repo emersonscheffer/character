@@ -9,10 +9,17 @@ MVP
 
     first function to load - loadSavedStateOrStartNewUser - called by useEffect in LeitnerBoxGrid 
 
+    create a function to read all cards and update the ones with the update flag = true , from cards database to user personal data 
+
+    create a function to distribute all the cards into their respective level boxes 
+
 
 REVIEWING CODE / REFACTORING
 
-
+should I ?
+ decks = [
+     { english : [] }, { guitar : [] }
+ ]
 
 /////////////////////////////////////
 
