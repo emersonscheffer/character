@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 
-import leitnerBoxReducer from "./leitnerBoxReducer"
+import leitnerBoxReducer from "./leitnerBoxReducer";
 
 export default combineReducers({
-    leitnerBox: leitnerBoxReducer
-})
+  leitnerBox: leitnerBoxReducer,
+});

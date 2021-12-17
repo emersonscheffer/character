@@ -223,6 +223,8 @@ const decks = [
 
 decks.forEach(deck => {
   console.log(" @@@@@@ ", deck.subject)
+  console.log(" @@@@@@ ", deck.box1)
+
 });
 
 for (const deck of decks) {
