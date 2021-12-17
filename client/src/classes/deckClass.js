@@ -1,6 +1,6 @@
 export class Deck {
-  constructor() {
-    this.subject = "";
+  constructor(subject) {
+    this.subject = subject;
     this.store = [];
 
     this.box1 = [];
@@ -14,4 +14,17 @@ export class Deck {
 
     this.quantityOfCardsToAdd = 2;
   }
+
+  addCardIntoDeck(card){
+    this.store.push(card)
+  }
+
+  changeQuantityOfCardsToStudy(n){
+    this.quantityOfCardsToAdd = n
+  }
+
+  addFullDeck(deck) {
+    this.store = deck
+  }
+
 }

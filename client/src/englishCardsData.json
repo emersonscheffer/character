@@ -116,5 +116,17 @@
     ],
     "level": 0,
     "updated": false
+  },
+  {
+    "title": "undergo",
+    "formality": 5,
+    "meaning": "Experience",
+    "examples": [
+      "There was a police cordon around the site of the incident",
+      "There was a cordon of police on either side of the road as the prince drove down the road",
+      "the area was cordoned off because they didn't want the criminals to escape"
+    ],
+    "level": 0,
+    "updated": false
   }
 ]

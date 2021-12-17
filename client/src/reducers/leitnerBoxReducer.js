@@ -12,8 +12,28 @@ import {
 import { CurrentQueue } from "../classes/CurrentQueue";
 
 const initialState = {
-  userName: "",
+  canvasLoaded: false,
+  currentDay: 0,
+  currentMonth: 0,
+
+  currentStudying: new CurrentQueue(),
+
   deck: [],
+
+  decks: [],
+
+  leitnerDay: 1,
+
+  savedDay: 0,
+  savedMonth: 0,
+
+  selectedDeck: 0,
+
+  studyButtonActive: true,
+
+  studyStarted: false,
+
+  userName: "",
 
   boxLevel1: [],
   boxLevel2: [],
@@ -25,31 +45,9 @@ const initialState = {
 
   boxRetired: [],
 
-  currentMonth: 0,
-  currentDay: 0,
-
-  savedMonth: 0,
-  savedDay: 0,
-
-  leitnerDay: 1, // timeline cursor
-  studyStarted: false,
-  // cardDisplay: {
-  //   title: "Pick and Roll",
-  //   level: 10,
-  //   examples: ["Go walk run and score", "win the game"],
-  //   meaning:
-  //     "a basketball play in which a player sets a screen and then cuts toward the basket for a pass",
-  //   formality: 5,
-  // },
-
   cardsToAddQuantity: 2,
 
-  studyButtonActive: true,
-
-  currentStudying: new CurrentQueue(),
   quantityOfCardsToAdd: 2,
-
-  canvasLoaded: false,
 };
 
 const daysMap = {
@@ -210,17 +208,25 @@ export default function myState(state = initialState, action) {
         ...state,
         deck: action.payload,
       };
+
     case LOAD_STATE:
       // I just added the deck from storage for now, I'll add the rest later
 
       return {
         ...state,
-        userName: action.payload["userName"],
-        deck: action.payload["deck"],
+        canvasLoaded: action.payload["canvasLoaded"],
         currentDay: action.payload["currentDay"],
         currentMonth: action.payload["currentMonth"],
+        //currentStudying: action.payload["currentStudying"], // fix the bug and uncomment this line
+        deck: action.payload["deck"],
+        decks: action.payload["decks"],
         leitnerDay: action.payload["leitnerDay"],
+        savedDay: action.payload["savedDay"],
+        savedMonth: action.payload["savedMonth"],
+        selectedDeck: action.payload["selectedDeck"],
+        studyButtonActive: action.payload["studyButtonActive"],
         studyStarted: action.payload["studyStarted"],
+        userName: action.payload["userName"],
       };
 
     case ADD_CARD:

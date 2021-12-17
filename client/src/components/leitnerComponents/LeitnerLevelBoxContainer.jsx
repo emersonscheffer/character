@@ -11,43 +11,30 @@ import {
   COLOR7,
 } from "../../colors";
 
-const LeitnerLevelBoxContainer = ({ deck, boxes }) => {
+const LeitnerLevelBoxContainer = ({ deck, cDeck }) => {
   const boxQuantities = [
-    boxes[0].length,
-    boxes[1].length,
-    boxes[2].length,
-    boxes[3].length,
-    boxes[4].length,
-    boxes[5].length,
-    boxes[6].length,
-    boxes[7].length
+
+    cDeck.box1.length,
+    cDeck.box2.length,
+    cDeck.box3.length,
+    cDeck.box4.length,
+    cDeck.box5.length,
+    cDeck.box6.length,
+    cDeck.box7.length,
+    cDeck.retiredBox.length,
+    // boxes[0].length,
+    // boxes[1].length,
+    // boxes[2].length,
+    // boxes[3].length,
+    // boxes[4].length,
+    // boxes[5].length,
+    // boxes[6].length,
+    // boxes[7].length
   ];
 
   const colorsArr = [COLOR1, COLOR2, COLOR3, COLOR4, COLOR5, COLOR6, COLOR7];
 
   const deckQuantity = deck.length;
-
-  // const renderColorBoxes = () => {
-  //   let boxes = [];
-  //   const colors = [COLOR1, COLOR2, COLOR3, COLOR4, COLOR5, COLOR6, COLOR7];
-  //   for (let i = 0; i < 7; i++) {
-  //     boxes.push(
-  //       <div
-  //         // add a key here
-  //         style={{
-  //           backgroundColor: colors[i],
-  //           width: "30%",
-  //           height: "30%",
-  //           gridArea: String("color").concat(i + 1),
-  //           alignSelf: "center",
-  //           justifySelf: "center",
-  //         }}
-  //       ></div>
-  //     );
-  //   }
-
-  //   return boxes;
-  // };
 
   const renderLevelBoxes = () => {
     let levelBoxes = [];
@@ -92,11 +79,12 @@ const LeitnerLevelBoxContainer = ({ deck, boxes }) => {
       }}
     >
       <LeitnerLevelBox
-        quantity={deckQuantity}
+        //quantity={deckQuantity}
+        quantity={cDeck.store.length}
         boxNumber="1"
         widthHeight="50px"
         deck={true}
-        subject="English"
+        subject={cDeck.subject}
         area="deck"
         colorD={" black"}
       />

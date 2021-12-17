@@ -33,6 +33,10 @@ import {
 const LeitnerBoxGrid = () => {
   const dispatch = useDispatch();
   const {
+
+    decks,
+    selectedDeck,
+
     deck,
     boxLevel1,
     boxLevel2,
@@ -49,17 +53,19 @@ const LeitnerBoxGrid = () => {
     boxRetired,
   } = useSelector((state) => state.leitnerBox);
 
-  // boxes array
-  const boxes = [
-    boxLevel1,
-    boxLevel2,
-    boxLevel3,
-    boxLevel4,
-    boxLevel5,
-    boxLevel6,
-    boxLevel7,
-    boxRetired,
-  ];
+  console.log(decks[selectedDeck] , " ---- >> -=- =- =- ")
+
+  // // boxes array
+  // const boxes = [
+  //   boxLevel1,
+  //   boxLevel2,
+  //   boxLevel3,
+  //   boxLevel4,
+  //   boxLevel5,
+  //   boxLevel6,
+  //   boxLevel7,
+  //   boxRetired,
+  // ];
 
   const colorsArr = [COLOR1, COLOR2, COLOR3, COLOR4, COLOR5, COLOR6, COLOR7];
 
@@ -124,7 +130,7 @@ const LeitnerBoxGrid = () => {
           gridArea: "leftside",
         }}
       >
-        <LeitnerLevelBoxContainer deck={deck} boxes={boxes} />
+        <LeitnerLevelBoxContainer cDeck={decks[0]} deck={deck} /> 
       </div>
 
       <div

@@ -11,7 +11,7 @@ export class UserClass {
     studyStarted = false,
     userName = ""
   ) {
-    this.quantityOfCardsToAdd = 2; // move this to card class
+    //this.quantityOfCardsToAdd = 2; // move this to card class
 
     this.canvasLoaded = false;
     this.currentDay = currentDay;
@@ -25,7 +25,7 @@ export class UserClass {
 
     this.savedMonth = 0;
 
-    this.selectedDeck = 1;
+    this.selectedDeck = 0;
     this.studyButtonActive = false;
 
     this.studyStarted = studyStarted;

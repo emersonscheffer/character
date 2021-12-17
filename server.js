@@ -184,3 +184,48 @@ console.log(current);
 //     console.log(String(i).concat(":1,"))
 //   }
 // }
+
+
+const decks = [
+
+  { 
+     subject : "english",
+     quantityOfCards : 2,
+     deck: [],
+     box1: [],
+     box2: [],
+     box3: [],
+     box4: [],
+     box5: [],
+     box6: [],
+     box7: [],
+     retiredBox: []
+
+ },
+ { 
+     subject : "guitar",
+     quantityOfCards : 2,
+     deck: [],
+     box1: [],
+     box2: [],
+     box3: [],
+     box4: [],
+     box5: [],
+     box6: [],
+     box7: [],
+     retiredBox: []
+
+ },
+
+
+]
+
+
+decks.forEach(deck => {
+  console.log(" @@@@@@ ", deck.subject)
+});
+
+for (const deck of decks) {
+  console.log(" ###### " , deck.subject)
+}
+//console.log(decks[0].subject, "---- this is the subject")

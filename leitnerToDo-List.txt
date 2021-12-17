@@ -139,3 +139,6 @@ Create a way to back up database - write/append to txt document
 - leitner time line - transform them into perfect squares
 
 - compare if date has changed, if yes - button enabled else - next 'study' button disabled
+
+
+create a function to look for "updated cards" and update them except the "level"

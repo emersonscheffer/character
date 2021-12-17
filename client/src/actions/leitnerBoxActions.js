@@ -1,4 +1,5 @@
 //
+import { Deck } from "../classes/deckClass";
 import { UserClass } from "../classes/userClass";
 import {
   ADD_CARD,
@@ -13,7 +14,7 @@ import {
 } from "./types";
 
 // cards data from file
-const cardsData = require("../cardsData.json");
+const englishCardsData = require("../englishCardsData.json");
 
 // all user data from storage
 const mdat = JSON.parse(localStorage.getItem("mdat")) || null;
@@ -26,11 +27,14 @@ let updatedDeck = mdat ? mdat["deck"] : [];
 
 const loadingNewCardsIntoTheDeck = () => {
   if (mdat) {
-    // console.log(mdat["deck"]);
+    
+    
     if (mdat["deck"].length === 0) {
       // if deck is empty, copy cards from file
       let user = new UserClass();
-      user.deck = cardsData;
+      user.deck = englishCardsData;
+
+      
 
       localStorage.setItem("mdat", JSON.stringify(user));
     } else {
@@ -41,7 +45,7 @@ const loadingNewCardsIntoTheDeck = () => {
       }
       //addNewCardsFromDataBase(tempList)
       //console.log(tempList)
-      for (let card of cardsData) {
+      for (let card of englishCardsData) {
         //console.log(card.title)
         if (!tempList.includes(card.title)) {
           updatedDeck = [...updatedDeck, card];
@@ -54,6 +58,11 @@ const loadingNewCardsIntoTheDeck = () => {
 
   const newUser = new UserClass();
   newUser.deck = updatedDeck;
+
+  let englishDeck = new Deck("english")
+  englishDeck.addFullDeck(updatedDeck)
+
+  newUser.decks = [englishDeck]
 
   localStorage.setItem("mdat", JSON.stringify(newUser));
 
@@ -146,17 +155,17 @@ export const addCardToDeckAction = (card) => (dispatch) => {
 
 export const loadSavedStateOrStartNewUser = () => (dispatch) => {
   if (mdat) {
-    console.log("load successful");
+    console.log("load successful = from actions");
 
     //dispatch and change localstorage
     dispatch({ type: LOAD_STATE, payload: mdat });
   } else {
 
     const newUser = new UserClass();
-    newUser.deck = cardsData;
+    newUser.deck = englishCardsData;
     localStorage.setItem("mdat", JSON.stringify(newUser));
 
-    dispatch({ type: INITIAL_CARD_LOAD, payload: cardsData });
+    dispatch({ type: INITIAL_CARD_LOAD, payload: englishCardsData });
     
   }
 };
