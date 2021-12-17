@@ -1,5 +1,7 @@
 // User Class
 
+import { Deck } from "./deckClass";
+
 export class UserClass {
   constructor(
     currentDay = 0,
@@ -9,22 +11,25 @@ export class UserClass {
     studyStarted = false,
     userName = ""
   ) {
+    this.quantityOfCardsToAdd = 2; // move this to card class
 
-
+    this.canvasLoaded = false;
     this.currentDay = currentDay;
     this.currentMonth = currentMonth;
+
+    this.currentStudying = [];
     this.deck = deck;
+    this.decks = []
     this.leitnerDay = leitnerDay;
+    this.savedDay = 0;
+
+    this.savedMonth = 0;
+
+    this.selectedDeck = 1;
+    this.studyButtonActive = false;
+
     this.studyStarted = studyStarted;
     this.userName = userName;
-    this.currentStudying = []
-    this.studyButtonActive = false
-    this.savedMonth = 0
-    this.savedDay = 0
-    this.quantityOfCardsToAdd = 2
-    this.canvasLoaded = false
-
-    
   }
 
   updateDay(day) {
@@ -52,8 +57,6 @@ export class UserClass {
   }
 }
 
-
-
 //   boxLevel1: [],
 //   boxLevel2: [],
 //   boxLevel3: [],
@@ -62,10 +65,6 @@ export class UserClass {
 //   boxLevel6: [],
 //   boxLevel7: [],
 
-  // boxRetired: [],
+// boxRetired: [],
 
-
-  
-
-
-  // canvasLoaded: false,
+// canvasLoaded: false,

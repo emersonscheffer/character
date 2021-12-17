@@ -3,6 +3,9 @@
 
 MVP
 
+    add "selected deck" into userClass
+
+
     make a modal so the user can change his/her name when pressing the "student" button 
 
     make data persitent
@@ -20,6 +23,44 @@ should I ?
  decks = [
      { english : [] }, { guitar : [] }
  ]
+
+--- > > < < ---
+
+ decks = [
+
+     { 
+        subject : english,
+        quantityOfCards : 2,
+        deck: [],
+        box1: [],
+        box2: [],
+        box3: [],
+        box4: [],
+        box5: [],
+        box6: [],
+        box7: [],
+        retiredBox: []
+
+    },
+    { 
+        subject : guitar,
+        quantityOfCards : 2,
+        deck: [],
+        box1: [],
+        box2: [],
+        box3: [],
+        box4: [],
+        box5: [],
+        box6: [],
+        box7: [],
+        retiredBox: []
+
+    },
+
+
+ ]
+
+ set the quantity of the cards to add in the individual decks 
 
 /////////////////////////////////////
 
