@@ -40,7 +40,7 @@ const LeitnerBoxGrid = () => {
     leitnerDay,
   } = useSelector((state) => state.leitnerBox);
 
-  console.log(decks, " ---- >> -=- =- =- ");
+  
 
   
 
@@ -54,9 +54,9 @@ const LeitnerBoxGrid = () => {
     dispatch(cardButtonsActions(btnPressed));
   };
 
-  useEffect(() => {
-    dispatch(loadSavedStateOrStartNewUser());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(loadSavedStateOrStartNewUser());
+  // }, [dispatch]);
 
   return (
     <div

@@ -55,6 +55,7 @@ const loadingNewCardsIntoTheDeck = () => {
   }
 
   console.log(updatedDeck);
+  console.log("adding cards into deck");
 
   const newUser = new UserClass();
   newUser.deck = updatedDeck;
@@ -160,10 +161,10 @@ export const loadSavedStateOrStartNewUser = () => (dispatch) => {
     //dispatch and change localstorage
     dispatch({ type: LOAD_STATE, payload: mdat });
   } else {
-
+    console.log("started a new user")
     const newUser = new UserClass();
     newUser.deck = englishCardsData;
-    localStorage.setItem("mdat", JSON.stringify(newUser));
+    //localStorage.setItem("mdat", JSON.stringify(newUser));
 
     dispatch({ type: INITIAL_CARD_LOAD, payload: englishCardsData });
     
