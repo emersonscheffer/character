@@ -10,36 +10,35 @@ import {
   STUDY_BTN_PRESSED,
   CARD_BTN_PRESSED,
   CHANGE_DAY,
-  LOAD_APP
+  LOAD_APP,
 } from "./types";
+
+// string to variable
+const mdat = "mdat";
 
 // cards data from file
 const englishCardsData = require("../englishCardsData.json");
 
 // all user data from storage
-const mdat = JSON.parse(localStorage.getItem("mdat")) || null;
+const storedMdat = JSON.parse(localStorage.getItem(mdat)) || null;
 
-let updatedDeck = mdat ? mdat["deck"] : [];
+let updatedDeck = storedMdat ? storedMdat["deck"] : [];
 
 //const addNewCardsFromDataBase = (list) => {
 //console.log(list)
 //}
 
 const loadingNewCardsIntoTheDeck = () => {
-  if (mdat) {
-    
-    
-    if (mdat["deck"].length === 0) {
+  if (storedMdat) {
+    if (storedMdat["deck"].length === 0) {
       // if deck is empty, copy cards from file
       let user = new UserClass();
       user.deck = englishCardsData;
 
-      
-
-      localStorage.setItem("mdat", JSON.stringify(user));
+      localStorage.setItem(mdat, JSON.stringify(user));
     } else {
       let tempList = [];
-      for (let card of mdat["deck"]) {
+      for (let card of storedMdat["deck"]) {
         //console.log(card, " -<")
         tempList.push(card.title);
       }
@@ -60,12 +59,12 @@ const loadingNewCardsIntoTheDeck = () => {
   const newUser = new UserClass();
   newUser.deck = updatedDeck;
 
-  let englishDeck = new Deck("english")
-  englishDeck.addFullDeck(updatedDeck)
+  let englishDeck = new Deck("english");
+  englishDeck.addFullDeck(updatedDeck);
 
-  newUser.decks = [englishDeck]
+  newUser.decks = [englishDeck];
 
-  localStorage.setItem("mdat", JSON.stringify(newUser));
+  localStorage.setItem(mdat, JSON.stringify(newUser));
 
   /* 
   
@@ -76,7 +75,7 @@ const loadingNewCardsIntoTheDeck = () => {
   */
 }; // end of loadingNewCardsIntoTheDeck
 
-loadingNewCardsIntoTheDeck();
+// loadingNewCardsIntoTheDeck();
 
 // ------ >  > > >    >  make it work later, as for right now nothing is happening
 export const changeUserName = (newName) => (dispatch) => {
@@ -95,14 +94,14 @@ export const addCardToDeckAction = (card) => (dispatch) => {
   // check if card is in the deck
   //const mdat = JSON.parse(localStorage.getItem("mdat")) || null;
   let updatedUser = new UserClass();
-  updatedUser.updateDay(mdat["currentDay"]);
-  updatedUser.updateMonth(mdat["currentMonth"]);
-  updatedUser.updateLeitnerDay(mdat["leitnerDay"]);
-  updatedUser.updateStudyStarted(mdat["studyStarted"]);
-  updatedUser.updateUserName(mdat["userName"]);
+  updatedUser.updateDay(storedMdat["currentDay"]);
+  updatedUser.updateMonth(storedMdat["currentMonth"]);
+  updatedUser.updateLeitnerDay(storedMdat["leitnerDay"]);
+  updatedUser.updateStudyStarted(storedMdat["studyStarted"]);
+  updatedUser.updateUserName(storedMdat["userName"]);
 
-  if (mdat) {
-    const deck = mdat["deck"];
+  if (storedMdat) {
+    const deck = storedMdat["deck"];
     let containInDeck = false;
     if (deck) {
       for (let i = 0; i < deck.length; i++) {
@@ -123,7 +122,7 @@ export const addCardToDeckAction = (card) => (dispatch) => {
       //   })
       // );
 
-      localStorage.setItem("mdat", JSON.stringify(updatedUser));
+      localStorage.setItem(mdat, JSON.stringify(updatedUser));
 
       dispatch({ type: ADD_CARD, payload: card });
     }
@@ -132,69 +131,86 @@ export const addCardToDeckAction = (card) => (dispatch) => {
 
 
 
+const updateUser = (key, data) => {
+  let storedUser = JSON.parse(localStorage.getItem(mdat));
+  let userData = new UserClass();
 
+  userData.updateCanvasLoaded(storedUser["canvasLoaded"]);
+  userData.updateCurrentDay(storedUser["currentDay"]);
+  userData.updateCurrentMonth(storedUser["currentMonth"]);
+  userData.updateCurrentStudying(storedUser["currentStudying"]);
+  userData.updateDecks(storedUser["decks"]);
+  userData.updateLeitnerDay(storedUser["leitnerDay"]);
+  userData.updateSavedDay(storedUser["savedDay"]);
+  userData.updateSavedMonth(storedUser["savedMonth"]);
+  userData.updateSelectedDeck(storedUser["selectedDeck"]);
+  userData.updateStudyButtonActive(storedUser["studyButtonActive"]);
+  userData.updateStudyStarted(storedUser["studyStarted"]);
+  userData.updateUserName(storedUser["userName"]);
 
+  switch (key) {
+    case "canvasLoaded":
+      userData.updateCanvasLoaded(data);
+      break;
+    case "currentDay":
+      userData.updateCurrentDay(data);
+      break;
+    case "currentMonth":
+      userData.updateCurrentMonth(data);
+      break;
+    case "currentStudying":
+      userData.updateCurrentStudying(data);
+      break;
+    case "decks":
+      userData.updateDecks(data);
+      break;
+    case "leitnerDay":
+      userData.updateLeitnerDay(data);
+      break;
+    case "savedDay":
+      userData.updateSavedDay(data);
+      break;
+    case "savedMonth":
+      userData.updateSavedMonth(data);
+      break;
+    case "selectedDeck":
+      userData.updateSelectedDeck(data);
+      break;
+    case "studyButtonActive":
+      userData.updateStudyButtonActive(data);
+      break;
+    case "studyStarted":
+      userData.updateStudyStarted(data);
+      break;
+    case "userName":
+      userData.updateUserName(data);
+      break;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-export const loadSavedStateOrStartNewUser = () => (dispatch) => {
-  if (mdat) {
-    console.log("load successful = from actions");
-
-    //dispatch and change localstorage
-    dispatch({ type: LOAD_STATE, payload: mdat });
-  } else {
-    console.log("started a new user")
-    const newUser = new UserClass();
-    newUser.deck = englishCardsData;
-    //localStorage.setItem("mdat", JSON.stringify(newUser));
-
-    dispatch({ type: INITIAL_CARD_LOAD, payload: englishCardsData });
-    
+    default:
+      break;
   }
+
+
+  localStorage.setItem( mdat, JSON.stringify(userData) )
 };
 
 
+export const loadSavedStateOrStartNewUser = () => (dispatch) => {
+  if (storedMdat) {
+    console.log("load successful = from actions");
 
+    updateUser("userName", "Emerson");
+    //dispatch and change localstorage
+    dispatch({ type: LOAD_STATE, payload: mdat });
+  } else {
+    console.log("started a new user");
+    const newUser = new UserClass();
+    // newUser.deck = englishCardsData;
+    localStorage.setItem(mdat, JSON.stringify(newUser));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    dispatch({ type: INITIAL_CARD_LOAD, payload: englishCardsData });
+  }
+};
 
 //let fruits = ["Apple", "Mango", "Orange", "Pear"];
 let currentStudying = [];

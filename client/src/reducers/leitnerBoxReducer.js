@@ -18,8 +18,6 @@ const initialState = {
 
   currentStudying: new CurrentQueue(),
 
-  deck: [],
-
   decks: [],
 
   leitnerDay: 1,

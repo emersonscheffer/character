@@ -1,25 +1,23 @@
 // User Class
 
-import { Deck } from "./deckClass";
+// import { Deck } from "./deckClass";
 
 export class UserClass {
   constructor(
     currentDay = 0,
     currentMonth = 0,
-    deck = [],
+
     leitnerDay = 1,
     studyStarted = false,
     userName = ""
   ) {
-    //this.quantityOfCardsToAdd = 2; // move this to card class
-
     this.canvasLoaded = false;
     this.currentDay = currentDay;
     this.currentMonth = currentMonth;
 
     this.currentStudying = [];
-    this.deck = deck;
-    this.decks = []
+
+    this.decks = [];
     this.leitnerDay = leitnerDay;
     this.savedDay = 0;
 
@@ -32,21 +30,44 @@ export class UserClass {
     this.userName = userName;
   }
 
-  updateDay(day) {
+  updateCanvasLoaded(status) {
+    this.canvasLoaded = status;
+  }
+
+  updateCurrentDay(day) {
     this.currentDay = day;
   }
 
-  updateMonth(month) {
+  updateCurrentMonth(month) {
     this.currentMonth = month;
   }
 
-  //insert card in Deck
-  insertCard(card) {
-    this.deck.push(card);
+  updateCurrentStudying(study) {
+    this.currentStudying = study;
+  }
+
+  updateDecks(decks) {
+    this.decks = decks;
   }
 
   updateLeitnerDay(day) {
     this.leitnerDay = day;
+  }
+
+  updateSavedDay(day) {
+    this.savedDay = day;
+  }
+
+  updateSavedMonth(month) {
+    this.savedMonth = month;
+  }
+
+  updateSelectedDeck(deck) {
+    this.selectedDeck = deck;
+  }
+
+  updateStudyButtonActive(status) {
+    this.studyButtonActive = status;
   }
 
   updateStudyStarted(condition) {
@@ -56,15 +77,3 @@ export class UserClass {
     this.userName = userNickName;
   }
 }
-
-//   boxLevel1: [],
-//   boxLevel2: [],
-//   boxLevel3: [],
-//   boxLevel4: [],
-//   boxLevel5: [],
-//   boxLevel6: [],
-//   boxLevel7: [],
-
-// boxRetired: [],
-
-// canvasLoaded: false,

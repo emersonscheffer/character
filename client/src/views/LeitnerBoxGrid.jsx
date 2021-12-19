@@ -54,9 +54,9 @@ const LeitnerBoxGrid = () => {
     dispatch(cardButtonsActions(btnPressed));
   };
 
-  // useEffect(() => {
-  //   dispatch(loadSavedStateOrStartNewUser());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(loadSavedStateOrStartNewUser());
+  }, [dispatch]);
 
   return (
     <div
@@ -109,7 +109,7 @@ const LeitnerBoxGrid = () => {
       >
         
 
-        <LeitnerLevelBoxContainer cDeck={decks[selectedDeck]} />
+        {/* <LeitnerLevelBoxContainer cDeck={decks[selectedDeck]} /> */}
         
       </div>
 
