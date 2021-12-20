@@ -8,3 +8,6 @@ export const STUDY_BTN_PRESSED = "STUDY_BTN_PRESSED";
 export const CARD_BTN_PRESSED = "CARD_BTN_PRESSED";
 export const CHANGE_DAY = "CHANGE_DAY";
 export const LOAD_APP = "LOAD_APP"
+
+export const UPDATE_USER = "UPDATE_USER"
+export const INITIAL_USER = "INITIAL_USER"

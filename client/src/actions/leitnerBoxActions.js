@@ -11,16 +11,30 @@ import {
   CARD_BTN_PRESSED,
   CHANGE_DAY,
   LOAD_APP,
+  UPDATE_USER,
+  INITIAL_USER
 } from "./types";
 
 // string to variable
 const mdat = "mdat";
 
+const decks = [] // hold all of my decks from database
+
 // cards data from file
 const englishCardsData = require("../englishCardsData.json");
 
+let englishDeck = new Deck("english")
+englishDeck.addFullDeck(englishCardsData)
+
+decks.push(englishDeck)
+
+let storedUser = JSON.parse(localStorage.getItem(mdat)) || null;
+
+
+// console.log(decks[0].subject)
+
 // all user data from storage
-const storedMdat = JSON.parse(localStorage.getItem(mdat)) || null;
+const storedMdat = JSON.parse(localStorage.getItem(mdat)) || null; // delete this one
 
 let updatedDeck = storedMdat ? storedMdat["deck"] : [];
 
@@ -131,8 +145,7 @@ export const addCardToDeckAction = (card) => (dispatch) => {
 
 
 
-const updateUser = (key, data) => {
-  let storedUser = JSON.parse(localStorage.getItem(mdat));
+const updateUser = (key, data) => dispatch => {
   let userData = new UserClass();
 
   userData.updateCanvasLoaded(storedUser["canvasLoaded"]);
@@ -192,25 +205,55 @@ const updateUser = (key, data) => {
 
 
   localStorage.setItem( mdat, JSON.stringify(userData) )
+
+  
+  dispatch({ type: UPDATE_USER, payload: userData})
+
 };
+
+
+
+
+
+
+
+
 
 
 export const loadSavedStateOrStartNewUser = () => (dispatch) => {
-  if (storedMdat) {
+
+  if (storedUser) {
     console.log("load successful = from actions");
 
-    updateUser("userName", "Emerson");
+    //updateUser("userName", "Pearl Jam");
     //dispatch and change localstorage
-    dispatch({ type: LOAD_STATE, payload: mdat });
+    dispatch({ type: LOAD_STATE, payload: storedUser });
+
   } else {
-    console.log("started a new user");
+    // create a new user from scratch and add the english cards database
+
     const newUser = new UserClass();
-    // newUser.deck = englishCardsData;
+
+    newUser.decks = decks
+
     localStorage.setItem(mdat, JSON.stringify(newUser));
 
-    dispatch({ type: INITIAL_CARD_LOAD, payload: englishCardsData });
+    dispatch({ type: INITIAL_USER, payload: decks });
   }
 };
+
+ 
+
+
+
+
+
+
+
+
+
+
+
 
 //let fruits = ["Apple", "Mango", "Orange", "Pear"];
 let currentStudying = [];

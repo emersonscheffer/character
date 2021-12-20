@@ -7,6 +7,7 @@ import {
   CARD_BTN_PRESSED,
   CHANGE_DAY,
   LOAD_APP,
+  INITIAL_USER
 } from "../actions/types";
 
 import { CurrentQueue } from "../classes/CurrentQueue";
@@ -33,19 +34,19 @@ const initialState = {
 
   userName: "",
 
-  boxLevel1: [],
-  boxLevel2: [],
-  boxLevel3: [],
-  boxLevel4: [],
-  boxLevel5: [],
-  boxLevel6: [],
-  boxLevel7: [],
+  // boxLevel1: [],
+  // boxLevel2: [],
+  // boxLevel3: [],
+  // boxLevel4: [],
+  // boxLevel5: [],
+  // boxLevel6: [],
+  // boxLevel7: [],
 
-  boxRetired: [],
+  // boxRetired: [],
 
-  cardsToAddQuantity: 2,
+  // cardsToAddQuantity: 2,
 
-  quantityOfCardsToAdd: 2,
+  // quantityOfCardsToAdd: 2,
 };
 
 const daysMap = {
@@ -187,6 +188,13 @@ function sameDay(month1, day1, month2, day2) {
 
 export default function myState(state = initialState, action) {
   switch (action.type) {
+
+    case INITIAL_USER:
+      return {
+        ...state,
+        decks : action.payload
+      }
+
     case LOAD_APP:
       return {
         ...state,
