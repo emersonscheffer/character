@@ -30,8 +30,13 @@ decks.push(englishDeck)
 
 let storedUser = JSON.parse(localStorage.getItem(mdat)) || null;
 
+console.log(storedUser, " from actions ->")
 
 // console.log(decks[0].subject)
+
+
+
+
 
 // all user data from storage
 const storedMdat = JSON.parse(localStorage.getItem(mdat)) || null; // delete this one

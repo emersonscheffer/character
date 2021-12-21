@@ -216,15 +216,16 @@ export default function myState(state = initialState, action) {
       };
 
     case LOAD_STATE:
-      // I just added the deck from storage for now, I'll add the rest later
+      
+      const tempCurrentStudying = new CurrentQueue()
+      tempCurrentStudying.addArr(action.payload["currentStudying"].store)
 
       return {
         ...state,
         canvasLoaded: action.payload["canvasLoaded"],
         currentDay: action.payload["currentDay"],
         currentMonth: action.payload["currentMonth"],
-        //currentStudying: action.payload["currentStudying"], // fix the bug and uncomment this line
-        deck: action.payload["deck"],
+        currentStudying: tempCurrentStudying,
         decks: action.payload["decks"],
         leitnerDay: action.payload["leitnerDay"],
         savedDay: action.payload["savedDay"],
@@ -235,15 +236,15 @@ export default function myState(state = initialState, action) {
         userName: action.payload["userName"],
       };
 
-    case ADD_CARD:
+    // case ADD_CARD:
       //console.log(action.payload)
 
       // if card is already in deck, option 1 - try editing card, card is already in the deck, return previous state
       // else
-      return {
-        ...state,
-        deck: [...state.deck, action.payload],
-      };
+      // return {
+      //   ...state,
+      //   deck: [...state.deck, action.payload],
+      // };
 
     case STUDY_BTN_PRESSED:
       // timeline

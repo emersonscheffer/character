@@ -3,6 +3,7 @@
 
 MVP
 
+    loadingNewCardsIntoTheDeck function should be called by LOAD STATE
 
    >> call the function loadingNewCardsIntoTheDeck (actions 28) once loadSavedStateOrStartNewUser is called
 
@@ -11,7 +12,7 @@ MVP
 
     make data persitent
 
-    note - first function to load - loadSavedStateOrStartNewUser - called by useEffect in LeitnerBoxGrid 
+    
 
     create a function to read all cards and update the ones with the update flag = true , from cards database to user personal data 
 

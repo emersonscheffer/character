@@ -1,5 +1,7 @@
 // User Class
 
+import { CurrentQueue } from "./CurrentQueue";
+
 // import { Deck } from "./deckClass";
 
 export class UserClass {
@@ -15,7 +17,7 @@ export class UserClass {
     this.currentDay = currentDay;
     this.currentMonth = currentMonth;
 
-    this.currentStudying = [];
+    this.currentStudying = new CurrentQueue()
 
     this.decks = [];
     this.leitnerDay = leitnerDay;
