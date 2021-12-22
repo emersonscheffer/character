@@ -1,3 +1,5 @@
+import { CurrentQueue } from "./CurrentQueue";
+
 export class Deck {
   constructor(subject) {
     this.subject = subject;
@@ -13,18 +15,19 @@ export class Deck {
     this.retiredBox = [];
 
     this.quantityOfCardsToAdd = 2;
+
+    this.currentStudying = new CurrentQueue();
   }
 
-  addCardIntoDeck(card){
-    this.store.push(card)
+  addCardIntoDeck(card) {
+    this.store.push(card);
   }
 
-  changeQuantityOfCardsToStudy(n){
-    this.quantityOfCardsToAdd = n
+  changeQuantityOfCardsToStudy(n) {
+    this.quantityOfCardsToAdd = n;
   }
 
   addFullDeck(deck) {
-    this.store = deck
+    this.store = deck;
   }
-
 }
