@@ -48,6 +48,10 @@ export class UserClass {
     this.currentStudying = study;
   }
 
+  updateDeckInDecks(pos, deck){
+    this.decks[pos] = deck
+  }
+  
   updateDecks(decks) {
     this.decks = decks;
   }

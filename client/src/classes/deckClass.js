@@ -14,7 +14,7 @@ export class Deck {
     this.box7 = [];
     this.retiredBox = [];
 
-    this.quantityOfCardsToAdd = 2;
+    this.quantityOfCardsToAdd = 4;
 
     this.currentStudying = new CurrentQueue();
 

@@ -12,34 +12,27 @@ import {
   CHANGE_DAY,
   LOAD_APP,
   UPDATE_USER,
-  INITIAL_USER
+  INITIAL_USER,
 } from "./types";
 
 // string to variable
 const mdat = "mdat";
 
-const decks = [] // hold all of my decks from database
+const decks = []; // hold all of my decks from database
 
 // cards data from file
 const englishCardsData = require("../englishCardsData.json");
 
-let englishDeck = new Deck("english")
-englishDeck.addFullDeck(englishCardsData)
+let englishDeck = new Deck("english");
+englishDeck.addFullDeck(englishCardsData);
 
-decks.push(englishDeck)
-
-
-
+decks.push(englishDeck);
 
 let storedUser = JSON.parse(localStorage.getItem(mdat)) || null;
 
-console.log(storedUser, " from actions ->")
+
 
 // console.log(decks[0].subject)
-
-
-
-
 
 // all user data from storage
 const storedMdat = JSON.parse(localStorage.getItem(mdat)) || null; // delete this one
@@ -112,54 +105,53 @@ export const changeUserName = (newName) => (dispatch) => {
   );
 };
 
-export const addCardToDeckAction = (card) => (dispatch) => {
-  // check if card is in the deck
-  //const mdat = JSON.parse(localStorage.getItem("mdat")) || null;
-  let updatedUser = new UserClass();
-  updatedUser.updateDay(storedMdat["currentDay"]);
-  updatedUser.updateMonth(storedMdat["currentMonth"]);
-  updatedUser.updateLeitnerDay(storedMdat["leitnerDay"]);
-  updatedUser.updateStudyStarted(storedMdat["studyStarted"]);
-  updatedUser.updateUserName(storedMdat["userName"]);
+// export const addCardToDeckAction = (card) => (dispatch) => {
+//   // check if card is in the deck
+//   //const mdat = JSON.parse(localStorage.getItem("mdat")) || null;
+//   let updatedUser = new UserClass();
+//   updatedUser.updateDay(storedMdat["currentDay"]);
+//   updatedUser.updateMonth(storedMdat["currentMonth"]);
+//   updatedUser.updateLeitnerDay(storedMdat["leitnerDay"]);
+//   updatedUser.updateStudyStarted(storedMdat["studyStarted"]);
+//   updatedUser.updateUserName(storedMdat["userName"]);
 
-  if (storedMdat) {
-    const deck = storedMdat["deck"];
-    let containInDeck = false;
-    if (deck) {
-      for (let i = 0; i < deck.length; i++) {
-        if (deck[i]["title"] === card["title"]) {
-          console.log("repeat = = = = =");
-          containInDeck = true;
-        }
-        updatedUser.insertCard(deck[i]);
-      }
-    }
+//   if (storedMdat) {
+//     const deck = storedMdat["deck"];
+//     let containInDeck = false;
+//     if (deck) {
+//       for (let i = 0; i < deck.length; i++) {
+//         if (deck[i]["title"] === card["title"]) {
+//           console.log("repeat = = = = =");
+//           containInDeck = true;
+//         }
+//         updatedUser.insertCard(deck[i]);
+//       }
+//     }
 
-    if (!containInDeck) {
-      updatedUser.insertCard(card);
-      // localStorage.setItem(
-      //   "mdat",
-      //   JSON.stringify({
-      //     deck: deck ? [...deck, card] : [card],
-      //   })
-      // );
+//     if (!containInDeck) {
+//       updatedUser.insertCard(card);
+//       // localStorage.setItem(
+//       //   "mdat",
+//       //   JSON.stringify({
+//       //     deck: deck ? [...deck, card] : [card],
+//       //   })
+//       // );
 
-      localStorage.setItem(mdat, JSON.stringify(updatedUser));
+//       localStorage.setItem(mdat, JSON.stringify(updatedUser));
 
-      dispatch({ type: ADD_CARD, payload: card });
-    }
-  }
-};
+//       dispatch({ type: ADD_CARD, payload: card });
+//     }
+//   }
+// };
 
-
-
-const updateUser = (key, data) => dispatch => {
+const updateUser = (key, data) => {
   let userData = new UserClass();
 
   userData.updateCanvasLoaded(storedUser["canvasLoaded"]);
   userData.updateCurrentDay(storedUser["currentDay"]);
   userData.updateCurrentMonth(storedUser["currentMonth"]);
-  //userData.updateCurrentStudying(storedUser["currentStudying"]);
+ 
+  
   userData.updateDecks(storedUser["decks"]);
   userData.updateLeitnerDay(storedUser["leitnerDay"]);
   userData.updateSavedDay(storedUser["savedDay"]);
@@ -184,6 +176,9 @@ const updateUser = (key, data) => dispatch => {
       break;
     case "decks":
       userData.updateDecks(data);
+      break;
+    case "deckInDecks":
+      userData.updateDeckInDecks(userData.selectedDeck, data);
       break;
     case "leitnerDay":
       userData.updateLeitnerDay(data);
@@ -211,50 +206,30 @@ const updateUser = (key, data) => dispatch => {
       break;
   }
 
+  localStorage.setItem(mdat, JSON.stringify(userData));
 
-  localStorage.setItem( mdat, JSON.stringify(userData) )
-
-  
-  dispatch({ type: UPDATE_USER, payload: userData})
-
+  //dispatch({ type: UPDATE_USER, payload: userData });
 };
 
-
-
-
-
-
-
-
-
-
 export const loadSavedStateOrStartNewUser = () => (dispatch) => {
-
   if (storedUser) {
     console.log("load successful = from actions");
 
     //updateUser("userName", "Pearl Jam");
     //dispatch and change localstorage
     dispatch({ type: LOAD_STATE, payload: storedUser });
-
   } else {
     // create a new user from scratch and add the english cards database
 
     const newUser = new UserClass();
 
-    newUser.decks = decks
+    newUser.decks = decks;
 
     localStorage.setItem(mdat, JSON.stringify(newUser));
 
     dispatch({ type: INITIAL_USER, payload: decks });
   }
 };
-
- 
-
-
-
-
 
 const daysMap = {
   1: 1,
@@ -323,78 +298,59 @@ const daysMap = {
   64: 7,
 };
 
-
-
-
-
-
-
-
 // //let fruits = ["Apple", "Mango", "Orange", "Pear"];
 // let currentStudying = [];
 
 export const studyButtonAction = (deck) => (dispatch) => {
-
-  console.log("----- ")
-  console.log(deck.deckStarted)
   //is deckStarted?
   // if deck started === false
-    // change it to true
-    if(!deck.deckStarted) {
-      deck.deckStarted = true
-    } else {
-      let day = deck.leitnerDay + 1
-      if(day === 65){
-        day = 1
+  // change it to true
+  if (!deck.deckStarted) {
+    deck.deckStarted = true;
+  } else {
+    let day = deck.leitnerDay + 1;
+    if (day === 65) {
+      day = 1;
+    }
+    deck.leitnerDay = day;
+  }
+
+  for (let i = 0; i < deck.quantityOfCardsToAdd; i++) {
+    let card = deck.store.shift();
+    card.level = 1;
+    deck.box1.push(card);
+  }
+
+  function checkAllBoxesAndAddItemsIntoCurrent() {
+    let tempCurrent = [];
+
+    const allBoxes = [
+      deck.box1,
+      deck.box2,
+      deck.box3,
+      deck.box4,
+      deck.box5,
+      deck.box6,
+      deck.box7,
+    ];
+
+    function checkBox(b) {
+      if (b < 1) {
+        return;
       }
-      deck.leitnerDay = day
+      tempCurrent = [...tempCurrent, ...allBoxes[b - 1]];
+      checkBox(b - 1);
     }
 
+    checkBox(daysMap[deck.leitnerDay]);
 
-    for (let i = 0; i < deck.quantityOfCardsToAdd; i++) {
-      let card = deck.store.shift()
-      card.level = 1
-      deck.box1.push(card)
-      
-    }
+    return tempCurrent;
+  }
 
+  deck.currentStudying.store = checkAllBoxesAndAddItemsIntoCurrent();
 
-     function checkAllBoxesAndAddItemsIntoCurrent() {
-       let temCurrent = [];
-    
-      const allBoxes = [
-        deck.box1,
-        deck.box2,
-        deck.box3,
-        deck.box4,
-        deck.box5,
-        deck.box6,
-        deck.box7,
-      ]
-
-      function checkBox(b) {
-        if (b < 1) {
-          return;
-        }
-        temCurrent = [...temCurrent, ...allBoxes[b - 1]];
-        checkBox(b - 1);
-      }
-
-      checkBox(daysMap[deck.leitnerDay])
-
-      return temCurrent
-
-    }
-    
-    
-    deck.currentStudying.store = checkAllBoxesAndAddItemsIntoCurrent()
-
-    console.log(deck)
-    
-  
-
-  
-
+  updateUser("deckInDecks", deck)
+  updateUser("studyButtonActive", false)
 
   dispatch({ type: STUDY_BTN_PRESSED });
 };
