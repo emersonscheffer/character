@@ -17,7 +17,7 @@ export class UserClass {
     this.currentDay = currentDay;
     this.currentMonth = currentMonth;
 
-    this.currentStudying = new CurrentQueue()
+    // this.currentStudying = new CurrentQueue()
 
     this.decks = [];
     this.leitnerDay = leitnerDay;

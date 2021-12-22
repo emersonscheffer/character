@@ -11,15 +11,16 @@ import {
 } from "../actions/types";
 
 import { CurrentQueue } from "../classes/CurrentQueue";
+import { Deck } from "../classes/deckClass";
 
 const initialState = {
   canvasLoaded: false,
   currentDay: 0,
   currentMonth: 0,
 
-  currentStudying: new CurrentQueue(),
+  // currentStudying: new CurrentQueue(),
 
-  decks: [],
+  decks: [new Deck()],
 
   leitnerDay: 1,
 
@@ -34,19 +35,6 @@ const initialState = {
 
   userName: "",
 
-  // boxLevel1: [],
-  // boxLevel2: [],
-  // boxLevel3: [],
-  // boxLevel4: [],
-  // boxLevel5: [],
-  // boxLevel6: [],
-  // boxLevel7: [],
-
-  // boxRetired: [],
-
-  // cardsToAddQuantity: 2,
-
-  // quantityOfCardsToAdd: 2,
 };
 
 const daysMap = {
@@ -142,35 +130,35 @@ function areAllBoxesEmpty() {
   checkEmptyBoxes(7);
 }
 
-function checkBoxesAndAddItemsIntoCurrent(leitnerDay) {
-  let current = [];
+// function checkBoxesAndAddItemsIntoCurrent(leitnerDay) {
+//   let current = [];
 
-  const allBoxes = [
-    initialState.boxLevel1,
-    initialState.boxLevel2,
-    initialState.boxLevel3,
-    initialState.boxLevel4,
-    initialState.boxLevel5,
-    initialState.boxLevel6,
-    initialState.boxLevel7,
-  ];
+//   const allBoxes = [
+//     initialState.boxLevel1,
+//     initialState.boxLevel2,
+//     initialState.boxLevel3,
+//     initialState.boxLevel4,
+//     initialState.boxLevel5,
+//     initialState.boxLevel6,
+//     initialState.boxLevel7,
+//   ];
 
-  function checkBox(b) {
-    if (b < 1) {
-      return;
-    }
-    current = [...current, ...allBoxes[b - 1]];
-    checkBox(b - 1);
-  }
+//   function checkBox(b) {
+//     if (b < 1) {
+//       return;
+//     }
+//     current = [...current, ...allBoxes[b - 1]];
+//     checkBox(b - 1);
+//   }
 
-  // for (const day in days) {
+//   // for (const day in days) {
 
-  checkBox(daysMap[leitnerDay]);
+//   checkBox(daysMap[leitnerDay]);
 
-  //console.log("leitner day from inside function : ", leitnerDay);
+//   //console.log("leitner day from inside function : ", leitnerDay);
 
-  return current;
-}
+//   return current;
+// }
 
 function sameDay(month1, day1, month2, day2) {
   if (month1 === month2) {
@@ -217,15 +205,15 @@ export default function myState(state = initialState, action) {
 
     case LOAD_STATE:
       
-      const tempCurrentStudying = new CurrentQueue()
-      tempCurrentStudying.addArr(action.payload["currentStudying"].store)
+      //const tempCurrentStudying = new CurrentQueue()
+      //tempCurrentStudying.addArr(action.payload["currentStudying"].store)
 
       return {
         ...state,
         canvasLoaded: action.payload["canvasLoaded"],
         currentDay: action.payload["currentDay"],
         currentMonth: action.payload["currentMonth"],
-        currentStudying: tempCurrentStudying,
+        // currentStudying: tempCurrentStudying,
         decks: action.payload["decks"],
         leitnerDay: action.payload["leitnerDay"],
         savedDay: action.payload["savedDay"],
@@ -252,13 +240,13 @@ export default function myState(state = initialState, action) {
       // -> start study
       // -> timeline cursor -> set as day 1 or next day
 
-      let day = state.leitnerDay;
-      if (state.studyStarted) {
-        day = state.leitnerDay + 1;
-        if (day === 65) {
-          day = 1;
-        }
-      }
+      // let day = state.leitnerDay;
+      // if (state.studyStarted) {
+      //   day = state.leitnerDay + 1;
+      //   if (day === 65) {
+      //     day = 1;
+      //   }
+      // }
 
       // let day = state.studyStarted ? state.leitnerDay + 1 : state.leitnerDay;
 
@@ -272,13 +260,13 @@ export default function myState(state = initialState, action) {
       //     // studyButtonDisabledStatusVar = true;
       //   }
       // }
-      for (let i = 0; i < state.quantityOfCardsToAdd; i++) {
-        let card = state.deck.shift();
-        if (card) {
-          card.level = 1;
-          state.boxLevel1.push(card);
-        }
-      }
+      // for (let i = 0; i < state.quantityOfCardsToAdd; i++) {
+      //   let card = state.deck.shift();
+      //   if (card) {
+      //     card.level = 1;
+      //     state.boxLevel1.push(card);
+      //   }
+      // }
 
       //addCardsIntoCurrentStudyingArray()
       //state.currentStudying = state.boxLevel1
@@ -286,7 +274,7 @@ export default function myState(state = initialState, action) {
       //   state.currentStudying.add(state.boxLevel1[j]);
       // }
 
-      state.currentStudying.addArr(checkBoxesAndAddItemsIntoCurrent(day));
+      //state.currentStudying.addArr(checkBoxesAndAddItemsIntoCurrent(day));
 
       // button status
       // -> disable button until all cards are studied
@@ -295,18 +283,18 @@ export default function myState(state = initialState, action) {
       return {
         ...state,
 
-        savedMonth:
-          state.deck.length === 0 ? state.currentMonth : state.savedMonth,
-        savedDay: state.deck.length === 0 ? state.currentDay : state.savedDay,
+        // savedMonth:
+        //   state.deck.length === 0 ? state.currentMonth : state.savedMonth,
+        // savedDay: state.deck.length === 0 ? state.currentDay : state.savedDay,
 
         studyButtonActive: activeButtonVar,
 
-        leitnerDay: day,
-        studyStarted: true,
+        //leitnerDay: day,
+        //studyStarted: true,
 
         // check if items were added to Queue
         // if so , loaded canvas = true
-        canvasLoaded: state.currentStudying.isEmpty() ? false : true,
+        //canvasLoaded: state.currentStudying.isEmpty() ? false : true,
       };
 
     case CARD_BTN_PRESSED:

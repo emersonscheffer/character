@@ -17,6 +17,10 @@ export class Deck {
     this.quantityOfCardsToAdd = 2;
 
     this.currentStudying = new CurrentQueue();
+
+    this.leitnerDay = 1;
+
+    this.deckStarted = false;
   }
 
   addCardIntoDeck(card) {

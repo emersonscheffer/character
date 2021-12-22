@@ -159,7 +159,7 @@ const updateUser = (key, data) => dispatch => {
   userData.updateCanvasLoaded(storedUser["canvasLoaded"]);
   userData.updateCurrentDay(storedUser["currentDay"]);
   userData.updateCurrentMonth(storedUser["currentMonth"]);
-  userData.updateCurrentStudying(storedUser["currentStudying"]);
+  //userData.updateCurrentStudying(storedUser["currentStudying"]);
   userData.updateDecks(storedUser["decks"]);
   userData.updateLeitnerDay(storedUser["leitnerDay"]);
   userData.updateSavedDay(storedUser["savedDay"]);
@@ -256,6 +256,72 @@ export const loadSavedStateOrStartNewUser = () => (dispatch) => {
 
 
 
+const daysMap = {
+  1: 1,
+  2: 2,
+  3: 1,
+  4: 3,
+  5: 1,
+  6: 2,
+  7: 1,
+  8: 4,
+  9: 1,
+  10: 2,
+  11: 1,
+  12: 3,
+  13: 1,
+  14: 2,
+  15: 1,
+  16: 5,
+  17: 1,
+  18: 2,
+  19: 1,
+  20: 3,
+  21: 1,
+  22: 2,
+  23: 1,
+  24: 4,
+  25: 1,
+  26: 2,
+  27: 1,
+  28: 3,
+  29: 1,
+  30: 2,
+  31: 1,
+  32: 6,
+  33: 1,
+  34: 2,
+  35: 1,
+  36: 3,
+  37: 1,
+  38: 2,
+  39: 1,
+  40: 4,
+  41: 1,
+  42: 2,
+  43: 1,
+  44: 3,
+  45: 1,
+  46: 2,
+  47: 1,
+  48: 5,
+  49: 1,
+  50: 2,
+  51: 1,
+  52: 3,
+  53: 1,
+  54: 2,
+  55: 1,
+  56: 4,
+  57: 1,
+  58: 2,
+  59: 1,
+  60: 3,
+  61: 1,
+  62: 2,
+  63: 1,
+  64: 7,
+};
 
 
 
@@ -263,25 +329,72 @@ export const loadSavedStateOrStartNewUser = () => (dispatch) => {
 
 
 
-//let fruits = ["Apple", "Mango", "Orange", "Pear"];
-let currentStudying = [];
 
-export const studyButtonAction = () => (dispatch) => {
-  // get quantity of cards from "deck array" , and add to "current stydying array"
-  // for (let i = 0; i < quantity; i++) {
-  //   currentStudying.push(fruits.shift());
-  // }
+// //let fruits = ["Apple", "Mango", "Orange", "Pear"];
+// let currentStudying = [];
 
-  //console.log(currentStudying, " = current Studying");
+export const studyButtonAction = (deck) => (dispatch) => {
 
-  //isCurrentStudyingEmpty()
-  // dispatch({ type: IS_LIST_EMPTY, payload: false})
+  console.log("----- ")
+  console.log(deck.deckStarted)
+  //is deckStarted?
+  // if deck started === false
+    // change it to true
+    if(!deck.deckStarted) {
+      deck.deckStarted = true
+    } else {
+      let day = deck.leitnerDay + 1
+      if(day === 65){
+        day = 1
+      }
+      deck.leitnerDay = day
+    }
 
-  // if current studying array is NOT empty
-  // button is disabled
 
-  // get number of cards from deck and load cards in the current Array to display cards in order
-  //console.log("pressed study btn");
+    for (let i = 0; i < deck.quantityOfCardsToAdd; i++) {
+      let card = deck.store.shift()
+      card.level = 1
+      deck.box1.push(card)
+      
+    }
+
+
+     function checkAllBoxesAndAddItemsIntoCurrent() {
+       let temCurrent = [];
+    
+      const allBoxes = [
+        deck.box1,
+        deck.box2,
+        deck.box3,
+        deck.box4,
+        deck.box5,
+        deck.box6,
+        deck.box7,
+      ]
+
+      function checkBox(b) {
+        if (b < 1) {
+          return;
+        }
+        temCurrent = [...temCurrent, ...allBoxes[b - 1]];
+        checkBox(b - 1);
+      }
+
+      checkBox(daysMap[deck.leitnerDay])
+
+      return temCurrent
+
+    }
+    
+    
+    deck.currentStudying.store = checkAllBoxesAndAddItemsIntoCurrent()
+
+    console.log(deck)
+    
+  
+
+  
+
 
   dispatch({ type: STUDY_BTN_PRESSED });
 };
@@ -291,17 +404,17 @@ export const cardButtonsActions = (btnPressed) => (dispatch) => {
 };
 
 // this function is to watch current number of cards in current studying
-export const isCurrentStudyingEmpty = () => (dispatch) => {
-  console.log("got here is current");
+// export const isCurrentStudyingEmpty = () => (dispatch) => {
+//   console.log("got here is current");
 
-  //send info to reducer
-  // if current studying array is empty
-  if (currentStudying.length === 0) {
-    dispatch({ type: IS_LIST_EMPTY, payload: true });
-  } else {
-    dispatch({ type: IS_LIST_EMPTY, payload: false });
-  }
-};
+//   //send info to reducer
+//   // if current studying array is empty
+//   if (currentStudying.length === 0) {
+//     dispatch({ type: IS_LIST_EMPTY, payload: true });
+//   } else {
+//     dispatch({ type: IS_LIST_EMPTY, payload: false });
+//   }
+// };
 
 export const changeDay = () => (dispatch) => {
   dispatch({ type: CHANGE_DAY });

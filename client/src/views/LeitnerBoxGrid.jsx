@@ -28,7 +28,7 @@ import {
   COLOR7,
 } from "../colors";
 
-//import { CurrentQueue } from "../classes/CurrentQueue";
+import { CurrentQueue } from "../classes/CurrentQueue";
 
 const LeitnerBoxGrid = () => {
   const dispatch = useDispatch();
@@ -36,18 +36,19 @@ const LeitnerBoxGrid = () => {
     decks,
     selectedDeck,
     studyButtonActive,
-    currentStudying,
     leitnerDay,
   } = useSelector((state) => state.leitnerBox);
 
-  
-
+  let cs = decks[selectedDeck].currentStudying.store || []
+  const current = new CurrentQueue()
+  current.addArr(cs)
+  console.log(current.isEmpty() || null)
   
 
   const colorsArr = [COLOR1, COLOR2, COLOR3, COLOR4, COLOR5, COLOR6, COLOR7];
 
   const studyBtnPressed = () => {
-    dispatch(studyButtonAction());
+    dispatch(studyButtonAction(decks[selectedDeck]));
   };
 
   const buttonsInCardPressed = (btnPressed) => {
@@ -167,10 +168,10 @@ const LeitnerBoxGrid = () => {
           display: "grid",
         }}
       >
-        {currentStudying.isEmpty() ? null : (
+        {current.isEmpty() ? null : (
           <LeitnerCard
             colorsArr={colorsArr}
-            cardDisplay={currentStudying.peek()}
+            cardDisplay={current.peek()}
             btnFn={buttonsInCardPressed}
           />
         )}
