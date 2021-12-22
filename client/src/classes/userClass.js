@@ -26,7 +26,7 @@ export class UserClass {
     this.savedMonth = 0;
 
     this.selectedDeck = 0;
-    this.studyButtonActive = false;
+    this.studyButtonActive = true;
 
     this.studyStarted = studyStarted;
     this.userName = userName;

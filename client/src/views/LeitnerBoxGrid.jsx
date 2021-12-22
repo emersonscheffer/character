@@ -108,8 +108,8 @@ const LeitnerBoxGrid = () => {
         }}
       >
         
-
-        {/* <LeitnerLevelBoxContainer cDeck={decks[selectedDeck]} /> */}
+        {decks[selectedDeck] ?
+        <LeitnerLevelBoxContainer selectedDeck={decks[selectedDeck]} /> : null}
         
       </div>
 

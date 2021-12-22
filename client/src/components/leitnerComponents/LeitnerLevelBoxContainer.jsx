@@ -11,18 +11,18 @@ import {
   COLOR7,
 } from "../../colors";
 
-const LeitnerLevelBoxContainer = ({ cDeck }) => {
+const LeitnerLevelBoxContainer = ({ selectedDeck }) => {
   const boxQuantities = [
 
-    // cDeck.box1.length,
-    // cDeck.box2.length,
-    // cDeck.box3.length,
-    // cDeck.box4.length,
-    // cDeck.box5.length,
-    // cDeck.box6.length,
-    // cDeck.box7.length,
-    // cDeck.retiredBox.length,
-    1,2, 3, 4, 5, 6, 7, 8
+    selectedDeck.box1.length,
+    selectedDeck.box2.length,
+    selectedDeck.box3.length,
+    selectedDeck.box4.length,
+    selectedDeck.box5.length,
+    selectedDeck.box6.length,
+    selectedDeck.box7.length,
+    selectedDeck.retiredBox.length,
+    
     
   ];
 
@@ -73,12 +73,12 @@ const LeitnerLevelBoxContainer = ({ cDeck }) => {
       }}
     >
       <LeitnerLevelBox
-        //quantity={deckQuantity}
-        quantity={20} //cDeck.store.length
+        
+        quantity={selectedDeck.store.length} 
         boxNumber="1"
         widthHeight="50px"
         deck={true}
-        subject={"en"}//cDeck.subject
+        subject={selectedDeck.subject}
         area="deck"
         colorD={" black"}
       />
@@ -86,7 +86,7 @@ const LeitnerLevelBoxContainer = ({ cDeck }) => {
       {renderLevelBoxes()}
 
       <LeitnerLevelBox
-        quantity={boxQuantities[7]}
+        quantity={selectedDeck.retiredBox.length}
         boxNumber="1"
         widthHeight="35px"
         deck={true}

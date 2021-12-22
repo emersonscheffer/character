@@ -266,12 +266,12 @@ export default function myState(state = initialState, action) {
       // -> get number of cards from current deck and add 'em to current studying array
       // -> change the level of the card from 0 to level 1 before inserting in current deck array
       let activeButtonVar = false;
-      if (state.deck.length === 0) {
-        //check if any cards left in all 7 boxes
-        if (!areAllBoxesEmpty()) {
-          // studyButtonDisabledStatusVar = true;
-        }
-      }
+      // if (state.deck.length === 0) {
+      //   //check if any cards left in all 7 boxes
+      //   if (!areAllBoxesEmpty()) {
+      //     // studyButtonDisabledStatusVar = true;
+      //   }
+      // }
       for (let i = 0; i < state.quantityOfCardsToAdd; i++) {
         let card = state.deck.shift();
         if (card) {

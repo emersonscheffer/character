@@ -3,6 +3,8 @@
 
 MVP
 
+    add current studying to each deck individually 
+
     loadingNewCardsIntoTheDeck function should be called by LOAD STATE
 
    >> call the function loadingNewCardsIntoTheDeck (actions 28) once loadSavedStateOrStartNewUser is called
