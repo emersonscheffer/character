@@ -12,6 +12,7 @@ import {
 
 import { CurrentQueue } from "../classes/CurrentQueue";
 import { Deck } from "../classes/deckClass";
+import { UserClass } from "../classes/userClass";
 
 const initialState = {
   canvasLoaded: false,
@@ -193,7 +194,7 @@ export default function myState(state = initialState, action) {
           state.savedDay
         )
           ? false
-          : state.currentStudying.isEmpty()
+          : state.decks[state.selectedDeck].currentStudying.store.length === 0
           ? true
           : false,
       };
@@ -289,7 +290,7 @@ export default function myState(state = initialState, action) {
 
         studyButtonActive: activeButtonVar,
 
-        //leitnerDay: day,
+        leitnerDay: action.payload
         //studyStarted: true,
 
         // check if items were added to Queue
@@ -298,29 +299,30 @@ export default function myState(state = initialState, action) {
       };
 
     case CARD_BTN_PRESSED:
-      let card = state.currentStudying.dequeue();
+      let workingDeck = state.decks[state.selectedDeck]
+      let card = workingDeck.currentStudying.store.shift()
 
       switch (card.level) {
         case 1:
-          state.boxLevel1.shift();
+          workingDeck.box1.shift();
           break;
         case 2:
-          state.boxLevel2.shift();
+          workingDeck.box2.shift();
           break;
         case 3:
-          state.boxLevel3.shift();
+          workingDeck.box3.shift();
           break;
         case 4:
-          state.boxLevel4.shift();
+          workingDeck.box4.shift();
           break;
         case 5:
-          state.boxLevel5.shift();
+          workingDeck.box5.shift();
           break;
         case 6:
-          state.boxLevel6.shift();
+          workingDeck.box6.shift();
           break;
         case 7:
-          state.boxLevel7.shift();
+          workingDeck.box7.shift();
           break;
         default:
           break;
@@ -335,30 +337,30 @@ export default function myState(state = initialState, action) {
 
         switch (card.level) {
           case 2:
-            state.boxLevel2.push(card);
+            workingDeck.box2.push(card);
             break;
           case 3:
-            state.boxLevel3.push(card);
+            workingDeck.box3.push(card);
             break;
           case 4:
-            state.boxLevel4.push(card);
+            workingDeck.box4.push(card);
             break;
           case 5:
-            state.boxLevel5.push(card);
+            workingDeck.box5.push(card);
             break;
           case 6:
-            state.boxLevel6.push(card);
+            workingDeck.box6.push(card);
             break;
           case 7:
-            state.boxLevel7.push(card);
+            workingDeck.box7.push(card);
             break;
           case 8:
-            state.boxRetired.push(card);
+            workingDeck.retiredBox.push(card);
             break;
 
           default:
             console.log("called default state  - check whats wrong");
-            state.boxLevel1.push(card);
+            workingDeck.box1.push(card);
             break;
         }
       } else {
@@ -366,9 +368,24 @@ export default function myState(state = initialState, action) {
         // -> change level of card to 1
         // -> send card to end of queue in current studying
         card.level = 1;
-        state.boxLevel1.push(card);
-        state.currentStudying.add(card);
+        workingDeck.box1.push(card);
+        workingDeck.currentStudying.store.push(card);
       }
+
+      let theUser = new UserClass()
+      theUser.updateCanvasLoaded(state.canvasLoaded)
+      theUser.updateCurrentDay(state.currentDay)
+      theUser.updateCurrentMonth(state.currentMonth)
+      theUser.updateDecks(state.decks)
+      theUser.updateLeitnerDay(state.leitnerDay)
+      theUser.updateSavedDay(state.savedDay)
+      theUser.updateSavedMonth(state.savedMonth)
+      theUser.updateSelectedDeck(state.selectedDeck)
+      theUser.updateStudyButtonActive(state.studyButtonActive)
+      theUser.updateStudyStarted(state.studyStarted)
+      theUser.updateUserName(state.userName)
+
+      localStorage.setItem("mdat", JSON.stringify(theUser));
 
       return {
         ...state,
@@ -377,7 +394,7 @@ export default function myState(state = initialState, action) {
         savedMonth: state.currentMonth,
         savedDay: state.currentDay,
 
-        canvasLoaded: state.currentStudying.isEmpty() ? true : false,
+        //canvasLoaded: state.currentStudying.isEmpty() ? true : false,
 
         // studyButtonActive: state.currentStudying.isEmpty()
         //   ? sameDay() ? false : true

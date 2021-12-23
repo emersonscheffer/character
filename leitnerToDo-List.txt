@@ -3,7 +3,9 @@
 
 MVP
 
-    add current studying to each deck individually 
+    
+    fix leitner day 
+
 
     loadingNewCardsIntoTheDeck function should be called by LOAD STATE
 

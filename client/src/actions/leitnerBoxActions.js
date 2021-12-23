@@ -30,8 +30,6 @@ decks.push(englishDeck);
 
 let storedUser = JSON.parse(localStorage.getItem(mdat)) || null;
 
-
-
 // console.log(decks[0].subject)
 
 // all user data from storage
@@ -150,8 +148,7 @@ const updateUser = (key, data) => {
   userData.updateCanvasLoaded(storedUser["canvasLoaded"]);
   userData.updateCurrentDay(storedUser["currentDay"]);
   userData.updateCurrentMonth(storedUser["currentMonth"]);
- 
-  
+
   userData.updateDecks(storedUser["decks"]);
   userData.updateLeitnerDay(storedUser["leitnerDay"]);
   userData.updateSavedDay(storedUser["savedDay"]);
@@ -316,9 +313,11 @@ export const studyButtonAction = (deck) => (dispatch) => {
   }
 
   for (let i = 0; i < deck.quantityOfCardsToAdd; i++) {
-    let card = deck.store.shift();
-    card.level = 1;
-    deck.box1.push(card);
+    let card = deck.store.shift() || null;
+    if (card) {
+      card.level = 1;
+      deck.box1.push(card);
+    }
   }
 
   function checkAllBoxesAndAddItemsIntoCurrent() {
@@ -349,13 +348,16 @@ export const studyButtonAction = (deck) => (dispatch) => {
 
   deck.currentStudying.store = checkAllBoxesAndAddItemsIntoCurrent();
 
-  updateUser("deckInDecks", deck)
-  updateUser("studyButtonActive", false)
+  updateUser("deckInDecks", deck);
+  updateUser("studyButtonActive", false);
 
-  dispatch({ type: STUDY_BTN_PRESSED });
+  dispatch({ type: STUDY_BTN_PRESSED, payload: deck.leitnerDay });
 };
 
 export const cardButtonsActions = (btnPressed) => (dispatch) => {
+
+
+
   dispatch({ type: CARD_BTN_PRESSED, payload: btnPressed });
 };
 
