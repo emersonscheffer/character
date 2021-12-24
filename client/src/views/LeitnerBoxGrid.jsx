@@ -63,6 +63,10 @@ const LeitnerBoxGrid = () => {
   // 
   const tempDecksArr = ["English", "Math", "Electric Guitar"]
 
+  const sellll = (a) => {
+    console.log(tempDecksArr[a])
+  }
+
   return (
     <div
       style={{
@@ -83,7 +87,7 @@ const LeitnerBoxGrid = () => {
 
       {/* SELECT DECK MODAL  */}
 
-        <SelectDeckModal decks={tempDecksArr}/>
+        <SelectDeckModal decks={tempDecksArr} selectFn={(a) => sellll(a)} />
 
       {/* SELECT DECK MODAL  */}
 

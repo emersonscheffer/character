@@ -6,6 +6,9 @@ MVP
     
     work on select deck modal 
 
+    create a close btn 
+    create a load btn 
+
 
     loadingNewCardsIntoTheDeck function should be called by LOAD STATE
 
@@ -25,48 +28,7 @@ MVP
 
 REVIEWING CODE / REFACTORING
 
-should I ?
- decks = [
-     { english : [] }, { guitar : [] }
- ]
 
---- > > < < ---
-
- decks = [
-
-     { 
-        subject : english,
-        quantityOfCards : 2,
-        deck: [],
-        box1: [],
-        box2: [],
-        box3: [],
-        box4: [],
-        box5: [],
-        box6: [],
-        box7: [],
-        retiredBox: []
-
-    },
-    { 
-        subject : guitar,
-        quantityOfCards : 2,
-        deck: [],
-        box1: [],
-        box2: [],
-        box3: [],
-        box4: [],
-        box5: [],
-        box6: [],
-        box7: [],
-        retiredBox: []
-
-    },
-
-
- ]
-
- set the quantity of the cards to add in the individual decks 
 
 /////////////////////////////////////
 
