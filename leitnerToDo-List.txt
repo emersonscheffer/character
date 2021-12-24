@@ -4,7 +4,7 @@
 MVP
 
     
-    fix leitner day 
+    work on select deck modal 
 
 
     loadingNewCardsIntoTheDeck function should be called by LOAD STATE

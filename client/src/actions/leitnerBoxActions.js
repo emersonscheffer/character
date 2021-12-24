@@ -145,64 +145,64 @@ export const changeUserName = (newName) => (dispatch) => {
 const updateUser = (key, data) => {
   let userData = new UserClass();
 
-  userData.updateCanvasLoaded(storedUser["canvasLoaded"]);
-  userData.updateCurrentDay(storedUser["currentDay"]);
-  userData.updateCurrentMonth(storedUser["currentMonth"]);
+  if (storedUser) {
+    userData.updateCanvasLoaded(storedUser["canvasLoaded"]);
+    userData.updateCurrentDay(storedUser["currentDay"]);
+    userData.updateCurrentMonth(storedUser["currentMonth"]);
 
-  userData.updateDecks(storedUser["decks"]);
-  userData.updateLeitnerDay(storedUser["leitnerDay"]);
-  userData.updateSavedDay(storedUser["savedDay"]);
-  userData.updateSavedMonth(storedUser["savedMonth"]);
-  userData.updateSelectedDeck(storedUser["selectedDeck"]);
-  userData.updateStudyButtonActive(storedUser["studyButtonActive"]);
-  userData.updateStudyStarted(storedUser["studyStarted"]);
-  userData.updateUserName(storedUser["userName"]);
+    userData.updateDecks(storedUser["decks"]);
+    userData.updateSavedDay(storedUser["savedDay"]);
+    userData.updateSavedMonth(storedUser["savedMonth"]);
+    userData.updateSelectedDeck(storedUser["selectedDeck"]);
+    userData.updateStudyButtonActive(storedUser["studyButtonActive"]);
+    userData.updateStudyStarted(storedUser["studyStarted"]);
+    userData.updateUserName(storedUser["userName"]);
 
-  switch (key) {
-    case "canvasLoaded":
-      userData.updateCanvasLoaded(data);
-      break;
-    case "currentDay":
-      userData.updateCurrentDay(data);
-      break;
-    case "currentMonth":
-      userData.updateCurrentMonth(data);
-      break;
-    case "currentStudying":
-      userData.updateCurrentStudying(data);
-      break;
-    case "decks":
-      userData.updateDecks(data);
-      break;
-    case "deckInDecks":
-      userData.updateDeckInDecks(userData.selectedDeck, data);
-      break;
-    case "leitnerDay":
-      userData.updateLeitnerDay(data);
-      break;
-    case "savedDay":
-      userData.updateSavedDay(data);
-      break;
-    case "savedMonth":
-      userData.updateSavedMonth(data);
-      break;
-    case "selectedDeck":
-      userData.updateSelectedDeck(data);
-      break;
-    case "studyButtonActive":
-      userData.updateStudyButtonActive(data);
-      break;
-    case "studyStarted":
-      userData.updateStudyStarted(data);
-      break;
-    case "userName":
-      userData.updateUserName(data);
-      break;
+    switch (key) {
+      case "canvasLoaded":
+        userData.updateCanvasLoaded(data);
+        break;
+      case "currentDay":
+        userData.updateCurrentDay(data);
+        break;
+      case "currentMonth":
+        userData.updateCurrentMonth(data);
+        break;
+      case "currentStudying":
+        userData.updateCurrentStudying(data);
+        break;
+      case "decks":
+        userData.updateDecks(data);
+        break;
+      case "deckInDecks":
+        userData.updateDeckInDecks(userData.selectedDeck, data);
+        break;
+      case "leitnerDay":
+        userData.updateLeitnerDay(data);
+        break;
+      case "savedDay":
+        userData.updateSavedDay(data);
+        break;
+      case "savedMonth":
+        userData.updateSavedMonth(data);
+        break;
+      case "selectedDeck":
+        userData.updateSelectedDeck(data);
+        break;
+      case "studyButtonActive":
+        userData.updateStudyButtonActive(data);
+        break;
+      case "studyStarted":
+        userData.updateStudyStarted(data);
+        break;
+      case "userName":
+        userData.updateUserName(data);
+        break;
 
-    default:
-      break;
+      default:
+        break;
+    }
   }
-
   localStorage.setItem(mdat, JSON.stringify(userData));
 
   //dispatch({ type: UPDATE_USER, payload: userData });
@@ -214,7 +214,9 @@ export const loadSavedStateOrStartNewUser = () => (dispatch) => {
 
     //updateUser("userName", "Pearl Jam");
     //dispatch and change localstorage
-    dispatch({ type: LOAD_STATE, payload: storedUser });
+
+
+    //dispatch({ type: LOAD_STATE, payload: storedUser });
   } else {
     // create a new user from scratch and add the english cards database
 
@@ -298,7 +300,11 @@ const daysMap = {
 // //let fruits = ["Apple", "Mango", "Orange", "Pear"];
 // let currentStudying = [];
 
-export const studyButtonAction = (deck) => (dispatch) => {
+export const selectDeckAction = () => dispatch => {
+  console.log("select Deck")
+}
+
+export const studyButtonAction = (started, deck) => (dispatch) => {
   //is deckStarted?
   // if deck started === false
   // change it to true
@@ -355,9 +361,6 @@ export const studyButtonAction = (deck) => (dispatch) => {
 };
 
 export const cardButtonsActions = (btnPressed) => (dispatch) => {
-
-
-
   dispatch({ type: CARD_BTN_PRESSED, payload: btnPressed });
 };
 

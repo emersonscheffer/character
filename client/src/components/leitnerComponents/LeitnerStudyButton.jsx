@@ -1,6 +1,6 @@
 import React from "react";
 
-const LeitnerTimeLineStudyButton = ({ pressedMe, buttonTxt, activeButton }) => {
+const LeitnerStudyButton = ({ pressedMe, buttonTxt, activeButton }) => {
   return (
     <div
       onClick={activeButton ? pressedMe : null}
@@ -27,7 +27,7 @@ const LeitnerTimeLineStudyButton = ({ pressedMe, buttonTxt, activeButton }) => {
   );
 };
 
-export default LeitnerTimeLineStudyButton;
+export default LeitnerStudyButton;
 
 
 // <div 

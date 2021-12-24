@@ -7,7 +7,7 @@ import {
   CARD_BTN_PRESSED,
   CHANGE_DAY,
   LOAD_APP,
-  INITIAL_USER
+  INITIAL_USER,
 } from "../actions/types";
 
 import { CurrentQueue } from "../classes/CurrentQueue";
@@ -19,11 +19,9 @@ const initialState = {
   currentDay: 0,
   currentMonth: 0,
 
-  // currentStudying: new CurrentQueue(),
+  
 
   decks: [new Deck()],
-
-  leitnerDay: 1,
 
   savedDay: 0,
   savedMonth: 0,
@@ -35,7 +33,6 @@ const initialState = {
   studyStarted: false,
 
   userName: "",
-
 };
 
 const daysMap = {
@@ -177,12 +174,11 @@ function sameDay(month1, day1, month2, day2) {
 
 export default function myState(state = initialState, action) {
   switch (action.type) {
-
     case INITIAL_USER:
       return {
         ...state,
-        decks : action.payload
-      }
+        decks: action.payload,
+      };
 
     case LOAD_APP:
       return {
@@ -205,7 +201,6 @@ export default function myState(state = initialState, action) {
       };
 
     case LOAD_STATE:
-      
       //const tempCurrentStudying = new CurrentQueue()
       //tempCurrentStudying.addArr(action.payload["currentStudying"].store)
 
@@ -226,14 +221,14 @@ export default function myState(state = initialState, action) {
       };
 
     // case ADD_CARD:
-      //console.log(action.payload)
+    //console.log(action.payload)
 
-      // if card is already in deck, option 1 - try editing card, card is already in the deck, return previous state
-      // else
-      // return {
-      //   ...state,
-      //   deck: [...state.deck, action.payload],
-      // };
+    // if card is already in deck, option 1 - try editing card, card is already in the deck, return previous state
+    // else
+    // return {
+    //   ...state,
+    //   deck: [...state.deck, action.payload],
+    // };
 
     case STUDY_BTN_PRESSED:
       // timeline
@@ -290,7 +285,7 @@ export default function myState(state = initialState, action) {
 
         studyButtonActive: activeButtonVar,
 
-        leitnerDay: action.payload
+        leitnerDay: action.payload,
         //studyStarted: true,
 
         // check if items were added to Queue
@@ -299,8 +294,8 @@ export default function myState(state = initialState, action) {
       };
 
     case CARD_BTN_PRESSED:
-      let workingDeck = state.decks[state.selectedDeck]
-      let card = workingDeck.currentStudying.store.shift()
+      let workingDeck = state.decks[state.selectedDeck];
+      let card = workingDeck.currentStudying.store.shift();
 
       switch (card.level) {
         case 1:
@@ -372,18 +367,17 @@ export default function myState(state = initialState, action) {
         workingDeck.currentStudying.store.push(card);
       }
 
-      let theUser = new UserClass()
-      theUser.updateCanvasLoaded(state.canvasLoaded)
-      theUser.updateCurrentDay(state.currentDay)
-      theUser.updateCurrentMonth(state.currentMonth)
-      theUser.updateDecks(state.decks)
-      theUser.updateLeitnerDay(state.leitnerDay)
-      theUser.updateSavedDay(state.savedDay)
-      theUser.updateSavedMonth(state.savedMonth)
-      theUser.updateSelectedDeck(state.selectedDeck)
-      theUser.updateStudyButtonActive(state.studyButtonActive)
-      theUser.updateStudyStarted(state.studyStarted)
-      theUser.updateUserName(state.userName)
+      let theUser = new UserClass();
+      theUser.updateCanvasLoaded(state.canvasLoaded);
+      theUser.updateCurrentDay(state.currentDay);
+      theUser.updateCurrentMonth(state.currentMonth);
+      theUser.updateDecks(state.decks);
+      theUser.updateSavedDay(state.savedDay);
+      theUser.updateSavedMonth(state.savedMonth);
+      theUser.updateSelectedDeck(state.selectedDeck);
+      theUser.updateStudyButtonActive(state.studyButtonActive);
+      theUser.updateStudyStarted(state.studyStarted);
+      theUser.updateUserName(state.userName);
 
       localStorage.setItem("mdat", JSON.stringify(theUser));
 

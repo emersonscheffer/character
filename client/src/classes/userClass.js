@@ -9,7 +9,7 @@ export class UserClass {
     currentDay = 0,
     currentMonth = 0,
 
-    leitnerDay = 1,
+    
     studyStarted = false,
     userName = ""
   ) {
@@ -20,7 +20,7 @@ export class UserClass {
     // this.currentStudying = new CurrentQueue()
 
     this.decks = [];
-    this.leitnerDay = leitnerDay;
+    
     this.savedDay = 0;
 
     this.savedMonth = 0;
@@ -54,10 +54,6 @@ export class UserClass {
   
   updateDecks(decks) {
     this.decks = decks;
-  }
-
-  updateLeitnerDay(day) {
-    this.leitnerDay = day;
   }
 
   updateSavedDay(day) {

@@ -5,7 +5,7 @@ import LeitnerFirstStripe from "../components/leitnerComponents/LeitnerFirstStri
 import LeitnerTimeLine from "../components/leitnerComponents/LeitnerTimeLine";
 import LeitnerTimeLineDayIndicator from "../components/leitnerComponents/LeitnerTimeLineDayIndicator";
 import LeitnerTimeLineSideMenu from "../components/leitnerComponents/LeitnerTimeLineSideMenu";
-import LeitnerTimeLineStudyButton from "../components/leitnerComponents/LeitnerTimeLineStudyButton";
+import LeitnerStudyButton from "../components/leitnerComponents/LeitnerStudyButton";
 import LeitnerCard from "../components/leitnerComponents/LeitnerCard";
 
 import {
@@ -14,7 +14,7 @@ import {
   cardButtonsActions,
   changeDay,
   loadApp,
-  //isCurrentStudyingEmpty,
+  selectDeckAction,
 } from "../actions/leitnerBoxActions";
 import LeitnerLevelBoxContainer from "../components/leitnerComponents/LeitnerLevelBoxContainer";
 import {
@@ -29,26 +29,25 @@ import {
 } from "../colors";
 
 import { CurrentQueue } from "../classes/CurrentQueue";
+import SelectDeckModal from "../components/leitnerComponents/SelectDeckModal";
 
 const LeitnerBoxGrid = () => {
   const dispatch = useDispatch();
-  const {
-    decks,
-    selectedDeck,
-    studyButtonActive,
-    leitnerDay,
-  } = useSelector((state) => state.leitnerBox);
+  const { decks, selectedDeck, studyButtonActive, studyStarted } = useSelector(
+    (state) => state.leitnerBox
+  );
 
-  let cs = decks[selectedDeck].currentStudying.store || []
-  const current = new CurrentQueue()
-  current.addArr(cs)
-  console.log(current.isEmpty() || null)
-  
+  let cs = decks[selectedDeck].currentStudying.store || [];
+  const current = new CurrentQueue();
+  current.addArr(cs);
+  console.log(current.isEmpty() || null);
 
   const colorsArr = [COLOR1, COLOR2, COLOR3, COLOR4, COLOR5, COLOR6, COLOR7];
 
   const studyBtnPressed = () => {
-    dispatch(studyButtonAction(decks[selectedDeck]));
+    studyStarted
+      ? dispatch(studyButtonAction(decks[selectedDeck]))
+      : dispatch(selectDeckAction());
   };
 
   const buttonsInCardPressed = (btnPressed) => {
@@ -58,6 +57,11 @@ const LeitnerBoxGrid = () => {
   useEffect(() => {
     dispatch(loadSavedStateOrStartNewUser());
   }, [dispatch]);
+
+
+  // temp decks array for select deck modal
+  // 
+  const tempDecksArr = ["English", "Math", "Electric Guitar"]
 
   return (
     <div
@@ -76,6 +80,13 @@ const LeitnerBoxGrid = () => {
         `,
       }}
     >
+
+      {/* SELECT DECK MODAL  */}
+
+        <SelectDeckModal decks={tempDecksArr}/>
+
+      {/* SELECT DECK MODAL  */}
+
       <div
         style={{
           backgroundColor: "gray",
@@ -98,20 +109,21 @@ const LeitnerBoxGrid = () => {
         }}
       >
         <LeitnerTimeLineSideMenu />
-        <LeitnerTimeLine leitnerDay={leitnerDay} />
-        <LeitnerTimeLineDayIndicator leitnerDay={leitnerDay} />
+        <LeitnerTimeLine leitnerDay={decks[selectedDeck].leitnerDay} />
+        <LeitnerTimeLineDayIndicator
+          leitnerDay={decks[selectedDeck].leitnerDay}
+        />
       </div>
 
       <div
         style={{
-          //backgroundColor: "green",
+          backgroundColor: "green",
           gridArea: "leftside",
         }}
       >
-        
-        {decks[selectedDeck] ?
-        <LeitnerLevelBoxContainer selectedDeck={decks[selectedDeck]} /> : null}
-        
+        {selectedDeck ? (
+          <LeitnerLevelBoxContainer selectedDeck={decks[selectedDeck]} />
+        ) : null}
       </div>
 
       <div
@@ -153,10 +165,10 @@ const LeitnerBoxGrid = () => {
         >
           day change
         </div>
-        <LeitnerTimeLineStudyButton
+        <LeitnerStudyButton
           pressedMe={studyBtnPressed}
           activeButton={studyButtonActive}
-          buttonTxt={"Study"}
+          buttonTxt={studyStarted ? "Study" : "Select Deck"}
         />
       </div>
 
