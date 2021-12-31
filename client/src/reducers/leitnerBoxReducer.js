@@ -10,6 +10,7 @@ import {
   INITIAL_USER,
   SELECT_DECK,
   SHOW_SELECT_MODAL,
+  HIDE_SELECT_MODAL,
 } from "../actions/types";
 
 import { CurrentQueue } from "../classes/CurrentQueue";
@@ -28,7 +29,7 @@ const initialState = {
   savedDay: 0,
   savedMonth: 0,
 
-  selectedDeck: 0,
+  selectedDeck: -1,
 
   studyButtonActive: true,
 
@@ -419,6 +420,13 @@ export default function myState(state = initialState, action) {
       return {
         ...state,
         showSelectDeckModal: true,
+      };
+    }
+
+    case HIDE_SELECT_MODAL: {
+      return {
+        ...state,
+        showSelectDeckModal: false,
       };
     }
 

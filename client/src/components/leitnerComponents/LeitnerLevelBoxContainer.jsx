@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import LeitnerLevelBox from "./LeitnerLevelBox";
 import {
   BACKGROUND,
@@ -11,9 +11,8 @@ import {
   COLOR7,
 } from "../../colors";
 
-const LeitnerLevelBoxContainer = ({ selectedDeck }) => {
+const LeitnerLevelBoxContainer = ({ selectedDeck, showSelectDeckFn }) => {
   const boxQuantities = [
-
     selectedDeck.box1.length,
     selectedDeck.box2.length,
     selectedDeck.box3.length,
@@ -22,9 +21,9 @@ const LeitnerLevelBoxContainer = ({ selectedDeck }) => {
     selectedDeck.box6.length,
     selectedDeck.box7.length,
     selectedDeck.retiredBox.length,
-    
-    
   ];
+
+  const [showSelectDeckSettings, setShowSelectDeckSettings] = useState(false)
 
   const colorsArr = [COLOR1, COLOR2, COLOR3, COLOR4, COLOR5, COLOR6, COLOR7];
 
@@ -57,24 +56,41 @@ const LeitnerLevelBoxContainer = ({ selectedDeck }) => {
         height: "100%",
         display: "grid",
         gridTemplate: `
-          ". . ." 10px
-          ". deck ." 60px
-          ". box1 ." 40px
-          ". box2 ." 40px
-          ". box3 ." 40px
-          ". box4 ." 40px
-          ". box5 ." 40px
-          ". box6 ." 40px
-          ". box7 ." 40px
-          ". retired ." 40px
-          ". . ." 10px
-           / 5px 1fr 5px 
+          ". . . . ." 10px
+          ". . deck setSel ." 60px
+          ". . box1 . ." 40px
+          ". . box2 . ." 40px
+          ". . box3 . ." 40px
+          ". . box4 . ." 40px
+          ". . box5 . ." 40px
+          ". . box6 . ." 40px
+          ". . box7 . ." 40px
+          ". . retired . ." 40px
+          ". . . . ." 10px
+           / 5px 1fr 1fr 1fr 5px 
         `,
       }}
     >
+
+      {
+        showSelectDeckSettings ? <div
+        onClick={showSelectDeckFn}
+        style={{
+          gridArea: "setSel",
+          backgroundColor: "gray",
+          width: "30%",
+          height: "30%",
+          alignSelf: "end",
+          marginBottom: "5px"
+        }}
+      ></div> : null
+
+      }
+      
+
       <LeitnerLevelBox
-        
-        quantity={selectedDeck.store.length} 
+        showDeckSettingsFn={() => setShowSelectDeckSettings(!showSelectDeckSettings)}
+        quantity={selectedDeck.store.length}
         boxNumber="1"
         widthHeight="50px"
         deck={true}

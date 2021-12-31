@@ -3,7 +3,8 @@
 
 MVP
 
-    create a close btn 
+
+    Timeline -> shows timeline information for selected deck  
     
     After selecting deck from modal menu, load the "level boxes" on the left side with selected deck information 
 
@@ -25,7 +26,7 @@ MVP
 
     create a function to read all cards and update the ones with the update flag = true , from cards database to user personal data 
 
-    create a function to distribute all the cards into their respective level boxes 
+    * not relevant -> create a function to distribute all the cards into their respective level boxes 
 
 
 REVIEWING CODE / REFACTORING

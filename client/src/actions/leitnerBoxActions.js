@@ -14,7 +14,8 @@ import {
   UPDATE_USER,
   INITIAL_USER,
   SELECT_DECK,
-  SHOW_SELECT_MODAL
+  SHOW_SELECT_MODAL,
+  HIDE_SELECT_MODAL,
 } from "./types";
 
 // string to variable
@@ -23,12 +24,17 @@ const mdat = "mdat";
 const decks = []; // hold all of my decks from database
 
 // cards data from file
-const englishCardsData = require("../englishCardsData.json");
+const englishCardsData = require("../extData/englishCardsData.json")
+const mathCardsData = require("../extData/mathCardsData.json")
 
 let englishDeck = new Deck("english");
 englishDeck.addFullDeck(englishCardsData);
 
+let mathDeck = new Deck("Math")
+mathDeck.addFullDeck(mathCardsData)
+
 decks.push(englishDeck);
+decks.push(mathDeck)
 
 let storedUser = JSON.parse(localStorage.getItem(mdat)) || null;
 
@@ -390,9 +396,13 @@ export const selectDeckActions = (deck) => (dispatch) => {
   dispatch({ type: SELECT_DECK, payload: deck });
 };
 
-export const showSelectDeckModalActions = () => (dispatch) =>{
-  dispatch({type: SHOW_SELECT_MODAL})
-}
+export const showSelectDeckModalActions = () => (dispatch) => {
+  dispatch({ type: SHOW_SELECT_MODAL });
+};
+
+export const hideSelectDeckModalActions = () => (dispatch) => {
+  dispatch({ type: HIDE_SELECT_MODAL });
+};
 
 // const pressedMe = () => {
 //   setLeitnerDay(leitnerDay > 63 ? 1 : leitnerDay + 1);

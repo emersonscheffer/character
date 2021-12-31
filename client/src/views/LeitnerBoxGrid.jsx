@@ -18,6 +18,7 @@ import {
   loadApp,
   selectDeckActions,
   showSelectDeckModalActions,
+  hideSelectDeckModalActions,
 } from "../actions/leitnerBoxActions";
 
 import LeitnerLevelBoxContainer from "../components/leitnerComponents/LeitnerLevelBoxContainer";
@@ -44,17 +45,17 @@ const LeitnerBoxGrid = () => {
     showSelectDeckModal,
   } = useSelector((state) => state.leitnerBox);
 
-  let cs = decks[selectedDeck].currentStudying.store || [];
-  const current = new CurrentQueue();
-  current.addArr(cs);
-  console.log(current.isEmpty() || null);
+  // let cs = decks[selectedDeck].currentStudying.store || [];
+  // const current = new CurrentQueue();
+  // current.addArr(cs);
+  // console.log(current.isEmpty() || null);
 
   const colorsArr = [COLOR1, COLOR2, COLOR3, COLOR4, COLOR5, COLOR6, COLOR7];
 
   const studyBtnPressed = () => {
-      studyStarted
-        ? dispatch(studyButtonAction(decks[selectedDeck]))
-        : dispatch(showSelectDeckModalActions())
+    studyStarted
+      ? dispatch(studyButtonAction(decks[selectedDeck]))
+      : dispatch(showSelectDeckModalActions());
   };
 
   const buttonsInCardPressed = (btnPressed) => {
@@ -92,11 +93,17 @@ const LeitnerBoxGrid = () => {
         `,
       }}
     >
-      {/* SELECT DECK MODAL  */}
+      {/*                 SELECT DECK MODAL              */}
+      {/*                 SELECT DECK MODAL              */}
+      {/*                 SELECT DECK MODAL              */}
+      {/*                 SELECT DECK MODAL              */}
+      {/*                 SELECT DECK MODAL              */}
+
       {showSelectDeckModal ? (
         <SelectDeckModal
           decks={tempDecksArr}
           selectFn={(a) => selectedDeckPressed(a)}
+          closeModalFn={() => dispatch(hideSelectDeckModalActions())}
         />
       ) : null}
       {/* SELECT DECK MODAL  */}
@@ -109,6 +116,12 @@ const LeitnerBoxGrid = () => {
       >
         <LeitnerFirstStripe />
       </div>
+
+      {/*                TIMELINE              */}
+      {/*                TIMELINE              */}
+      {/*                TIMELINE              */}
+      {/*                TIMELINE              */}
+      {/*                TIMELINE              */}
 
       <div
         style={{
@@ -123,20 +136,29 @@ const LeitnerBoxGrid = () => {
         }}
       >
         <LeitnerTimeLineSideMenu />
-        <LeitnerTimeLine leitnerDay={decks[selectedDeck].leitnerDay} />
-        <LeitnerTimeLineDayIndicator
-          leitnerDay={decks[selectedDeck].leitnerDay}
-        />
+        <LeitnerTimeLine />
+        {/* //leitnerDay={decks[selectedDeck].leitnerDay} */}
+        <LeitnerTimeLineDayIndicator />
+        {/* leitnerDay={decks[selectedDeck].leitnerDay} */}
       </div>
+
+      {/*              LEVEL BOXES             */}
+      {/*              LEVEL BOXES             */}
+      {/*              LEVEL BOXES             */}
+      {/*              LEVEL BOXES             */}
+      {/*              LEVEL BOXES             */}
 
       <div
         style={{
-          backgroundColor: "green",
+          backgroundColor: BACKGROUND,
           gridArea: "leftside",
         }}
       >
-        {selectedDeck ? (
-          <LeitnerLevelBoxContainer selectedDeck={decks[selectedDeck]} />
+        {studyStarted ? (
+          <LeitnerLevelBoxContainer
+            selectedDeck={decks[selectedDeck]}
+            showSelectDeckFn={ ()=>dispatch(showSelectDeckModalActions()) }
+          />
         ) : null}
       </div>
 
@@ -193,6 +215,12 @@ const LeitnerBoxGrid = () => {
         />
       </div>
 
+      {/*              CANVAS    LEITNER CARD              */}
+      {/*              CANVAS    LEITNER CARD              */}
+      {/*              CANVAS    LEITNER CARD              */}
+      {/*              CANVAS    LEITNER CARD              */}
+      {/*              CANVAS    LEITNER CARD              */}
+
       <div
         style={{
           backgroundColor: BACKGROUND,
@@ -201,13 +229,11 @@ const LeitnerBoxGrid = () => {
           display: "grid",
         }}
       >
-        {current.isEmpty() ? null : (
-          <LeitnerCard
-            colorsArr={colorsArr}
-            cardDisplay={current.peek()}
-            btnFn={buttonsInCardPressed}
-          />
-        )}
+        {/* <LeitnerCard
+          colorsArr={colorsArr}
+          //cardDisplay={current.peek()}
+          btnFn={buttonsInCardPressed}
+        /> */}
       </div>
 
       <div

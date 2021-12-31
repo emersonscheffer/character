@@ -8,17 +8,21 @@ const LeitnerLevelBox = ({
   deck,
   subject,
   area,
-  colorD
+  colorD,
+  showDeckSettingsFn,
 }) => {
   const line2 = deck ? subject : "Box " + boxNumber;
 
   return (
     <div
+      onClick={
+        deck ? (subject !== "Retired" ? showDeckSettingsFn : null) : null
+      }
       style={{
         width: widthHeight,
         height: widthHeight,
         justifySelf: "center",
-          alignSelf: "center",
+        alignSelf: "center",
         border: "solid 2px" + colorD,
         backgroundColor: bgColor,
         borderRadius: "5px",
@@ -35,7 +39,6 @@ const LeitnerLevelBox = ({
           gridArea: "number",
           justifySelf: "center",
           alignSelf: "center",
-          
         }}
       >
         {quantity}
