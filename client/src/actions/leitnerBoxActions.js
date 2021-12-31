@@ -13,6 +13,8 @@ import {
   LOAD_APP,
   UPDATE_USER,
   INITIAL_USER,
+  SELECT_DECK,
+  SHOW_SELECT_MODAL
 } from "./types";
 
 // string to variable
@@ -215,7 +217,6 @@ export const loadSavedStateOrStartNewUser = () => (dispatch) => {
     //updateUser("userName", "Pearl Jam");
     //dispatch and change localstorage
 
-
     //dispatch({ type: LOAD_STATE, payload: storedUser });
   } else {
     // create a new user from scratch and add the english cards database
@@ -300,9 +301,9 @@ const daysMap = {
 // //let fruits = ["Apple", "Mango", "Orange", "Pear"];
 // let currentStudying = [];
 
-export const selectDeckAction = () => dispatch => {
-  console.log("select Deck")
-}
+// export const selectDeckAction = () => (dispatch) => {
+//   console.log("select Deck");
+// };
 
 export const studyButtonAction = (started, deck) => (dispatch) => {
   //is deckStarted?
@@ -384,6 +385,14 @@ export const changeDay = () => (dispatch) => {
 export const loadApp = () => (dispatch) => {
   dispatch({ type: LOAD_APP });
 };
+
+export const selectDeckActions = (deck) => (dispatch) => {
+  dispatch({ type: SELECT_DECK, payload: deck });
+};
+
+export const showSelectDeckModalActions = () => (dispatch) =>{
+  dispatch({type: SHOW_SELECT_MODAL})
+}
 
 // const pressedMe = () => {
 //   setLeitnerDay(leitnerDay > 63 ? 1 : leitnerDay + 1);

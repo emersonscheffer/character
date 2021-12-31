@@ -3,10 +3,18 @@ import React, { useState } from "react";
 //import { ReactComponent as Logo } from '../../svgs/redform.svg'
 
 const SelectDeckModal = ({ decks, selectFn }) => {
+  const colorBg1 = "red"
+  const colorBg2 = "blue" 
   const [bg, setBg] = useState("red");
 
-  const testFn = (a) => {
-    selectFn(a)
+  const [deckSelectedHolder, setDeckSelectedHolder] = useState(0)
+
+  const thumbSelect = (a) => {
+    setDeckSelectedHolder(a)
+  };
+
+  const selectBtnPressed = ()=> {
+    selectFn(deckSelectedHolder)
   }
 
   const renderDecks = () => {
@@ -21,16 +29,18 @@ const SelectDeckModal = ({ decks, selectFn }) => {
           }}
         >
           <div
-            onMouseEnter={() => setBg("blue")}
+            //onMouseEnter={() => }
             onMouseLeave={() => setBg("red")}
-            onClick={() => testFn(i)}
+            onClick={() => thumbSelect(i)}
+
             style={{
-              backgroundColor: bg,
+              backgroundColor: colorBg1,
               width: "70px",
               height: "100px",
               borderRadius: "10px",
               display: "grid",
               marginBottom: "10px",
+              border: deckSelectedHolder === i ? "black solid 3px" : null
             }}
           >
             <h2
@@ -87,12 +97,28 @@ const SelectDeckModal = ({ decks, selectFn }) => {
             gridTemplate: `
               ". ... ... ... ." 40px
               ". col1 col2 col3 ."
-              
+              ". ... ... selectBtn ." 40px
               / 10% 1fr 1fr 1fr 10%
             `,
           }}
         >
           {renderDecks()}
+          <div
+          onClick={()=>selectBtnPressed()}
+            style={{
+              backgroundColor: "blue",
+              gridArea: "selectBtn",
+              width: "90%",
+              height: "90%",
+              justifySelf: "center",
+              alignSelf: "center",
+              display: "grid",
+            }}
+          >
+            <h1 style={{ justifySelf: "center", alignSelf: "center" }}>
+              select
+            </h1>
+          </div>
         </div>
       </div>
     </div>
@@ -100,3 +126,7 @@ const SelectDeckModal = ({ decks, selectFn }) => {
 };
 
 export default SelectDeckModal;
+
+const bgStyle = {
+  backgroundColor: "green"
+}

@@ -8,6 +8,8 @@ import {
   CHANGE_DAY,
   LOAD_APP,
   INITIAL_USER,
+  SELECT_DECK,
+  SHOW_SELECT_MODAL,
 } from "../actions/types";
 
 import { CurrentQueue } from "../classes/CurrentQueue";
@@ -15,11 +17,11 @@ import { Deck } from "../classes/deckClass";
 import { UserClass } from "../classes/userClass";
 
 const initialState = {
+  showSelectDeckModal: false,
+
   canvasLoaded: false,
   currentDay: 0,
   currentMonth: 0,
-
-  
 
   decks: [new Deck()],
 
@@ -405,6 +407,20 @@ export default function myState(state = initialState, action) {
         ...state,
         currentDay: dayTemp,
       };
+
+    case SELECT_DECK:
+      return {
+        ...state,
+        selectedDeck: action.payload,
+        showSelectDeckModal: false,
+        studyStarted: true
+      };
+    case SHOW_SELECT_MODAL: {
+      return {
+        ...state,
+        showSelectDeckModal: true,
+      };
+    }
 
     default:
       return state;

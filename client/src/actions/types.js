@@ -7,7 +7,10 @@ export const IS_LIST_EMPTY = "IS_LIST_EMPTY";
 export const STUDY_BTN_PRESSED = "STUDY_BTN_PRESSED";
 export const CARD_BTN_PRESSED = "CARD_BTN_PRESSED";
 export const CHANGE_DAY = "CHANGE_DAY";
-export const LOAD_APP = "LOAD_APP"
+export const LOAD_APP = "LOAD_APP";
 
-export const UPDATE_USER = "UPDATE_USER"
-export const INITIAL_USER = "INITIAL_USER"
+export const UPDATE_USER = "UPDATE_USER";
+export const INITIAL_USER = "INITIAL_USER";
+
+export const SELECT_DECK = "SELECT_DECK";
+export const SHOW_SELECT_MODAL = "SHOW_SELECT_MODAL"

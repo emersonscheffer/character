@@ -3,11 +3,13 @@
 
 MVP
 
-    
-    work on select deck modal 
-
     create a close btn 
-    create a load btn 
+    
+    After selecting deck from modal menu, load the "level boxes" on the left side with selected deck information 
+
+
+    
+    
 
 
     loadingNewCardsIntoTheDeck function should be called by LOAD STATE

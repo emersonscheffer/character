@@ -8,14 +8,18 @@ import LeitnerTimeLineSideMenu from "../components/leitnerComponents/LeitnerTime
 import LeitnerStudyButton from "../components/leitnerComponents/LeitnerStudyButton";
 import LeitnerCard from "../components/leitnerComponents/LeitnerCard";
 
+import SelectDeckModal from "../components/leitnerComponents/SelectDeckModal";
+
 import {
   loadSavedStateOrStartNewUser,
   studyButtonAction,
   cardButtonsActions,
   changeDay,
   loadApp,
-  selectDeckAction,
+  selectDeckActions,
+  showSelectDeckModalActions,
 } from "../actions/leitnerBoxActions";
+
 import LeitnerLevelBoxContainer from "../components/leitnerComponents/LeitnerLevelBoxContainer";
 import {
   BACKGROUND,
@@ -29,13 +33,16 @@ import {
 } from "../colors";
 
 import { CurrentQueue } from "../classes/CurrentQueue";
-import SelectDeckModal from "../components/leitnerComponents/SelectDeckModal";
 
 const LeitnerBoxGrid = () => {
   const dispatch = useDispatch();
-  const { decks, selectedDeck, studyButtonActive, studyStarted } = useSelector(
-    (state) => state.leitnerBox
-  );
+  const {
+    decks,
+    selectedDeck,
+    studyButtonActive,
+    studyStarted,
+    showSelectDeckModal,
+  } = useSelector((state) => state.leitnerBox);
 
   let cs = decks[selectedDeck].currentStudying.store || [];
   const current = new CurrentQueue();
@@ -45,9 +52,9 @@ const LeitnerBoxGrid = () => {
   const colorsArr = [COLOR1, COLOR2, COLOR3, COLOR4, COLOR5, COLOR6, COLOR7];
 
   const studyBtnPressed = () => {
-    studyStarted
-      ? dispatch(studyButtonAction(decks[selectedDeck]))
-      : dispatch(selectDeckAction());
+      studyStarted
+        ? dispatch(studyButtonAction(decks[selectedDeck]))
+        : dispatch(showSelectDeckModalActions())
   };
 
   const buttonsInCardPressed = (btnPressed) => {
@@ -58,14 +65,15 @@ const LeitnerBoxGrid = () => {
     dispatch(loadSavedStateOrStartNewUser());
   }, [dispatch]);
 
-
   // temp decks array for select deck modal
-  // 
-  const tempDecksArr = ["English", "Math", "Electric Guitar"]
+  //
+  const tempDecksArr = ["English", "Math", "Electric Guitar"];
 
-  const sellll = (a) => {
-    console.log(tempDecksArr[a])
-  }
+  const selectedDeckPressed = (a) => {
+    console.log(tempDecksArr[a]);
+
+    dispatch(selectDeckActions(a));
+  };
 
   return (
     <div
@@ -84,11 +92,13 @@ const LeitnerBoxGrid = () => {
         `,
       }}
     >
-
       {/* SELECT DECK MODAL  */}
-
-        <SelectDeckModal decks={tempDecksArr} selectFn={(a) => sellll(a)} />
-
+      {showSelectDeckModal ? (
+        <SelectDeckModal
+          decks={tempDecksArr}
+          selectFn={(a) => selectedDeckPressed(a)}
+        />
+      ) : null}
       {/* SELECT DECK MODAL  */}
 
       <div
@@ -169,6 +179,13 @@ const LeitnerBoxGrid = () => {
         >
           day change
         </div>
+
+        {/*                    STUDY BTN                  */}
+        {/*                    STUDY BTN                  */}
+        {/*                    STUDY BTN                  */}
+        {/*                    STUDY BTN                  */}
+        {/*                    STUDY BTN                  */}
+
         <LeitnerStudyButton
           pressedMe={studyBtnPressed}
           activeButton={studyButtonActive}
