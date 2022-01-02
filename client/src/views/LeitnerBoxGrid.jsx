@@ -135,11 +135,16 @@ const LeitnerBoxGrid = () => {
           `,
         }}
       >
-        <LeitnerTimeLineSideMenu />
-        <LeitnerTimeLine />
-        {/* //leitnerDay={decks[selectedDeck].leitnerDay} */}
-        <LeitnerTimeLineDayIndicator />
-        {/* leitnerDay={decks[selectedDeck].leitnerDay} */}
+        {studyStarted ? <LeitnerTimeLineSideMenu /> : null}
+
+        {studyStarted ? (
+          <LeitnerTimeLine leitnerDay={decks[selectedDeck].leitnerDay} />
+        ) : null}
+        {studyStarted ? (
+          <LeitnerTimeLineDayIndicator
+            leitnerDay={decks[selectedDeck].leitnerDay}
+          />
+        ) : null}
       </div>
 
       {/*              LEVEL BOXES             */}
@@ -157,7 +162,7 @@ const LeitnerBoxGrid = () => {
         {studyStarted ? (
           <LeitnerLevelBoxContainer
             selectedDeck={decks[selectedDeck]}
-            showSelectDeckFn={ ()=>dispatch(showSelectDeckModalActions()) }
+            showSelectDeckFn={() => dispatch(showSelectDeckModalActions())}
           />
         ) : null}
       </div>
