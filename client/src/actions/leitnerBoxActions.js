@@ -2,16 +2,16 @@
 import { Deck } from "../classes/deckClass";
 import { UserClass } from "../classes/userClass";
 import {
-  ADD_CARD,
+  // ADD_CARD,
   LOAD_STATE,
   CHANGE_NAME,
-  INITIAL_CARD_LOAD,
-  IS_LIST_EMPTY,
+  // INITIAL_CARD_LOAD,
+  // IS_LIST_EMPTY,
   STUDY_BTN_PRESSED,
   CARD_BTN_PRESSED,
   CHANGE_DAY,
   LOAD_APP,
-  UPDATE_USER,
+  // UPDATE_USER,
   INITIAL_USER,
   SELECT_DECK,
   SHOW_SELECT_MODAL,
@@ -159,6 +159,7 @@ const updateUser = (key, data) => {
     userData.updateCurrentMonth(storedUser["currentMonth"]);
 
     userData.updateDecks(storedUser["decks"]);
+
     userData.updateSavedDay(storedUser["savedDay"]);
     userData.updateSavedMonth(storedUser["savedMonth"]);
     userData.updateSelectedDeck(storedUser["selectedDeck"]);
@@ -219,14 +220,12 @@ const updateUser = (key, data) => {
 export const loadSavedStateOrStartNewUser = () => (dispatch) => {
   if (storedUser) {
     console.log("load successful = from actions");
+    
+    // run here a function to load more cards into the decks
 
-    //updateUser("userName", "Pearl Jam");
-    //dispatch and change localstorage
-
-    //dispatch({ type: LOAD_STATE, payload: storedUser });
+    dispatch({ type: LOAD_STATE, payload: storedUser });
   } else {
-    // create a new user from scratch and add the english cards database
-
+    
     const newUser = new UserClass();
 
     newUser.decks = decks;
@@ -311,7 +310,7 @@ const daysMap = {
 //   console.log("select Deck");
 // };
 
-export const studyButtonAction = (started, deck) => (dispatch) => {
+export const studyButtonAction = (deck) => (dispatch) => {
   //is deckStarted?
   // if deck started === false
   // change it to true
@@ -393,6 +392,12 @@ export const loadApp = () => (dispatch) => {
 };
 
 export const selectDeckActions = (deck) => (dispatch) => {
+
+  console.log("selected Deck ", deck)
+
+   updateUser("studyStarted", true)
+   updateUser("selectedDeck", deck)
+
   dispatch({ type: SELECT_DECK, payload: deck });
 };
 

@@ -234,12 +234,20 @@ const LeitnerBoxGrid = () => {
           display: "grid",
         }}
       >
-        {/* <LeitnerCard
-          colorsArr={colorsArr}
-          //cardDisplay={current.peek()}
-          btnFn={buttonsInCardPressed}
-        /> */}
+        {studyStarted ? (
+          <LeitnerCard
+            colorsArr={colorsArr}
+            cardDisplay={decks[selectedDeck].currentStudying.store[0]}
+            btnFn={buttonsInCardPressed}
+          />
+        ) : null}
       </div>
+
+      {/*              RIGHT       LIST OF CARDS             */}
+      {/*              RIGHT       LIST OF CARDS             */}
+      {/*              RIGHT       LIST OF CARDS             */}
+      {/*              RIGHT       LIST OF CARDS             */}
+      {/*              RIGHT       LIST OF CARDS             */}
 
       <div
         style={{

@@ -27,6 +27,7 @@ const SelectDeckModal = ({ decks, selectFn, closeModalFn }) => {
     for (let i = 0; i < decks.length; i++) {
       decksArr.push(
         <div
+        key={i}
           style={{
             gridArea: String("col").concat(i + 1),
             justifySelf: "center",

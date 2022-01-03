@@ -5,22 +5,13 @@ import { CurrentQueue } from "./CurrentQueue";
 // import { Deck } from "./deckClass";
 
 export class UserClass {
-  constructor(
-    currentDay = 0,
-    currentMonth = 0,
-
-    
-    studyStarted = false,
-    userName = ""
-  ) {
+  constructor() {
     this.canvasLoaded = false;
-    this.currentDay = currentDay;
-    this.currentMonth = currentMonth;
-
-    // this.currentStudying = new CurrentQueue()
+    this.currentDay = 0;
+    this.currentMonth = 0;
 
     this.decks = [];
-    
+
     this.savedDay = 0;
 
     this.savedMonth = 0;
@@ -28,8 +19,8 @@ export class UserClass {
     this.selectedDeck = 0;
     this.studyButtonActive = true;
 
-    this.studyStarted = studyStarted;
-    this.userName = userName;
+    this.studyStarted = false;
+    this.userName = "";
   }
 
   updateCanvasLoaded(status) {
@@ -48,10 +39,10 @@ export class UserClass {
     this.currentStudying = study;
   }
 
-  updateDeckInDecks(pos, deck){
-    this.decks[pos] = deck
+  updateDeckInDecks(pos, deck) {
+    this.decks[pos] = deck;
   }
-  
+
   updateDecks(decks) {
     this.decks = decks;
   }

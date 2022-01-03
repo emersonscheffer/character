@@ -1,6 +1,6 @@
 import {
   LOAD_STATE,
-  ADD_CARD,
+  // ADD_CARD,
   INITIAL_CARD_LOAD,
   IS_LIST_EMPTY,
   STUDY_BTN_PRESSED,
@@ -13,7 +13,7 @@ import {
   HIDE_SELECT_MODAL,
 } from "../actions/types";
 
-import { CurrentQueue } from "../classes/CurrentQueue";
+//import { CurrentQueue } from "../classes/CurrentQueue";
 import { Deck } from "../classes/deckClass";
 import { UserClass } from "../classes/userClass";
 
@@ -212,7 +212,6 @@ export default function myState(state = initialState, action) {
         canvasLoaded: action.payload["canvasLoaded"],
         currentDay: action.payload["currentDay"],
         currentMonth: action.payload["currentMonth"],
-        // currentStudying: tempCurrentStudying,
         decks: action.payload["decks"],
         leitnerDay: action.payload["leitnerDay"],
         savedDay: action.payload["savedDay"],
@@ -414,7 +413,7 @@ export default function myState(state = initialState, action) {
         ...state,
         selectedDeck: action.payload,
         showSelectDeckModal: false,
-        studyStarted: true
+        studyStarted: true,
       };
     case SHOW_SELECT_MODAL: {
       return {
