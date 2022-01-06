@@ -10,6 +10,7 @@ import "./css/activityBar.css";
 // import BodyTemp from "./views/BodyTemp";
 //import LeitnerBox from "./views/LeitnerBox";
 import LeitnerBoxGrid from "./views/LeitnerBoxGrid";
+import Home from "./views/Home";
 
 function App() {
   return (
@@ -23,7 +24,8 @@ function App() {
       <BodyTemp /> */}
 
         {/* <LeitnerBox /> */}
-        <LeitnerBoxGrid />
+        {/* <LeitnerBoxGrid /> */}
+        <Home />
       </div>
     </Provider>
   );
