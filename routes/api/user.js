@@ -6,9 +6,6 @@ const User = require("../../models/User");
 
 // //@route Get api/Profiles
 router.get("/", (req, res) => {
-
-  
-
   User.find()
     .sort({ date: -1 })
     .then((users) => {
@@ -16,7 +13,7 @@ router.get("/", (req, res) => {
     });
 });
 
-//@route Get api/user
+//@route
 router.post("/", (req, res) => {
   const newUser = new User({
     firstname: req.body.firstname,
@@ -25,7 +22,9 @@ router.post("/", (req, res) => {
   newUser.save().then((user) => res.json(user));
 });
 
-
+router.post("/login", (req, res) => {
+  console.log("I got here", req.body);
+});
 
 // //@route Get api/items
 // router.delete("/:id", (req, res) => {

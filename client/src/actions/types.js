@@ -16,5 +16,5 @@ export const SELECT_DECK = "SELECT_DECK";
 export const SHOW_SELECT_MODAL = "SHOW_SELECT_MODAL"
 export const HIDE_SELECT_MODAL = "HIDE_SELECT_MODAL"
 
-
 export const ADD_USER = "ADD_USER"
+export const GET_USER = "GET_USER"

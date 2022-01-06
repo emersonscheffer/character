@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addUser } from "../actions/usersActions";
+import { addUser, userLogin } from "../actions/usersActions";
 
 const Login = () => {
   const dispatch = useDispatch();
+  const [loginScreen, setLoginScreen] = useState(true);
 
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <div
       style={{
@@ -12,21 +15,55 @@ const Login = () => {
         height: "220px",
         width: "400px",
         borderRadius: "10px",
-
-        //marginTop: "100px"
       }}
     >
-      <input type="text" />
-      <input type="password" />
+      {loginScreen ? (
+        <div>
+          {/*  login div */}
 
-      <div
-        style={{ backgroundColor: "yellow", width: "60px", height: "40px" }}
-        onClick={() =>
-          dispatch(addUser({ firstname: "Emerson", lastname: "drake" }))
-        }
-      >
-        Login
-      </div>
+          <input
+            type="text"
+            placeholder="User Name"
+            name="User Name"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+          />
+
+          <input
+            type="password"
+            placeholder="****"
+            name="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
+          <div
+            style={{ backgroundColor: "yellow", width: "60px", height: "40px" }}
+            onClick={() =>
+              username !== ""
+                ? password !== ""
+                  ? dispatch(
+                      userLogin({ username: username, password: password })
+                    )
+                  : null
+                : null
+            }
+          >
+            Login
+          </div>
+          <h1>
+            Don't have an account?{" "}
+            <span onClick={() => setLoginScreen(false)}>Click here</span>
+          </h1>
+        </div>
+      ) : (
+        <div>
+          Create account
+          <h1>
+            <span onClick={() => setLoginScreen(true)}>Cancel</span>
+          </h1>
+        </div>
+      )}
     </div>
   );
 };
