@@ -19,6 +19,14 @@ const UserSchema = new Schema({
     type: String,
     required: false
   },
+  decks: {
+    type: [String],
+    required: false
+  },
+  selectedDeck: {
+    type: Number,
+    default: 0
+  },
   date: {
     type: Date,
     default: Date.now,

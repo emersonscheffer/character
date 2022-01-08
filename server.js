@@ -5,28 +5,28 @@ const path = require("path");
 const bodyParser = require("body-parser");
 
 const users = require("./routes/api/user");
-const cards = require("./routes/api/cards")
+const cards = require("./routes/api/cards");
+const deck = require("./routes/api/deck");
 
 const app = express();
 
 app.use(bodyParser.json());
 
-
 app.use(express.json());
 
-const db = "mongodb://localhost:27017/leitner";
+const db = "mongodb://localhost:27017/lifeisagame";
 
 mongoose
   .connect(db, {
     useNewUrlParser: true,
-    //useCreateIndex: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
   })
   .then(() => console.log("mongoDB connected..."))
   .catch((err) => console.log(err));
 
 app.use("/api/users", users);
-app.use('/api/cards', cards)
+app.use("/api/cards", cards);
+app.use("/api/deck", deck)
 
 const PORT = process.env.PORT || 3001;
 
