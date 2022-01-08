@@ -4,14 +4,14 @@ const LeitnerTimeLineNumber = ({ tlNumber, leitnerDay }) => {
   return (
     <div
       style={{
-        backgroundColor: leitnerDay ? "white" : null,
-        width: "96%",
-        height: "96%",
+        backgroundColor: leitnerDay ? "lightGray" : null,
+        width: "100%",
+        height: "100%",
         alignSelf: "center",
         display: "grid",
-        border: leitnerDay ? "solid black 1px" : null,
-        borderRadius: "40%",
-        boxSizing: "border-box"
+        
+        
+        
       }}
     >
       <h1

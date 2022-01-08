@@ -1,16 +1,16 @@
 import React from "react";
 
-import SqDummyWhite from '../../svgs/SqDummyWhite.svg'
+// import SqDummyWhite from '../../svgs/SqDummyWhite.svg'
 
 const LeitnerTimeLineBullet = ({ bgColor }) => {
 
-  const dimension = 1000 / 64
+  // const dimension = 1000 / 64 - 10
   return (
     <div
       style={{
         backgroundColor: bgColor,
-        width: dimension + "px",
-        height: dimension + "px",
+        width: "40%",
+        height: "40%",
         borderRadius: "50%",
         alignSelf: "center",
         justifySelf: "center",

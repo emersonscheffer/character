@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import LeitnerFirstStripe from "../components/leitnerComponents/LeitnerFirstStripe";
-import LeitnerTimeLine from "../components/leitnerComponents/LeitnerTimeLine";
-import LeitnerTimeLineDayIndicator from "../components/leitnerComponents/LeitnerTimeLineDayIndicator";
+// import LeitnerTimeLine from "../components/leitnerComponents/LeitnerTimeLine";
+// import LeitnerTimeLineDayIndicator from "../components/leitnerComponents/LeitnerTimeLineDayIndicator";
 import LeitnerTimeLineSideMenu from "../components/leitnerComponents/LeitnerTimeLineSideMenu";
 import LeitnerStudyButton from "../components/leitnerComponents/LeitnerStudyButton";
 import LeitnerCard from "../components/leitnerComponents/LeitnerCard";
@@ -21,7 +21,7 @@ import {
   hideSelectDeckModalActions,
 } from "../actions/leitnerBoxActions";
 
-import LeitnerLevelBoxContainer from "../components/leitnerComponents/LeitnerLevelBoxContainer";
+// import LeitnerLevelBoxContainer from "../components/leitnerComponents/LeitnerLevelBoxContainer";
 import {
   BACKGROUND,
   COLOR1,
@@ -137,14 +137,14 @@ const LeitnerBoxGrid = () => {
       >
         {studyStarted ? <LeitnerTimeLineSideMenu /> : null}
 
-        {studyStarted ? (
+        {/* {studyStarted ? (
           <LeitnerTimeLine leitnerDay={decks[selectedDeck].leitnerDay} />
         ) : null}
         {studyStarted ? (
-          <LeitnerTimeLineDayIndicator
+          // <LeitnerTimeLineDayIndicator
             leitnerDay={decks[selectedDeck].leitnerDay}
           />
-        ) : null}
+        ) : null} */}
       </div>
 
       {/*              LEVEL BOXES             */}
@@ -159,12 +159,12 @@ const LeitnerBoxGrid = () => {
           gridArea: "leftside",
         }}
       >
-        {studyStarted ? (
+        {/* {studyStarted ? (
           <LeitnerLevelBoxContainer
             selectedDeck={decks[selectedDeck]}
             showSelectDeckFn={() => dispatch(showSelectDeckModalActions())}
           />
-        ) : null}
+        ) : null} */}
       </div>
 
       <div

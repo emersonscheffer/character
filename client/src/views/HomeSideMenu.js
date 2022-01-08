@@ -13,6 +13,8 @@ const HomeSideMenu = ({ area, selectFn }) => {
         width: "100%",
         height: "100vh",
         gridArea: area,
+        display: "grid",
+        gridTemplateRows: "50px"
       }}
     >
       

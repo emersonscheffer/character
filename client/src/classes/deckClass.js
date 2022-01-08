@@ -21,6 +21,12 @@ export class Deck {
     this.leitnerDay = 1;
 
     this.deckStarted = false;
+
+    this.studyButtonActive = false;
+
+    this.savedMonth = 0;
+
+    this.savedDay = 0;
   }
 
   addCardIntoDeck(card) {

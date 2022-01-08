@@ -2,8 +2,15 @@
 
 
 MVP
+    
+    add side menu
+    select deck modal
 
-     - when user hit Enter on the keyboard, submit login from
+    load selected deck details
+
+    change database name
+
+     - when user hit Enter on the keyboard, submit login form
 
 
     -* After selecting deck from modal menu, load the "level boxes" on the left side with selected deck information 

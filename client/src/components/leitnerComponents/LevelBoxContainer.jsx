@@ -10,8 +10,19 @@ import {
   COLOR6,
   COLOR7,
 } from "../../colors";
+import { Deck } from "../../classes/deckClass";
 
-const LeitnerLevelBoxContainer = ({ selectedDeck, showSelectDeckFn }) => {
+const LevelBoxContainer = ({ selectedDeck, showSelectDeckFn }) => {
+
+  // temp fix
+
+  if(!selectedDeck) {
+    
+    selectedDeck = new Deck()
+  }
+
+   // temp fix
+
   const boxQuantities = [
     selectedDeck.box1.length,
     selectedDeck.box2.length,
@@ -51,6 +62,7 @@ const LeitnerLevelBoxContainer = ({ selectedDeck, showSelectDeckFn }) => {
   return (
     <div
       style={{
+        gridArea: "level_boxes",
         backgroundColor: BACKGROUND,
         width: "100%",
         height: "100%",
@@ -113,4 +125,4 @@ const LeitnerLevelBoxContainer = ({ selectedDeck, showSelectDeckFn }) => {
     </div>
   );
 };
-export default LeitnerLevelBoxContainer;
+export default LevelBoxContainer;

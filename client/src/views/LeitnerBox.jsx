@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import LeitnerTimeLine from "../components/leitnerComponents/LeitnerTimeLine";
+import LevelBoxContainer from "../components/leitnerComponents/LevelBoxContainer";
+import TimeLine from "../components/leitnerComponents/TimeLine";
 
 const LeitnerBox = ({ area }) => {
   const dispatch = useDispatch();
@@ -16,9 +17,10 @@ const LeitnerBox = ({ area }) => {
         backgroundColor: "teal",
         display: "grid",
         gridTemplate: `
-          ". . ." 15px
-          ". timeline ." auto
-          / 15px 1fr 15px
+          ". . . . . . . . ." 15px
+          ". timeline timeline timeline timeline timeline timeline timeline ." 100px
+          ". level_boxes . . . . . . ." auto
+          / 15px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 15px
         `,
       }}
     >
@@ -26,11 +28,14 @@ const LeitnerBox = ({ area }) => {
       {/*       TIMELINE      */}
       {/*       TIMELINE      */}
 
-      <LeitnerTimeLine />
+      <TimeLine leitnerDay={50} />
 
-      {/* <div style={{backgroundColor: "green"}}></div>
-      <div style={{backgroundColor: "blue"}}></div>
-      <div style={{backgroundColor: "yellow"}}></div> */}
+      {/*     SIDE LEVEL BOXES      */}
+      {/*     SIDE LEVEL BOXES      */}
+      {/*     SIDE LEVEL BOXES      */}
+
+      <LevelBoxContainer />
+
     </div>
   );
 };
