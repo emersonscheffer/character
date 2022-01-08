@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ADD_USER, GET_USER } from "../actions/types";
+import { ADD_USER, GET_USER, USER_LOGIN } from "../actions/types";
 
 //import {returnErrors} from './errorActions'
 
@@ -22,7 +22,11 @@ export const getUser = () => (dispatch) => {
   //.catch(err => dispatch(returnErrors(err.response.data, err.response.status)))
 };
 
-export const userLogin = (username, password) => (dispatch) => {
-  axios.post("/api/users/login", { username, password })
-  
+export const userLogin = (user) => (dispatch) => {
+  axios.post("/api/users/login", user).then((res)=>{
+    dispatch({
+      type: USER_LOGIN,
+      payload: res.data
+    })
+  })
 };

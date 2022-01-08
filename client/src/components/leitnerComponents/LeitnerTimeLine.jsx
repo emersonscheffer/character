@@ -72,6 +72,7 @@ const LeitnerTimeLine = ({ leitnerDay }) => {
 
   return (
     <div
+    id="timeline"
       style={{
         backgroundColor: BACKGROUND,
         width: "100%",

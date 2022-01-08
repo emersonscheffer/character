@@ -1,18 +1,20 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../actions/usersActions";
+import AppHome from "./AppHome";
 import Login from "./Login";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const { login_succeded } = useSelector((state) => state.usersReducer);
 
   useEffect(() => {
-    dispatch(getUser())
+    dispatch(getUser());
   }, [dispatch]);
 
   return (
-    <div style={{ height: "700px", backgroundColor: "gray" }}>
-      <Login />
+    <div style={{ height: "100vh", backgroundColor: "gray", width: "100vw" }}>
+      {login_succeded ? <AppHome /> : <Login />}
     </div>
   );
 };

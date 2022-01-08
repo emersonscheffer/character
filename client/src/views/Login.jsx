@@ -8,6 +8,7 @@ const Login = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
   return (
     <div
       style={{
@@ -17,40 +18,41 @@ const Login = () => {
         borderRadius: "10px",
       }}
     >
+      <input
+        type="text"
+        placeholder="User Name"
+        name="User Name"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+      />
+
+      <input
+        type="password"
+        placeholder="****"
+        name="Password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+
+      <div
+        style={{ backgroundColor: "yellow", width: "60px", height: "40px" }}
+        onClick={() =>
+          username !== ""
+            ? password !== ""
+              ? loginScreen
+                ? dispatch(userLogin({ username, password }))
+                : dispatch(addUser({ username, password }))
+              : null
+            : null
+        }
+      >
+        {loginScreen ? "Login" : "Create"}
+      </div>
+
       {loginScreen ? (
         <div>
           {/*  login div */}
 
-          <input
-            type="text"
-            placeholder="User Name"
-            name="User Name"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-
-          <input
-            type="password"
-            placeholder="****"
-            name="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-
-          <div
-            style={{ backgroundColor: "yellow", width: "60px", height: "40px" }}
-            onClick={() =>
-              username !== ""
-                ? password !== ""
-                  ? dispatch(
-                      userLogin({ username: username, password: password })
-                    )
-                  : null
-                : null
-            }
-          >
-            Login
-          </div>
           <h1>
             Don't have an account?{" "}
             <span onClick={() => setLoginScreen(false)}>Click here</span>

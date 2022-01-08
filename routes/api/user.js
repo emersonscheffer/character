@@ -18,12 +18,23 @@ router.post("/", (req, res) => {
   const newUser = new User({
     firstname: req.body.firstname,
     lastname: req.body.lastname,
+    username: req.body.username,
+    password: req.body.password
   });
   newUser.save().then((user) => res.json(user));
 });
 
 router.post("/login", (req, res) => {
-  console.log("I got here", req.body);
+
+  User.findOne({username: req.body.username}).then((user) => {
+    
+    if(req.body.password === user.password) {
+      res.json(user)
+    } else {
+      console.log("access denied")
+    }
+  })
+
 });
 
 // //@route Get api/items

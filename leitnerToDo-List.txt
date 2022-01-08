@@ -3,6 +3,9 @@
 
 MVP
 
+     - when user hit Enter on the keyboard, submit login from
+
+
     -* After selecting deck from modal menu, load the "level boxes" on the left side with selected deck information 
 
 
