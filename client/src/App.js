@@ -4,13 +4,14 @@ import store from "./store";
 // import "./App.css";
 import "./reset.css";
 import "./css/activityBar.css";
+import ClockInfo from "./views/ClockInfo";
 
 // import ActivityBar from "./components/ActivityBar";
 // import PlayerName from "./components/PlayerName";
 // import BodyTemp from "./views/BodyTemp";
 //import LeitnerBox from "./views/LeitnerBox";
-import LeitnerBoxGrid from "./views/LeitnerBoxGrid";
-import Home from "./views/Home";
+// import LeitnerBoxGrid from "./views/LeitnerBoxGrid";
+// import Home from "./views/Home";
 
 function App() {
   return (
@@ -25,7 +26,11 @@ function App() {
 
         {/* <LeitnerBox /> */}
         {/* <LeitnerBoxGrid /> */}
-        <Home />
+
+        {/* <Home /> */}
+
+        <ClockInfo />
+
       </div>
     </Provider>
   );

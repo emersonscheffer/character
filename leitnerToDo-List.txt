@@ -2,6 +2,8 @@
 
 
 MVP
+
+    change hour to 12 / 24
     
     add side menu
     select deck modal
