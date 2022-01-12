@@ -8,17 +8,20 @@ const ClockInfo = () => {
   const month = theDate.getMonth();
   const weekDay = theDate.getDay();
 
-  //  console.log(theDate.getDate()); // day of the month
-  //  console.log(theDate.getMonth()); // month 0 - 11
-  //   console.log(theDate.getDay()); // day of week 0 - 6
+  const decimal = String((minute % 100) - (minute % 10));
 
-  const [hours, setHours] = useState(hour);
-  const [minutes, setMinutes] = useState(minute);
+  const hourMath = hour + 12 - 24;
+  const hourSet = hourMath === 0 ? 12 : hourMath === -12 ? 12 : hourMath;
+
+  const [hour1, setHour1] = useState();
+  const [hour2, setHour2] = useState();
+  const [minute1, setMinute1] = useState();
+  const [minute2, setMinute2] = useState();
   const [divider, setDivider] = useState(true);
-  const [dayMonth, setDayMonth] = useState(day);
-  const [monthYear, setMonthYear] = useState(month);
-  const [dayWeek, setDayWeek] = useState(weekDay);
-  const [am, setAm] = useState(true);
+  const [dayMonth, setDayMonth] = useState();
+  const [monthYear, setMonthYear] = useState();
+  const [dayWeek, setDayWeek] = useState();
+  const [am, setAm] = useState();
 
   const renderMonth = () => {
     switch (monthYear) {
@@ -75,16 +78,20 @@ const ClockInfo = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setDivider(!divider);
-      setHours(hour + 12 - 24);
-      setMinutes(minute);
+
+      setHour1(hourSet < 10 ? 0 : 1);
+      setHour2(hourSet);
+      setMinute1(decimal[0]);
+      setMinute2(minute % 10);
       setDayMonth(day);
       setMonthYear(month);
       setDayWeek(weekDay);
 
       if (hour > 11) {
         setAm(false);
+      } else {
+        setAm(true);
       }
-
     }, 1000);
     return () => clearInterval(interval);
   }, [divider, hour, minute, day, month, weekDay]);
@@ -103,17 +110,17 @@ const ClockInfo = () => {
           fontFamily: "helveticaNeue",
           justifySelf: "center",
           alignSelf: "center",
-          //   backgroundColor: "gray",
+          // backgroundColor: "gray",
           width: "50%",
           height: "40%",
           display: "grid",
           gridTemplate: `
-            ". .... . ..... . ....... . ....... . ... . ..... ." 10px
-            ". am . hours . divider . minutes . bar . dayweek ." 1fr
-            ". . . hours . divider . minutes . bar . month ." 0.3fr
-            ". pm . hours . divider . minutes . bar . day ." 1fr
-            ". .... . ..... . ....... . ....... . ... . ..... ." 10px
-            / 5px 1fr 2px 2fr 2px 15px 2px 2fr 2px 5px 2px 1fr 5px
+            ". .. . ..... ..... . ....... . ....... ....... . ... . ....... ." 10px
+            ". am . hour1 hour2 . divider . minute1 minute2 . bar . dayweek ." 1fr
+            ". .. . hour1 hour2 . divider . minute1 minute2 . bar . month ." 0.3fr
+            ". pm . hour1 hour2 . divider . minute1 minute2 . bar . day ." 1fr
+            ". .. . ..... ..... . ....... . ....... ....... . ... . ....... ." 10px
+            / 5px 1fr 2px 1fr 1fr 2px 15px 2px 1fr 1fr 2px 5px 2px 1fr 5px
 
           `,
         }}
@@ -144,17 +151,30 @@ const ClockInfo = () => {
           {am ? "" : "PM"}
         </div>
 
-        {/*   HOURS   */}
-        {/*   HOURS   */}
+        {/*   HOUR1   */}
+        {/*   HOUR1   */}
         <div
           style={{
-            gridArea: "hours",
+            gridArea: "hour1",
             alignSelf: "center",
             justifySelf: "end",
             // backgroundColor: "blue",
           }}
         >
-          <h1 style={{ fontSize: "50px" }}>{hours === 0 ? 12 : hours === -12 ? 12 : hours}</h1>
+          <h1 style={{ fontSize: "50px" }}>{hour1}</h1>
+        </div>
+
+        {/*   HOUR2   */}
+        {/*   HOUR2   */}
+        <div
+          style={{
+            gridArea: "hour2",
+            alignSelf: "center",
+            justifySelf: "end",
+            // backgroundColor: "blue",
+          }}
+        >
+          <h1 style={{ fontSize: "50px" }}>{hour2}</h1>
         </div>
         {/* font-size: calc(2vw + 2vh + 2vmin); */}
 
@@ -170,16 +190,28 @@ const ClockInfo = () => {
           {divider ? <h1 style={{ fontSize: "50px" }}>:</h1> : null}
         </div>
 
-        {/*   MINUTES   */}
-        {/*   MINUTES   */}
+        {/*   MINUTE1   */}
+        {/*   MINUTE1   */}
         <div
           style={{
-            gridArea: "minutes",
+            gridArea: "minute1",
             alignSelf: "center",
             // backgroundColor: "blue",
           }}
         >
-          <h1 style={{ fontSize: "50px" }}>{minutes}</h1>
+          <h1 style={{ fontSize: "50px" }}>{minute1}</h1>
+        </div>
+
+        {/*   MINUTE2   */}
+        {/*   MINUTE2   */}
+        <div
+          style={{
+            gridArea: "minute2",
+            alignSelf: "center",
+            // backgroundColor: "blue",
+          }}
+        >
+          <h1 style={{ fontSize: "50px" }}>{minute2}</h1>
         </div>
 
         {/*   BAR   */}

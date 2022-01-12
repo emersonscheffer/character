@@ -11,7 +11,7 @@ import ClockInfo from "./views/ClockInfo";
 // import BodyTemp from "./views/BodyTemp";
 //import LeitnerBox from "./views/LeitnerBox";
 // import LeitnerBoxGrid from "./views/LeitnerBoxGrid";
-// import Home from "./views/Home";
+import Home from "./views/Home";
 
 function App() {
   return (
@@ -27,9 +27,9 @@ function App() {
         {/* <LeitnerBox /> */}
         {/* <LeitnerBoxGrid /> */}
 
-        {/* <Home /> */}
+        <Home />
 
-        <ClockInfo />
+        {/* <ClockInfo /> */}
 
       </div>
     </Provider>

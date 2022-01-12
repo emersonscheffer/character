@@ -2,7 +2,7 @@
 
 
 MVP
-
+    clock info, if there's a change, update the page
     change hour to 12 / 24
     
     add side menu
@@ -47,7 +47,7 @@ REVIEWING CODE / REFACTORING
 
 
 
-
+clockInfo create a easy in fade in effect to show the clock info
 
 
 
