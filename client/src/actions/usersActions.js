@@ -23,10 +23,16 @@ export const getUser = () => (dispatch) => {
 };
 
 export const userLogin = (user) => (dispatch) => {
-  axios.post("/api/users/login", user).then((res)=>{
+  axios.post("/api/users/login", user).then((res) => {
     dispatch({
       type: USER_LOGIN,
-      payload: res.data
-    })
-  })
+      payload: res.data,
+    });
+  });
+};
+
+export const createDeckAction = (id, subject) => (dispatch) => {
+  axios
+    .put(`/api/users/createdeck/${id}`, subject)
+    .then(dispatch({ type: "Create New Deck" }));
 };

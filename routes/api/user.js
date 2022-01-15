@@ -19,22 +19,79 @@ router.post("/", (req, res) => {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     username: req.body.username,
-    password: req.body.password
+    password: req.body.password,
   });
   newUser.save().then((user) => res.json(user));
 });
 
 router.post("/login", (req, res) => {
-
-  User.findOne({username: req.body.username}).then((user) => {
-    
-    if(req.body.password === user.password) {
-      res.json(user)
+  User.findOne({ username: req.body.username }).then((user) => {
+    if (req.body.password === user.password) {
+      res.json(user);
     } else {
-      console.log("access denied")
+      console.log("access denied");
     }
-  })
+  });
+});
 
+// add card to the selected deck
+// if deck doesn't exist, create one
+//
+
+router.put("/:id", (req, res) => {
+  User.findById(req.params.id).then((user) => {
+    //user.decks //array
+    // look for deck in decks
+    for (let i = 0; i < user.decks.length; i++) {
+      if (user.decks[i].subject === "english") {
+        user.decks[i].box1.push({
+          _id: "id",
+          title: "Get a move on",
+          level: 0,
+        });
+      }
+    }
+  });
+
+  User.findByIdAndUpdate(
+    req.params.id,
+    { decks: [] },
+    { new: true },
+    (err, user) => {
+      if (err) return res.status(500).send(err);
+      return res.send(user);
+    }
+  );
+});
+
+router.put("/createdeck/:id", (req, res) => {
+  console.log("creating deck for this id ", req.body)
+  User.findById(req.params.id).then((user) => {
+    let alreadyExists = false;
+
+    for (let i = 0; i < user.decks.length; i++) {
+      if (user.decks[i].subject === req.body.subject) {
+        alreadyExists = true;
+      }
+    }
+
+    if (!alreadyExists) {
+      let updatedDecks = user.decks;
+      updatedDecks.push(req.body);
+
+      User.findByIdAndUpdate(
+        req.params.id,
+        { decks: updatedDecks },
+        { new: true },
+        (err, user) => {
+          if (err) return res.status(500).send(err);
+          return res.send(user);
+        }
+      );
+    } else {
+      console.log("alredy here - - - - -  > > > > ");
+    }
+  });
 });
 
 // //@route Get api/items

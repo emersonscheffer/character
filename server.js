@@ -26,7 +26,7 @@ mongoose
 
 app.use("/api/users", users);
 app.use("/api/cards", cards);
-app.use("/api/deck", deck)
+app.use("/api/decks", deck)
 
 const PORT = process.env.PORT || 3001;
 

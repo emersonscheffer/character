@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getDecks } from "../actions/decksActions";
 import { getUser } from "../actions/usersActions";
 import AppHome from "./AppHome";
 import Login from "./Login";
@@ -10,6 +11,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getUser());
+    dispatch(getDecks())
   }, [dispatch]);
 
   return (

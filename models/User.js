@@ -3,6 +3,14 @@ const Schema = mongoose.Schema;
 
 //create schema
 const UserSchema = new Schema({
+  currentDay: Number,
+  currentMonth: Number,
+  decks: Array,
+  savedDay: Number,
+  savedMonth: Number,
+  selectedDeck: Number,
+  studyStarted: Boolean,
+
   firstname: {
     type: String,
     required: false,
@@ -13,20 +21,13 @@ const UserSchema = new Schema({
   },
   username: {
     type: String,
-    required: false
+    required: false,
   },
   password: {
     type: String,
-    required: false
+    required: false,
   },
-  decks: {
-    type: [String],
-    required: false
-  },
-  selectedDeck: {
-    type: Number,
-    default: 0
-  },
+
   date: {
     type: Date,
     default: Date.now,
@@ -34,3 +35,20 @@ const UserSchema = new Schema({
 });
 
 module.exports = User = mongoose.model("user", UserSchema);
+
+/*
+
+currentDay
+currentMonth
+decks: [ deck ]
+savedDay
+savedMonth
+selectedDeck
+studyButtonActive -> move to individual deck
+studyStarted
+username
+password
+firstname
+lastname
+
+*/

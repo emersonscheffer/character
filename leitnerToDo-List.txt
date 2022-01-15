@@ -2,7 +2,10 @@
 
 
 MVP
-    clock info, if there's a change, update the page
+
+    stopped when I added the new deck to the user via front end to back, next steps - read the number of quantity of cards to add from deck and add the number of cards to user deck array
+
+    clock info, clock ain't showing the hour properly, if there's a change, update the page
     change hour to 12 / 24
     
     add side menu
