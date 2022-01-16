@@ -3,7 +3,7 @@
 
 MVP
 
-    stopped when I added the new deck to the user via front end to back, next steps - read the number of quantity of cards to add from deck and add the number of cards to user deck array
+    stopped when I added number of cards in deck according to number of cards selected. Next steps - display decks on the front end and create settings to change number of cards in deck and select deck to study 
 
     clock info, clock ain't showing the hour properly, if there's a change, update the page
     change hour to 12 / 24

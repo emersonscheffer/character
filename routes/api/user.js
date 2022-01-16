@@ -64,8 +64,43 @@ router.put("/:id", (req, res) => {
   );
 });
 
+// Add cards to deck and current studying
+router.put("/addcardstodeck/:id", (req, res) => {
+  User.findById(req.params.id).then((user) => {
+    let userDecks = user.decks;
+    let currentDeck = [];
+    let deckPosition = 0
+    for (let i =0; i < userDecks.length; i++) {
+      if (userDecks[i].subject === req.body.subject) {
+        currentDeck = userDecks[i];
+        deckPosition = i
+        break;
+      }
+    }
+
+    for (let j = 0; j < currentDeck.quantityOfCardsToAdd; j++) {
+      console.log(j + 1);
+      currentDeck.box1.push("card " + j);
+      currentDeck.currentStudying.store.push("jack "+j)
+    }
+
+    userDecks[deckPosition] = currentDeck;
+
+    User.findByIdAndUpdate(
+      req.params.id,
+      { decks: userDecks },
+      { new: true },
+      (err, user) => {
+        if (err) return res.status(500).send(err);
+        return res.send(user);
+      }
+    );
+  });
+});
+
+// Create an empty deck in users data
 router.put("/createdeck/:id", (req, res) => {
-  console.log("creating deck for this id ", req.body)
+  console.log("creating deck for this id ", req.body);
   User.findById(req.params.id).then((user) => {
     let alreadyExists = false;
 

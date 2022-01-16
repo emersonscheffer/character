@@ -31,8 +31,15 @@ export const userLogin = (user) => (dispatch) => {
   });
 };
 
+// create an empty deck in the database
 export const createDeckAction = (id, subject) => (dispatch) => {
   axios
     .put(`/api/users/createdeck/${id}`, subject)
     .then(dispatch({ type: "Create New Deck" }));
 };
+
+// add cards to box 1 and current studying
+export const addCardsToStudy = (id, subject) => dispatch => {
+  axios.put(`/api/users/addcardstodeck/${id}`, subject)
+  .then()
+}

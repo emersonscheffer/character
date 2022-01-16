@@ -1,6 +1,6 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { createDeckAction } from "../actions/usersActions";
+import { useDispatch, useSelector } from "react-redux";
+import { addCardsToStudy, createDeckAction } from "../actions/usersActions";
 import { Deck } from "../classes/deckClass";
 
 const HomeSideMenu = ({ area, selectFn }) => {
@@ -8,9 +8,11 @@ const HomeSideMenu = ({ area, selectFn }) => {
     selectFn(page);
   };
 
+  const { user } = useSelector((state) => state.usersReducer);
+
   const dispatch = useDispatch();
 
-  const emptyDeck = new Deck("math")
+  const emptyDeck = new Deck("guitar")
 
   return (
     <div
@@ -27,10 +29,17 @@ const HomeSideMenu = ({ area, selectFn }) => {
       <h1 onClick={() => selectAndSend("leitner_box")}>Leitner Box</h1>
       <h1
         onClick={() =>
-          dispatch(createDeckAction("61e287b5f2dd6553979bdfcd", emptyDeck))
+          dispatch(createDeckAction(user._id, emptyDeck))
         }
       >
         Action Button
+      </h1>
+      <h1
+        onClick={() =>
+          dispatch(addCardsToStudy(user._id, {subject: "guitar"}))
+        }
+      >
+        Erase decks
       </h1>
     </div>
   );
