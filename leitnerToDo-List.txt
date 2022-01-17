@@ -3,6 +3,8 @@
 
 MVP
 
+    add references to array and read the references 
+
     stopped when I added number of cards in deck according to number of cards selected. Next steps - display decks on the front end and create settings to change number of cards in deck and select deck to study 
 
     clock info, clock ain't showing the hour properly, if there's a change, update the page

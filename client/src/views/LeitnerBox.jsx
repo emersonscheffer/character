@@ -19,6 +19,7 @@ const LeitnerBox = ({ area }) => {
         gridTemplate: `
           ". . . . . . . . ." 15px
           ". timeline timeline timeline timeline timeline timeline timeline ." 100px
+          ". decks_display . . . . . . ." 80px
           ". level_boxes . . . . . . ." auto
           / 15px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 15px
         `,
@@ -30,12 +31,19 @@ const LeitnerBox = ({ area }) => {
 
       <TimeLine leitnerDay={50} />
 
+      {/*      DECKS DISPLAY      */}
+      {/*      DECKS DISPLAY      */}
+      {/*      DECKS DISPLAY      */}
+
+      <div
+        style={{ gridArea: "decks_display", backgroundColor: " blue " }}
+      ></div>
+
       {/*     SIDE LEVEL BOXES      */}
       {/*     SIDE LEVEL BOXES      */}
       {/*     SIDE LEVEL BOXES      */}
 
       <LevelBoxContainer />
-
     </div>
   );
 };

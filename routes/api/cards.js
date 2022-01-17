@@ -32,7 +32,7 @@ function addCard(title, deck) {
   });
 }
 
- addCard("Get a Move On", "english")
+ addCard("Resume", "english")
 
 module.exports = router;
 

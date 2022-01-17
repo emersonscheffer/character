@@ -3,6 +3,8 @@ const router = express.Router();
 
 const Deck = require("../../models/Deck");
 
+const Card = require('../../models/Card')
+
 router.get("/", (req, res) => {
     Deck.find()
     .then((decks) => res.json(decks))
@@ -38,6 +40,18 @@ function addDeck(subject) {
   });
 }
 
-addDeck("math");
+addDeck("guitar");
+
+function printCards(){
+
+  Card.find()
+  .then((cards)=> {
+    for (const card of cards) {
+      console.log(card._id, " ->>")
+    }
+  })
+}
+
+printCards()
 
 module.exports = router;

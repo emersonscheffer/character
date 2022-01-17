@@ -1,39 +1,26 @@
-const mongoose = require('mongoose');
-const Card = require('./Card');
+const mongoose = require("mongoose");
+const Card = require("./Card");
 
 // const Card = require("./Card");
 
 const Schema = mongoose.Schema;
 
 const fruitSchema = new Schema({
-    fruit: String
-})
+  fruit: String,
+});
 
 const DeckSchema = new Schema({
-    subject: {
-        type: String,
-        required: false
-    },
-    store: {
-        type: Card.schema,
-        required: false
-    },
-    box1: {
-        type: Array,
-        required: false
-    },
-    box2: {
-        type: Array,
-        required: false
-    },
-    box3: {
-        type: Array,
-        required: false
-    },
-})
+  subject: {
+    type: String,
+    required: false,
+  },
+  store: {
+    type: Array,
+    required: false,
+  },
+});
 
-module.exports = Deck = mongoose.model('deck', DeckSchema)
-
+module.exports = Deck = mongoose.model("deck", DeckSchema);
 
 // this.subject = subject;
 //     this.store = [];
