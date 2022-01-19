@@ -3,6 +3,11 @@
 
 MVP
 
+    fix started route from front to back
+    stopped getting decks from database and displaying on 
+
+    get username and show it on home page as a welcome message
+
     add references to array and read the references 
 
     stopped when I added number of cards in deck according to number of cards selected. Next steps - display decks on the front end and create settings to change number of cards in deck and select deck to study 

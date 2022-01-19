@@ -20,6 +20,7 @@ router.post("/", (req, res) => {
     lastname: req.body.lastname,
     username: req.body.username,
     password: req.body.password,
+    studyStarted: req.body.studyStarted
   });
   newUser.save().then((user) => res.json(user));
 });
@@ -128,6 +129,11 @@ router.put("/createdeck/:id", (req, res) => {
     }
   });
 });
+
+// Study started route
+router.put("/studystarted/:id", (req, res)=>{
+  console.log(req.params.id, " from user api ->>>")
+})
 
 // //@route Get api/items
 // router.delete("/:id", (req, res) => {

@@ -22,6 +22,12 @@ export const getUser = () => (dispatch) => {
   //.catch(err => dispatch(returnErrors(err.response.data, err.response.status)))
 };
 
+export const userStudyStarted = (id) => (dispatch) => {
+  axios
+    .put(`/api/users/studystarted/${id}`, { hey: "hey" })
+    .then(dispatch({ type: "STUDY_STARTED" }));
+};
+
 export const userLogin = (user) => (dispatch) => {
   axios.post("/api/users/login", user).then((res) => {
     dispatch({
@@ -39,7 +45,6 @@ export const createDeckAction = (id, subject) => (dispatch) => {
 };
 
 // add cards to box 1 and current studying
-export const addCardsToStudy = (id, subject) => dispatch => {
-  axios.put(`/api/users/addcardstodeck/${id}`, subject)
-  .then()
-}
+export const addCardsToStudy = (id, subject) => (dispatch) => {
+  axios.put(`/api/users/addcardstodeck/${id}`, subject).then();
+};

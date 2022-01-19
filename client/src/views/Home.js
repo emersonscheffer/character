@@ -11,7 +11,7 @@ const Home = () => {
 
   useEffect(() => {
     dispatch(getUser());
-    dispatch(getDecks())
+    
   }, [dispatch]);
 
   return (

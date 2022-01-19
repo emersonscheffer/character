@@ -1,0 +1,57 @@
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getDecks } from "../../actions/decksActions";
+import { userStudyStarted } from "../../actions/usersActions";
+import DeckListItem from "./DeckListItem";
+
+// const list = ["English", "math", "guitar", "math2"]
+
+const DeckList = ({ area }) => {
+  const dispatch = useDispatch();
+
+  const { decks } = useSelector((state) => state.decksReducer);
+  const { user } = useSelector((state) => state.usersReducer);
+  console.log(user.decks);
+
+  const renderListItems = () => {
+    let listItems = [];
+
+    for (let i = 0; i < decks.length; i++) {
+      listItems.push(
+        <DeckListItem
+          subject={decks[i].subject}
+          quantity={decks[i].store.length}
+          added={false}
+        />
+      );
+    }
+
+    return listItems;
+  };
+
+  useEffect(() => {
+    dispatch(getDecks());
+  }, [dispatch]);
+
+  return (
+    <div
+      style={{
+        gridArea: area,
+        alignSelf: "start",
+        justifySelf: "center",
+        marginTop: "90px",
+      }}
+    >
+      {renderListItems()}
+
+      <div
+        onClick={dispatch(userStudyStarted(user._id))}
+        style={{ width: "100px", heigth: "70px", backgroundColor: "blue" }}
+      >
+        Study
+      </div>
+    </div>
+  );
+};
+
+export default DeckList;

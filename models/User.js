@@ -9,7 +9,11 @@ const UserSchema = new Schema({
   savedDay: Number,
   savedMonth: Number,
   selectedDeck: Number,
-  studyStarted: Boolean,
+  
+  studyStarted: {
+    type: Boolean,
+    default: false
+  },
 
   firstname: {
     type: String,

@@ -1,11 +1,16 @@
 import React, { useState } from "react";
-// import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import DeckList from "../components/leitnerComponents/DeckList";
+import DeckListItem from "../components/leitnerComponents/DeckListItem";
 import ClockInfo from "./ClockInfo";
 import HomeSideMenu from "./HomeSideMenu";
 import LeitnerBox from "./LeitnerBox";
 
 const AppHome = () => {
-  //const {} = useSelector((state) => state.usersReducer)
+
+  const dispatch = useDispatch()
+
+  const { user } = useSelector((state) => state.usersReducer);
   const [page, setPage] = useState("home");
 
   const selectPageFn = (selectedPage) => {
@@ -37,7 +42,13 @@ const AppHome = () => {
           <ClockInfo />
         </div>
       ) : null}
-      {page === "leitner_box" ? <LeitnerBox area="content" /> : null}
+      {page === "leitner_box" ? (
+        user.studyStarted ? (
+          <LeitnerBox area="content" />
+        ) : (
+          <DeckList area="content" />
+        )
+      ) : null}
     </div>
   );
 };
