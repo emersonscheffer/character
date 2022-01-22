@@ -19,3 +19,5 @@ export const HIDE_SELECT_MODAL = "HIDE_SELECT_MODAL"
 export const ADD_USER = "ADD_USER"
 export const GET_USER = "GET_USER"
 export const USER_LOGIN = "USER_LOGIN"
+
+export const UPDATE_USER_INFO = "UPDATE_USER_INFO"

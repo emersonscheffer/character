@@ -1,5 +1,10 @@
 import axios from "axios";
-import { ADD_USER, GET_USER, USER_LOGIN } from "../actions/types";
+import {
+  ADD_USER,
+  GET_USER,
+  UPDATE_USER_INFO,
+  USER_LOGIN,
+} from "../actions/types";
 
 //import {returnErrors} from './errorActions'
 
@@ -48,3 +53,17 @@ export const createDeckAction = (id, subject) => (dispatch) => {
 export const addCardsToStudy = (id, subject) => (dispatch) => {
   axios.put(`/api/users/addcardstodeck/${id}`, subject).then();
 };
+
+// update select deck
+export const updateSelectDeckActions = (id, selected) => (dispatch) => {
+  axios.put(`/api/users/updateselectdeck/${id}`, { selected }).then((res) => {
+    dispatch({ type: UPDATE_USER_INFO, payload: res.data });
+  });
+};
+
+export const updateCurrentDeckActions = (id, selectedDeck, ) => dispatch => {
+  axios.put(`/api/users/updatecurrentdeck/${id}`, {selectedDeck})
+  .then((res) => {
+    dispatch({ type: UPDATE_USER_INFO, payload: res.data });
+  });
+}

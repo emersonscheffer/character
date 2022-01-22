@@ -8,8 +8,11 @@ const UserSchema = new Schema({
   decks: Array,
   savedDay: Number,
   savedMonth: Number,
-  selectedDeck: Number,
   
+  selectedDeck: {
+   type: Number,
+   default: 0
+  },
   studyStarted: {
     type: Boolean,
     default: false

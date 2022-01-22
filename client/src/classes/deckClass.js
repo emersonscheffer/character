@@ -22,7 +22,9 @@ export class Deck {
 
     this.deckStarted = false;
 
-    this.studyButtonActive = false;
+    this.studyButtonActive = true;
+
+    this.startingPoint = 0
 
     this.savedMonth = 0;
 

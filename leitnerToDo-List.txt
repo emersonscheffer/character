@@ -3,8 +3,20 @@
 
 MVP
 
-    fix started route from front to back
-    stopped getting decks from database and displaying on 
+    next steps -- --
+
+   
+
+
+    study btn
+    
+
+    - visual confirmation of deck being added 
+    - show decks on main leitner screen where the blue box is
+
+    make study started btn available when deck is added to user database
+    When study btn hit, load leitner main page 
+
 
     get username and show it on home page as a welcome message
 
@@ -22,7 +34,7 @@ MVP
 
     change database name
 
-     - when user hit Enter on the keyboard, submit login form
+     - when user hits Enter on the keyboard, submit login form
 
 
     -* After selecting deck from modal menu, load the "level boxes" on the left side with selected deck information 
@@ -51,7 +63,7 @@ MVP
 
 REVIEWING CODE / REFACTORING
 
-
+ indicate better which deck is select / current 
 
 /////////////////////////////////////
 
@@ -133,3 +145,7 @@ Create a way to back up database - write/append to txt document
 
 
 create a function to look for "updated cards" and update them except the "level"
+
+
+check HUSKY cl 
+also ESLint

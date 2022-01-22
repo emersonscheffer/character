@@ -1,7 +1,7 @@
 import React from "react";
 import "../../css/style.css";
 
-const DeckListItem = ({ subject, quantity, added }) => {
+const DeckListItem = ({ subject, quantity, added, addFn }) => {
   return (
     <div
       style={{
@@ -47,7 +47,7 @@ const DeckListItem = ({ subject, quantity, added }) => {
       {/*     Add Btn     */}
       <div
         className={added ? "add_btn_added" : "add_deck_btn"}
-        onClick={()=>console.log("add btn")}
+        onClick={()=>addFn()}
         style={{
           height: "45px",
             // backgroundColor: "rgb(200, 200, 200)",

@@ -1,11 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { updateCurrentDeckActions, updateSelectDeckActions } from "../actions/usersActions";
+import DecksDisplay from "../components/leitnerComponents/DecksDisplay";
 import LevelBoxContainer from "../components/leitnerComponents/LevelBoxContainer";
+import StudyControl from "../components/leitnerComponents/StudyControl";
 import TimeLine from "../components/leitnerComponents/TimeLine";
 
 const LeitnerBox = ({ area }) => {
   const dispatch = useDispatch();
   const { deck } = useSelector((state) => state.leitnerBox);
+  const { user } = useSelector((state) => state.usersReducer);
+
+  const loadDeckInfo = (deck) => {
+    dispatch(updateSelectDeckActions(user._id, deck))
+  } 
+
+  const studyBtnPressed = () => {
+    dispatch(updateCurrentDeckActions(user._id, user.selectedDeck))
+  }
 
   return (
     <div
@@ -19,7 +31,7 @@ const LeitnerBox = ({ area }) => {
         gridTemplate: `
           ". . . . . . . . ." 15px
           ". timeline timeline timeline timeline timeline timeline timeline ." 100px
-          ". decks_display . . . . . . ." 80px
+          ". decks_display study_ctrl study_ctrl study_ctrl study_ctrl study_ctrl . ." 80px
           ". level_boxes . . . . . . ." auto
           / 15px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 15px
         `,
@@ -29,21 +41,26 @@ const LeitnerBox = ({ area }) => {
       {/*       TIMELINE      */}
       {/*       TIMELINE      */}
 
-      <TimeLine leitnerDay={50} />
+      <TimeLine leitnerDay={user.decks[user.selectedDeck].leitnerDay} />
 
       {/*      DECKS DISPLAY      */}
       {/*      DECKS DISPLAY      */}
       {/*      DECKS DISPLAY      */}
 
-      <div
-        style={{ gridArea: "decks_display", backgroundColor: " blue " }}
-      ></div>
+      <DecksDisplay area="decks_display" decklist={user.decks} pickDeckFn={(deck)=>loadDeckInfo(deck)}/>
 
       {/*     SIDE LEVEL BOXES      */}
       {/*     SIDE LEVEL BOXES      */}
       {/*     SIDE LEVEL BOXES      */}
 
-      <LevelBoxContainer />
+      <LevelBoxContainer selectedDeck={user.decks[user.selectedDeck]} />
+
+      {/*      STUDY_CONTROL      */}
+      {/*      STUDY_CONTROL      */}
+      {/*      STUDY_CONTROL      */}
+
+      <StudyControl area="study_ctrl" studyBtnFN={studyBtnPressed} studyBtnStatus={user.decks[user.selectedDeck].studyButtonActive}/>
+
     </div>
   );
 };

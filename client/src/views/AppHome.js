@@ -39,6 +39,8 @@ const AppHome = () => {
         <div>
           <h1>This is Home </h1>
 
+          {user.username}
+
           <ClockInfo />
         </div>
       ) : null}

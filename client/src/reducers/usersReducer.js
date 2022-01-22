@@ -1,9 +1,8 @@
-import { GET_USER, USER_LOGIN } from "../actions/types";
+import { GET_USER, USER_LOGIN, UPDATE_USER_INFO } from "../actions/types";
 
 const initialState = {
-  users: [],
   user: {},
-  login_succeded: false
+  login_succeded: false,
 };
 
 export default function myState(state = initialState, action) {
@@ -13,15 +12,20 @@ export default function myState(state = initialState, action) {
       return {
         ...state,
       };
-      case USER_LOGIN:
-        // console.log(action.payload)
-        return {
-          ...state,
-          user: action.payload,
-          login_succeded: true
-        }
+    case USER_LOGIN:
+      // console.log(action.payload)
+      return {
+        ...state,
+        user: action.payload,
+        login_succeded: true,
+      };
+      case UPDATE_USER_INFO: 
+      return {
+        ...state,
+        user: action.payload
+      }
 
     default:
-      return state
+      return state;
   }
 }

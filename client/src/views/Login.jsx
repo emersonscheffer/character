@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addUser, userLogin } from "../actions/usersActions";
 
@@ -8,6 +8,19 @@ const Login = () => {
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  // useEffect(() => {
+  //   window.addEventListener("keydown", (e) => {
+  //     e.preventDefault();
+  //     if (e.key === "Enter") {
+  //       if (username !== "" && password !== "") {
+  //         dispatch(userLogin({ username, password }));
+  //       } else {
+  //         console.log("empty fields");
+  //       }
+  //     }
+  //   });
+  // }, []);
 
   return (
     <div
@@ -36,6 +49,7 @@ const Login = () => {
 
       <div
         style={{ backgroundColor: "yellow", width: "60px", height: "40px" }}
+        // onKeyPress={(e) => console(e)}
         onClick={() =>
           username !== ""
             ? password !== ""

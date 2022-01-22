@@ -12,7 +12,7 @@ const HomeSideMenu = ({ area, selectFn }) => {
 
   const dispatch = useDispatch();
 
-  const emptyDeck = new Deck("guitar")
+  
 
   return (
     <div
@@ -28,9 +28,9 @@ const HomeSideMenu = ({ area, selectFn }) => {
       <h1 onClick={() => selectAndSend("home")}>Home</h1>
       <h1 onClick={() => selectAndSend("leitner_box")}>Leitner Box</h1>
       <h1
-        onClick={() =>
-          dispatch(createDeckAction(user._id, emptyDeck))
-        }
+        // onClick={() =>
+        //   dispatch(createDeckAction(user._id, emptyDeck))
+        // }
       >
         Action Button
       </h1>
