@@ -4,6 +4,13 @@
 MVP
 
     next steps -- --
+    make study btn available again by checking if the current array is empty, then if the day has changed, if so , make it active
+
+
+    decks options
+
+    change number of cards to add, the default is 4
+
 
    
 

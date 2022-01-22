@@ -222,7 +222,14 @@ const daysMap = {
   64: 7,
 };
 
-const tempList2 = ["hello", "Hey", "hi", "how", "are", "you"]; // trash this after
+const tempList2 = [
+  { subject: "hello", level: 1 },
+  { subject: "Hey", level: 1 },
+  { subject: "Apple", level: 1 },
+  { subject: "Oranges", level: 1 },
+  { subject: "Pears", level: 1 },
+  { subject: "Lemon", level: 1 },
+]; // trash this after
 
 // update Deck
 router.put("/updatecurrentdeck/:id", (req, res) => {
@@ -314,11 +321,96 @@ router.put("/updatecurrentdeck/:id", (req, res) => {
   });
 });
 
+//cardbtngood
+router.put("/cardbtn/:id", (req, res) => {
+  User.findById(req.params.id).then((user) => {
+    let userDecks = user.decks;
+    let currentDeck = userDecks[req.body.currentDeck];
+
+    let card = currentDeck.currentStudying.store.shift();
+
+    switch (card.level) {
+      case 1:
+        currentDeck.box1.shift();
+        break;
+      case 2:
+        currentDeck.box2.shift();
+        break;
+      case 3:
+        currentDeck.box3.shift();
+        break;
+      case 4:
+        currentDeck.box4.shift();
+        break;
+      case 5:
+        currentDeck.box5.shift();
+        break;
+      case 6:
+        currentDeck.box6.shift();
+        break;
+      case 7:
+        currentDeck.box7.shift();
+        break;
+      default:
+        break;
+    }
+
+    if (req.body.btn === "Good") {
+      card.level = card.level + 1;
+
+      switch (card.level) {
+        case 2:
+          currentDeck.box2.push(card);
+          break;
+        case 3:
+          currentDeck.box3.push(card);
+          break;
+        case 4:
+          currentDeck.box4.push(card);
+          break;
+        case 5:
+          currentDeck.box5.push(card);
+          break;
+        case 6:
+          currentDeck.box6.push(card);
+          break;
+        case 7:
+          currentDeck.box7.push(card);
+          break;
+        case 8:
+          currentDeck.retiredBox.push(card);
+          break;
+
+        default:
+          console.log("called default state  - check whats wrong");
+          currentDeck.box1.push(card);
+          break;
+      }
+    } else {
+      // if again btn is pressed
+      // -> change level of card to 1
+      // -> send card to end of queue in current studying
+      card.level = 1;
+      currentDeck.box1.push(card);
+      currentDeck.currentStudying.store.push(card);
+    }
+
+    User.findByIdAndUpdate(
+      req.params.id,
+      { decks: userDecks },
+      { new: true },
+      (err, user) => {
+        if (err) return res.status(500).send(err);
+        return res.send(user);
+      }
+    );
+  });
+});
 // //@route Get api/items
 // router.delete("/:id", (req, res) => {
 //   Users.findById(req.params.id)
 //     .then((user) => user.remove().then(() => res.json({ success: true })))
 //     .catch((err) => res.status(404).json({ success: false }));
 // });
-
+//
 module.exports = router;

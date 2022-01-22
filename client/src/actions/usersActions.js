@@ -61,9 +61,18 @@ export const updateSelectDeckActions = (id, selected) => (dispatch) => {
   });
 };
 
-export const updateCurrentDeckActions = (id, selectedDeck, ) => dispatch => {
-  axios.put(`/api/users/updatecurrentdeck/${id}`, {selectedDeck})
+// study btn pressed
+export const updateCurrentDeckActions = (id, selectedDeck) => (dispatch) => {
+  axios
+    .put(`/api/users/updatecurrentdeck/${id}`, { selectedDeck })
+    .then((res) => {
+      dispatch({ type: UPDATE_USER_INFO, payload: res.data });
+    });
+};
+
+export const cardBtnGoodActions = (id, currentDeck, btn) => (dispatch) => {
+  axios.put(`/api/users/cardbtn/${id}`, { currentDeck, btn })
   .then((res) => {
     dispatch({ type: UPDATE_USER_INFO, payload: res.data });
   });
-}
+};

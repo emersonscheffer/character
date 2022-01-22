@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateCurrentDeckActions, updateSelectDeckActions } from "../actions/usersActions";
+import { cardBtnGoodActions, updateCurrentDeckActions, updateSelectDeckActions } from "../actions/usersActions";
+import CanvasCard from "../components/leitnerComponents/CanvasCard";
 import DecksDisplay from "../components/leitnerComponents/DecksDisplay";
 import LevelBoxContainer from "../components/leitnerComponents/LevelBoxContainer";
 import StudyControl from "../components/leitnerComponents/StudyControl";
@@ -19,6 +20,11 @@ const LeitnerBox = ({ area }) => {
     dispatch(updateCurrentDeckActions(user._id, user.selectedDeck))
   }
 
+  const cardBtnGoodPressed = (btn) => {
+    console.log(btn)
+    dispatch(cardBtnGoodActions(user._id, user.selectedDeck, btn))
+  }
+
   return (
     <div
       style={{
@@ -32,7 +38,7 @@ const LeitnerBox = ({ area }) => {
           ". . . . . . . . ." 15px
           ". timeline timeline timeline timeline timeline timeline timeline ." 100px
           ". decks_display study_ctrl study_ctrl study_ctrl study_ctrl study_ctrl . ." 80px
-          ". level_boxes . . . . . . ." auto
+          ". level_boxes canvas canvas canvas canvas canvas . ." auto
           / 15px 1fr 1fr 1fr 1fr 1fr 1fr 1fr 15px
         `,
       }}
@@ -60,6 +66,12 @@ const LeitnerBox = ({ area }) => {
       {/*      STUDY_CONTROL      */}
 
       <StudyControl area="study_ctrl" studyBtnFN={studyBtnPressed} studyBtnStatus={user.decks[user.selectedDeck].studyButtonActive}/>
+
+      {/*      CANVAS / CARD      */}
+      {/*      CANVAS / CARD      */}
+      {/*      CANVAS / CARD      */}
+
+      <CanvasCard area="canvas" studying={user.decks[user.selectedDeck].currentStudying.store} btnFnGood={cardBtnGoodPressed}/>
 
     </div>
   );
