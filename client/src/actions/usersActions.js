@@ -1,4 +1,5 @@
 import axios from "axios";
+import res from "express/lib/response";
 import {
   ADD_USER,
   GET_USER,
@@ -28,9 +29,11 @@ export const getUser = () => (dispatch) => {
 };
 
 export const userStudyStarted = (id) => (dispatch) => {
-  axios
-    .put(`/api/users/studystarted/${id}`, { hey: "hey" })
-    .then(dispatch({ type: "STUDY_STARTED" }));
+  axios.put(`/api/users/studystarted/${id}`, { hey: "hey" })
+  .then((res) => {
+    dispatch({ type: "STUDY_STARTED", payload: res.data });
+  });
+  
 };
 
 export const userLogin = (user) => (dispatch) => {
@@ -71,8 +74,7 @@ export const updateCurrentDeckActions = (id, selectedDeck) => (dispatch) => {
 };
 
 export const cardBtnGoodActions = (id, currentDeck, btn) => (dispatch) => {
-  axios.put(`/api/users/cardbtn/${id}`, { currentDeck, btn })
-  .then((res) => {
+  axios.put(`/api/users/cardbtn/${id}`, { currentDeck, btn }).then((res) => {
     dispatch({ type: UPDATE_USER_INFO, payload: res.data });
   });
 };

@@ -1,4 +1,4 @@
-import { GET_USER, USER_LOGIN, UPDATE_USER_INFO } from "../actions/types";
+import { GET_USER, USER_LOGIN, UPDATE_USER_INFO, ADD_USER } from "../actions/types";
 
 const initialState = {
   user: {},
@@ -19,11 +19,18 @@ export default function myState(state = initialState, action) {
         user: action.payload,
         login_succeded: true,
       };
-      case UPDATE_USER_INFO: 
+    case UPDATE_USER_INFO:
       return {
         ...state,
-        user: action.payload
-      }
+        user: action.payload,
+      };
+
+      case ADD_USER : 
+        return {
+          ...state,
+          user: action.payload,
+          login_succeded:true
+        }
 
     default:
       return state;
