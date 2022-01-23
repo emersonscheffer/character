@@ -5,6 +5,8 @@ import { createDeckAction, userStudyStarted } from "../../actions/usersActions";
 import { Deck } from "../../classes/deckClass";
 import DeckListItem from "./DeckListItem";
 
+ import "../../css/style.css";
+
 // const list = ["English", "math", "guitar", "math2"]
 
 const DeckList = ({ area }) => {
@@ -15,7 +17,7 @@ const DeckList = ({ area }) => {
 
   const renderListItems = () => {
     let listItems = [];
-    
+
     for (let i = 0; i < decks.length; i++) {
       listItems.push(
         <DeckListItem
@@ -23,7 +25,9 @@ const DeckList = ({ area }) => {
           subject={decks[i].subject}
           quantity={decks[i].store.length}
           added={false}
-          addFn={()=>dispatch(createDeckAction(user._id, new Deck(decks[i].subject)))}
+          addFn={() =>
+            dispatch(createDeckAction(user._id, new Deck(decks[i].subject)))
+          }
         />
       );
     }
@@ -47,10 +51,11 @@ const DeckList = ({ area }) => {
       {renderListItems()}
 
       <div
+        className="deck-study-btn"
         onClick={() => dispatch(userStudyStarted(user._id))}
-        style={{ width: "100px", heigth: "70px", backgroundColor: "blue" }}
+        style={{ width: "100px", height: "40px" }}
       >
-        Study
+        <h1>Study</h1>
       </div>
     </div>
   );

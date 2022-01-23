@@ -44,3 +44,22 @@
   font-family: Arial, Helvetica, sans-serif;
   color: #5c5c5c;
 }
+
+.deck-study-btn {
+  color: #ffffff;
+  width: 100px;
+  height: 40px;
+  background-color: #00d3f4;
+  display: grid;
+}
+
+.deck-study-btn h1 {
+  width: 100px;
+  height: 40px;
+  align-self: center;
+  justify-self: center;
+}
+
+.deck-study-btn :hover {
+  background-color: #263639;
+}

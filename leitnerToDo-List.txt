@@ -4,7 +4,15 @@
 MVP
 
     next steps -- --
-    make study btn available again by checking if the current array is empty, then if the day has changed, if so , make it active
+
+    fix create account / login page
+
+    Decks display study btn facelift , 
+        - when clicked take it to leitner home
+
+    if current studying is empty, show message on the screen " you are all caught up "
+
+    make study btn available again by checking if the day has changed, if so , make it active
 
 
     decks options

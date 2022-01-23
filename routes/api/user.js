@@ -321,7 +321,7 @@ router.put("/updatecurrentdeck/:id", (req, res) => {
   });
 });
 
-//cardbtngood
+//cardbtn logic
 router.put("/cardbtn/:id", (req, res) => {
   User.findById(req.params.id).then((user) => {
     let userDecks = user.decks;
@@ -393,6 +393,11 @@ router.put("/cardbtn/:id", (req, res) => {
       card.level = 1;
       currentDeck.box1.push(card);
       currentDeck.currentStudying.store.push(card);
+    }
+
+    // make study btn active
+    if (currentDeck.currentStudying.store.length === 0) {
+      currentDeck.studyButtonActive = true;
     }
 
     User.findByIdAndUpdate(
