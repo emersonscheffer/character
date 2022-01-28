@@ -5,6 +5,8 @@ import { createDeckAction, userStudyStarted } from "../../actions/usersActions";
 import { Deck } from "../../classes/deckClass";
 import DeckListItem from "./DeckListItem";
 
+import { Redirect, Link } from "react-router-dom";
+
  import "../../css/style.css";
 
 // const list = ["English", "math", "guitar", "math2"]
@@ -33,6 +35,12 @@ const DeckList = ({ area }) => {
     }
 
     return listItems;
+  };
+
+  const advanceToLeitner = () => {
+    // if (studyStarted) {
+      return <Link to="/leitnerbox" />;
+    // }
   };
 
   useEffect(() => {

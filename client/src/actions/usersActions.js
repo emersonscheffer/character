@@ -1,5 +1,5 @@
 import axios from "axios";
-import res from "express/lib/response";
+
 import {
   ADD_USER,
   GET_USER,

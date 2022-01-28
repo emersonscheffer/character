@@ -1,36 +1,52 @@
 import { Provider } from "react-redux";
 import store from "./store";
 
-// import "./App.css";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+} from "react-router-dom";
+
 import "./reset.css";
 import "./css/activityBar.css";
-import ClockInfo from "./views/ClockInfo";
 
-// import ActivityBar from "./components/ActivityBar";
-// import PlayerName from "./components/PlayerName";
-// import BodyTemp from "./views/BodyTemp";
-//import LeitnerBox from "./views/LeitnerBox";
-// import LeitnerBoxGrid from "./views/LeitnerBoxGrid";
 import Home from "./views/Home";
+import NavigateTest from "./views/NavigateTest";
 
 function App() {
   return (
     <Provider store={store}>
       <div className="App">
-        {/* <div>
-        <ActivityBar />
-      </div>
+        <Router>
+          <Routes>
+            <Route
+              exact
+              path="/character"
+              // render={() => (
+              //   <div>
+              //     <Home />
+              //   </div>
+              // )}
+              element={<Home />}
+            />
 
-      <PlayerName />
-      <BodyTemp /> */}
+            <Route
+              path="/leitnerbox"
+              element={
+                <div>
+                  
+                  Hello
+                  <Link to={"/character"}>press here</Link>
+                  <button>Press me</button>
 
-        {/* <LeitnerBox /> */}
-        {/* <LeitnerBoxGrid /> */}
-
-        <Home />
-
-        {/* <ClockInfo /> */}
-
+                  <NavigateTest />
+                </div>
+              }
+            />
+          </Routes>
+        </Router>
       </div>
     </Provider>
   );
