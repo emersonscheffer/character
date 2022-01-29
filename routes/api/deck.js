@@ -3,11 +3,11 @@ const router = express.Router();
 
 const Deck = require("../../models/Deck");
 
-const Card = require('../../models/Card')
+const Card = require("../../models/Card");
+const res = require("express/lib/response");
 
 router.get("/", (req, res) => {
-    Deck.find()
-    .then((decks) => res.json(decks))
+  Deck.find().then((decks) => res.json(decks));
 });
 
 router.post("/", (req, res) => {
@@ -40,18 +40,58 @@ function addDeck(subject) {
   });
 }
 
-addDeck("guitar");
+addDeck("2nd Grade Math");
 
-function printCards(){
-
-  Card.find()
-  .then((cards)=> {
+function printCards() {
+  Card.find().then((cards) => {
     for (const card of cards) {
-      console.log(card._id, " ->>")
+      console.log(card._id, " ->>");
     }
-  })
+  });
 }
 
-printCards()
+printCards();
 
+const secondGradeMathData = require("../../secondGradeMath.json");
+console.log(secondGradeMathData[0]);
+
+let deckToUpdate = "2nd Grade Math";
+const theCard = {
+  id: 2,
+  prompt: "Add Numbers",
+  number1: 5,
+  number2: 10,
+  operation: "addition",
+  answer: 15,
+};
+
+function addCardsIntoADeck(deck, card) {
+  Deck.find({ subject: deck }).then((deckf) => {
+    let deckStore = deckf[0].store;
+    // console.log(deckf[0].store)
+    let alreadyInDeck = false;
+    for (let i = 0; i < deckStore.length; i++) {
+      if (deckStore[i].id === card.id) {
+        alreadyInDeck = true;
+      }
+    }
+
+    if (!alreadyInDeck) {
+      deckStore.push(card);
+
+      Deck.findOneAndUpdate(
+        { subject: deck },
+        { store: deckStore },
+        { new: true },
+        (err, deck) => {
+          if (err) return res.status(500).send(err);
+          // return res.send(deck);
+          // console.log(deck)
+        }
+      );
+    }
+  });
+}
+addCardsIntoADeck(deckToUpdate, theCard);
+////
 module.exports = router;

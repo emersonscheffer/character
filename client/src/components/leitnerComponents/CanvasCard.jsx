@@ -13,6 +13,10 @@ const CanvasCard = ({ area, studying, btnFnGood }) => {
       {studying.length === 0 ? (
         <div style={{}}>
           <h1>You're all caught up</h1>
+          <h1>
+            Press the study button, if it isn't available today, check back
+            tomorrow
+          </h1>
         </div>
       ) : (
         <div>

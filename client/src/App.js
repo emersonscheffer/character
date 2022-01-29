@@ -14,6 +14,7 @@ import "./css/activityBar.css";
 
 import Home from "./views/Home";
 import NavigateTest from "./views/NavigateTest";
+import DeckList from "./components/leitnerComponents/DeckList";
 
 function App() {
   return (
@@ -45,6 +46,10 @@ function App() {
                 </div>
               }
             />
+
+
+              <Route path="/selectdecks" element={<DeckList />} />
+
           </Routes>
         </Router>
       </div>

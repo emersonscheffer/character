@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const DecksDisplay = ({ area, decklist, pickDeckFn }) => {
 //   const templist = ["science", "engineering"];
@@ -30,13 +31,15 @@ const DecksDisplay = ({ area, decklist, pickDeckFn }) => {
   return (
     <div
       style={{
-        backgroundColor: "red",
+        backgroundColor: "lightBlue",
         gridArea: area,
         display: "grid",
         gridTemplateColumns: "repeat(2, 1fr)",
       }}
     >
       {renderDecks()}
+      {/* <button onClick={}>Add Decks</button> */}
+      <Link to={"/selectdecks"}>Select</Link>
     </div>
   );
 };

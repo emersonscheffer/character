@@ -12,11 +12,6 @@ router.post("/", (req, res) => {
   newCard.save().then((card) => res.json(card));
 });
 
-
-
-
-
-
 ////
 function addCard(title, deck) {
   Card.findOne({ title: title }).then((cardN) => {
@@ -32,7 +27,6 @@ function addCard(title, deck) {
   });
 }
 
- addCard("Resume", "english")
+addCard("Cordon", "english");
 
 module.exports = router;
-
