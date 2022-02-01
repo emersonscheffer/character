@@ -1,4 +1,5 @@
 const express = require("express");
+const Deck = require("../../models/Deck");
 const router = express.Router();
 
 //item Model
@@ -231,7 +232,7 @@ const tempList2 = [
   { subject: "Lemon", level: 1 },
 ]; // trash this after
 
-// update Deck
+// update Deck study btn pressed
 router.put("/updatecurrentdeck/:id", (req, res) => {
   /* req.body
     selectedDeck
@@ -255,22 +256,40 @@ router.put("/updatecurrentdeck/:id", (req, res) => {
     // create a starting point
     let newStartingPoint = currentDeck.startingPoint;
 
-    //add cards to box1
-    for (
-      let i = currentDeck.startingPoint;
-      i < currentDeck.startingPoint + currentDeck.quantityOfCardsToAdd;
-      i++
-    ) {
-      const card = tempList2[i] || null;
+    let sourceList = []
 
-      if (card) {
-        currentDeck.box1.push(card);
-      } else {
-        break;
-      }
+    // Get deck from decks
+    Deck.findOne({subject: currentDeck.subject}).then((deck) => {
+     sourceList = deck.store
+     
 
-      newStartingPoint = i + 1;
-    }
+
+
+
+//add cards to box1
+for (
+  let i = currentDeck.startingPoint;
+  i < currentDeck.startingPoint + currentDeck.quantityOfCardsToAdd;
+  i++
+) {
+  const card = sourceList[i] || null;
+
+  if (card) {
+    currentDeck.box1.push(card);
+  } else {
+    break;
+  }
+
+  newStartingPoint = i + 1;
+}
+
+
+
+
+
+
+
+    
 
     // update starting point
     currentDeck.startingPoint = newStartingPoint;
@@ -308,7 +327,7 @@ router.put("/updatecurrentdeck/:id", (req, res) => {
     currentDeck.studyButtonActive = false;
 
     //   userDecks[deckPosition] = currentDeck;
-
+ 
     User.findByIdAndUpdate(
       req.params.id,
       { decks: userDecks },
@@ -318,6 +337,12 @@ router.put("/updatecurrentdeck/:id", (req, res) => {
         return res.send(user);
       }
     );
+
+
+
+
+    })
+
   });
 });
 

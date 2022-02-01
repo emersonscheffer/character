@@ -1,4 +1,5 @@
 import React from "react";
+import SecondGradeMathCard from "./SecondGradeMathCard";
 
 const CanvasCard = ({ area, studying, btnFnGood }) => {
   let st = studying[0];
@@ -20,6 +21,11 @@ const CanvasCard = ({ area, studying, btnFnGood }) => {
         </div>
       ) : (
         <div>
+
+
+          
+            <SecondGradeMathCard />
+
           {title2}
 
           <div

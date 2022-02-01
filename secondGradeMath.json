@@ -8,17 +8,63 @@
         "number1": 5,
         "number2": 10,
         "operation": "addition",
-        "answer": 15
+        "answer": 15,
+        "level": 1
       },
       {
         "id": 2,
         "prompt": "Add Numbers",
-        "number1": 25,
+        "number1": 5,
         "number2": 10,
         "operation": "addition",
-        "answer": 35
+        "answer": 15,
+        "level": 1
+      },
+      {
+        "id": 3,
+        "prompt": "Add Numbers",
+        "number1": 5,
+        "number2": 10,
+        "operation": "addition",
+        "answer": 15,
+        "level": 1
+      },
+      {
+        "id": 4,
+        "prompt": "Add Numbers",
+        "number1": 5,
+        "number2": 10,
+        "operation": "addition",
+        "answer": 15,
+        "level": 1
+      },
+      {
+        "id": 5,
+        "prompt": "Add Numbers",
+        "number1": 5,
+        "number2": 10,
+        "operation": "addition",
+        "answer": 15,
+        "level": 1
+      },
+      {
+        "id": 6,
+        "prompt": "Add Numbers",
+        "number1": 5,
+        "number2": 10,
+        "operation": "addition",
+        "answer": 15,
+        "level": 1
+      },
+      {
+        "id": 7,
+        "prompt": "Add Numbers",
+        "number1": 5,
+        "number2": 10,
+        "operation": "addition",
+        "answer": 15,
+        "level": 1
       }
-
     ]
   }
 ]
