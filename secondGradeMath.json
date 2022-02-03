@@ -14,55 +14,65 @@
       {
         "id": 2,
         "prompt": "Add Numbers",
-        "number1": 5,
+        "number1": 15,
         "number2": 10,
         "operation": "addition",
-        "answer": 15,
+        "answer": 25,
         "level": 1
       },
       {
         "id": 3,
         "prompt": "Add Numbers",
-        "number1": 5,
-        "number2": 10,
+        "number1": 3,
+        "number2": 9,
         "operation": "addition",
-        "answer": 15,
+        "answer": 12,
         "level": 1
       },
       {
         "id": 4,
         "prompt": "Add Numbers",
-        "number1": 5,
+        "number1": 4,
         "number2": 10,
         "operation": "addition",
-        "answer": 15,
+        "answer": 14,
         "level": 1
       },
       {
         "id": 5,
         "prompt": "Add Numbers",
         "number1": 5,
-        "number2": 10,
+        "number2": 7,
         "operation": "addition",
-        "answer": 15,
+        "answer": 12,
         "level": 1
       },
       {
         "id": 6,
         "prompt": "Add Numbers",
-        "number1": 5,
-        "number2": 10,
+        "number1": 4,
+        "number2": 9,
         "operation": "addition",
-        "answer": 15,
+        "answer": 13,
         "level": 1
       },
       {
         "id": 7,
         "prompt": "Add Numbers",
-        "number1": 5,
-        "number2": 10,
+        "number1": 2,
+        "number2": 7,
         "operation": "addition",
-        "answer": 15,
+        "answer": 9,
+        "level": 1
+      },
+      
+      {
+        "id": 8,
+        "prompt": "Add Numbers",
+        "number1": 2,
+        "number2": 17,
+        "operation": "addition",
+        "answer": 19,
         "level": 1
       }
     ]

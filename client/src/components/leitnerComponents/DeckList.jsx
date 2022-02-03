@@ -5,11 +5,9 @@ import { createDeckAction, userStudyStarted } from "../../actions/usersActions";
 import { Deck } from "../../classes/deckClass";
 import DeckListItem from "./DeckListItem";
 
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
- import "../../css/style.css";
-
-// const list = ["English", "math", "guitar", "math2"]
+import "../../css/style.css";
 
 const DeckList = ({ area }) => {
   const dispatch = useDispatch();
@@ -37,12 +35,6 @@ const DeckList = ({ area }) => {
     return listItems;
   };
 
-  const advanceToLeitner = () => {
-    // if (studyStarted) {
-      return <Link to="/leitnerbox" />;
-    // }
-  };
-
   useEffect(() => {
     dispatch(getDecks());
   }, [dispatch]);
@@ -58,13 +50,13 @@ const DeckList = ({ area }) => {
     >
       {renderListItems()}
 
-      <div
+      <Link
         className="deck-study-btn"
+        to={"/leitnerbox"}
         onClick={() => dispatch(userStudyStarted(user._id))}
-        style={{ width: "100px", height: "40px" }}
       >
         <h1>Study</h1>
-      </div>
+      </Link>
     </div>
   );
 };

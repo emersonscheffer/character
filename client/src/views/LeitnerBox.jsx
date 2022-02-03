@@ -71,7 +71,7 @@ const LeitnerBox = ({ area }) => {
       {/*      CANVAS / CARD      */}
       {/*      CANVAS / CARD      */}
 
-      <CanvasCard area="canvas" studying={user.decks[user.selectedDeck].currentStudying.store} btnFnGood={cardBtnGoodPressed}/>
+      <CanvasCard area="canvas" studying={user.decks[user.selectedDeck].currentStudying.store} btnFnGood={(t) => cardBtnGoodPressed(t)}/>
 
     </div>
   );

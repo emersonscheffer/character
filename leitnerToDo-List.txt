@@ -5,14 +5,14 @@ MVP
 
     next steps -- --
 
-    fix studystarted actions return callback from db 
+    facelift card for math template 
 
-    fix create account / login page
+    create a reveal answer btn to reveal the answer
 
-    Decks display study btn facelift , 
-        - when clicked take it to leitner home
+    if timer runs out , good btn is disabled 
 
-    if current studying is empty, show message on the screen " you are all caught up "
+
+
 
     make study btn available again by checking if the day has changed, if so , make it active
 
@@ -29,36 +29,25 @@ MVP
     
 
     - visual confirmation of deck being added 
-    - show decks on main leitner screen where the blue box is
 
-    make study started btn available when deck is added to user database
-    When study btn hit, load leitner main page 
+    * - > make study started btn available when deck is added to user database
+    
 
 
-    get username and show it on home page as a welcome message
-
-    add references to array and read the references 
+ 
 
     stopped when I added number of cards in deck according to number of cards selected. Next steps - display decks on the front end and create settings to change number of cards in deck and select deck to study 
 
     clock info, clock ain't showing the hour properly, if there's a change, update the page
-    change hour to 12 / 24
     
-    add side menu
-    select deck modal
+  
 
     load selected deck details
-
-    change database name
 
      - when user hits Enter on the keyboard, submit login form
 
 
-    -* After selecting deck from modal menu, load the "level boxes" on the left side with selected deck information 
 
-
-    
-    Add studyButtonActive to each deck 
     
 
 
@@ -159,9 +148,6 @@ Create a way to back up database - write/append to txt document
 - leitner time line - transform them into perfect squares
 
 - compare if date has changed, if yes - button enabled else - next 'study' button disabled
-
-
-create a function to look for "updated cards" and update them except the "level"
 
 
 check HUSKY cl 

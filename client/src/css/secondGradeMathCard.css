@@ -1,0 +1,26 @@
+/* second grade math card css */
+
+.number-holder {
+  background-color: rgb(196, 196, 196);
+  /* grid-area: number1; */
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.answer {
+  background-color: rgb(198, 198, 198);
+  width: 100%;
+  height: 100%;
+}
+
+.answer :hover {
+  background-color: rgb(167, 167, 167);
+}
+
+.again-btn {
+  background-color: aqua;
+}
+
+.again-btn :hover {
+  background-color: rgb(113, 130, 130);
+}

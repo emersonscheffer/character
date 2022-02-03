@@ -2,7 +2,7 @@ import React from "react";
 import SecondGradeMathCard from "./SecondGradeMathCard";
 
 const CanvasCard = ({ area, studying, btnFnGood }) => {
-  let st = studying[0];
+  let current = studying[0];
   let title2 = "- >";
 
   if (studying.length > 0) {
@@ -21,14 +21,12 @@ const CanvasCard = ({ area, studying, btnFnGood }) => {
         </div>
       ) : (
         <div>
+          <SecondGradeMathCard
+            cardBtnFn={(t) => btnFnGood(t)}
+            currentCard={current}
+          />
 
-
-          
-            <SecondGradeMathCard />
-
-          {title2}
-
-          <div
+          {/* <div
             onClick={btnFnGood.bind(this, "Good")}
             style={{ width: "70px", height: "50px", backgroundColor: "green" }}
           >
@@ -40,7 +38,7 @@ const CanvasCard = ({ area, studying, btnFnGood }) => {
             style={{ width: "70px", height: "50px", backgroundColor: "pink" }}
           >
             Again
-          </div>
+          </div> */}
         </div>
       )}
     </div>
