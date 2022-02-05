@@ -5,9 +5,11 @@ MVP
 
     next steps -- --
 
+    working on the Timer Card
+
     facelift card for math template 
 
-    create a reveal answer btn to reveal the answer
+    
 
     if timer runs out , good btn is disabled 
 

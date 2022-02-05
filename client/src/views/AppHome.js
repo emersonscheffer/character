@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import DeckList from "../components/leitnerComponents/DeckList";
 import DeckListItem from "../components/leitnerComponents/DeckListItem";
+import TimerCard from "../components/leitnerComponents/TimerCard";
 import ClockInfo from "./ClockInfo";
 import HomeSideMenu from "./HomeSideMenu";
 import LeitnerBox from "./LeitnerBox";
@@ -16,6 +17,9 @@ const AppHome = () => {
   const selectPageFn = (selectedPage) => {
     setPage(selectedPage);
   };
+
+const time = new Date();
+  time.setSeconds(time.getSeconds() + 180);
 
   return (
     <div
@@ -37,9 +41,15 @@ const AppHome = () => {
 
       {page === "home" ? (
         <div>
-          <h1>This is Home </h1>
+          <h1>This is : </h1>
 
           {user.username}
+
+          <TimerCard timerInput={120000} />
+
+          
+          
+          {/* <MyTimer expiryTimestamp={time} /> */}
 
           <ClockInfo />
         </div>
